@@ -1,6 +1,6 @@
 # Final Project - *9Boarding*
 
-**9Boarding** is an android app that allows a user to view home and mentions timelines, view user profiles with user timelines, as well as compose and post a new tweet. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
+**9Boarding** is an android app that allows a user to find or share the good boarding house for other people
 
 Time spent: **X** hours spent in total
 gi
@@ -8,23 +8,25 @@ gi
 
 Describes:
 
-9Boarding - where you can find or share the good boarding house for other people. (People can find or post)
+You can view detail boarding house via Photo, Video, detail information (price, map embedded,...) that they share and user can comment about that post
 
 The following **required** functionality is completed:
 
-* [ ] 
+* [ ] User can post and find the information about the boarding house
+* [ ] Allow people (who want to rent the house) view the house's info or chat with the house owner
+* [ ] People can comment or rate the post, boarding house
 
 The following **optional** features are implemented:
 
-* [ ] 
+* [ ] (Discussing)
 
 The following **bonus** features are implemented:
 
-* [ ] 
+* [ ] (Discussing)
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you can get done to improve the app functionality!
+* [ ] (Discussing)
 
 ## Video Walkthrough
 
