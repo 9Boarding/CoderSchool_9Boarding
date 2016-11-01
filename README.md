@@ -3,7 +3,7 @@
 **9Boarding** is an android app that allows a user to find or share the good boarding house for other people
 
 Time spent: **X** hours spent in total
-gi
+
 ## User Stories
 
 Describes:
@@ -18,15 +18,23 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-* [ ] (Discussing)
+* [ ] Discussing
 
 The following **bonus** features are implemented:
 
-* [ ] (Discussing)
+* [ ] Discussing
 
 The following **additional** features are implemented:
 
-* [ ] (Discussing)
+* [ ] Discussing
+
+## Image
+
+<img src='http://i.imgur.com/di3DJI4.jpg' title='Login Screen' width='' alt='Image1' />
+
+<img src='http://i.imgur.com/YhHFqTp.png' title='Timeline Screen' width='' alt='Image1' />
+
+<img src='http://i.imgur.com/zZzy2Ea.png' title='Details Screen' width='' alt='Image1' />
 
 ## Video Walkthrough
 
