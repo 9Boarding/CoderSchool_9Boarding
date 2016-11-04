@@ -1,5 +1,6 @@
 package com.minhnpa.coderschool.a9boarding.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -11,9 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.minhnpa.coderschool.a9boarding.R;
+import com.minhnpa.coderschool.a9boarding.activity.SignUpActivity;
 
 import org.w3c.dom.Text;
 
@@ -31,7 +34,7 @@ public class LoginFragment extends Fragment {
 	@BindView(R.id.et_password) EditText etPassword;
 	@BindView(R.id.btn_login) AppCompatButton btnLogin;
 	@BindView(R.id.btn_login_with_google) AppCompatButton btnLoginWithGoogle;
-	@BindView(R.id.tv_sigb_up) TextView tbSignup;
+	@BindView(R.id.tv_sigb_up) TextView tvSignup;
 
 	/**
 	 * Use this method to create the instance of this LoginFragment
@@ -59,5 +62,17 @@ public class LoginFragment extends Fragment {
 		super.onViewCreated(view, savedInstanceState);
 
 		ButterKnife.bind(this, view);
+
+		setupListener();
+	}
+
+	private void setupListener() {
+		tvSignup.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(SignUpActivity.newIntent(getActivity()));
+			}
+		});
+
 	}
 }

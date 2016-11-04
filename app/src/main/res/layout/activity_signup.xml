@@ -1,8 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.minhnpa.coderschool.a9boarding.fragment.LoginFragment"
             android:fitsSystemWindows="true"
             android:background="@color/login_background_orange">
 
@@ -18,7 +16,20 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:src="@drawable/login_cover_image"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="32dp"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/til_user_name">
+            <EditText
+                android:id="@+id/et_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/promt_name"
+                android:maxLines="1"/>
+        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -29,7 +40,8 @@
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/promt_emails"/>
+                android:hint="@string/promt_emails"
+                android:maxLines="1"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -41,49 +53,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="@string/promt_password"
+                android:hint="@string/promt_password"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_re_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/et_re_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/re_type_password"
                 android:layout_marginBottom="16dp"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/login_button_orange"
-            android:text="@string/login"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Or"
-            android:textSize="20sp"
-            android:textColor="#50000000"
-            android:layout_gravity="center"
-            android:padding="@dimen/medium_padding"/>
-
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_login_with_google"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login_with_google"
-            android:background="@color/login_button_orange"/>
-
-        <TextView
-            android:id="@+id/tv_sigb_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="24dp"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"
-            android:text="@string/don_t_have_account_signup_now"
-            android:clickable="true"
-            android:layout_marginBottom="72dp"/>
-
-
-
+            android:text="@string/sign_up"/>
     </LinearLayout>
-
-
-
-
 </ScrollView>

@@ -22,4 +22,7 @@
     <string name="login">Login</string>
     <string name="login_with_google">Login with Google</string>
     <string name="don_t_have_account_signup_now">Don\'t have account? Signup Now</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="promt_name">Name</string>
+    <string name="re_type_password">Re-type Password</string>
 </resources>
