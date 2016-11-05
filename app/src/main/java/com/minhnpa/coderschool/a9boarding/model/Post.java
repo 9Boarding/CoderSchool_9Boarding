@@ -8,23 +8,14 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Post implements Parcelable {
-    @SerializedName("post_id")
     private long postId;
-    @SerializedName("user")
     private User user;
-    @SerializedName("created_at")
     private String createdAt;
-    @SerializedName("address")
     private String address;
-    @SerializedName("price")
     private String price;
-    @SerializedName("images")
     private List<Image> images;
-    @SerializedName("favourites_count")
     private long favouritesCount;
-    @SerializedName("description")
     private String description;
-    @SerializedName("information_contact")
     private Information infoContact;
 
     private Post(Parcel in) {
