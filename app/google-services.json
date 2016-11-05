@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "793423391742",
+    "firebase_url": "https://boarding-e4d3f.firebaseio.com",
+    "project_id": "boarding-e4d3f",
+    "storage_bucket": "boarding-e4d3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793423391742:android:84a30e96f3e8176d",
+        "android_client_info": {
+          "package_name": "com.minhnpa.coderschool.a9boarding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793423391742-vako1b2cf99gj8edpdboulbnrrbn32rs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.minhnpa.coderschool.a9boarding",
+            "certificate_hash": "29CCEED963E56C5478AAC18EDE54EFC4CDFF02F3"
+          }
+        },
+        {
+          "client_id": "793423391742-ort774bskkks903q3enjtqra3crtkj0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWZe5bVH0PPrQK9uLhcnghupRUKFASCRE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793423391742-ort774bskkks903q3enjtqra3crtkj0i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
