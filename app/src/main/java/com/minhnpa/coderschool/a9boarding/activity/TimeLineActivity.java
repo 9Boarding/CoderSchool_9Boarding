@@ -15,7 +15,9 @@ import com.minhnpa.coderschool.a9boarding.R;
 public class TimeLineActivity extends AppCompatActivity {
 
 	public static Intent newIntent(Context context){
-		return new Intent(context, TimeLineActivity.class);
+		Intent intent = new Intent(context, TimeLineActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+		return intent;
 	}
 
 	@Override

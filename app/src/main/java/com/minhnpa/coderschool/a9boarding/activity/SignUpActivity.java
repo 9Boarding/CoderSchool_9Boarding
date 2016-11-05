@@ -87,7 +87,6 @@ public class SignUpActivity extends AppCompatActivity {
 										showText("Unsuccessful! Email may already sign up");
 										return;
 									}
-
 									onBackPressed();
 								}
 							});
