@@ -13,5 +13,8 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="AppTheme.NoActionBar.NoTranslucent" parent="AppTheme.NoActionBar">
+    </style>
+
 
 </resources>

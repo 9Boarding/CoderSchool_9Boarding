@@ -5,7 +5,13 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:navigationBarColor">#ff8a65</item>
+        <item name="android:navigationBarColor">#9Ea0aa</item>
         <item name="colorAccent">@android:color/white</item>
+
+        <!--ff8a65-->
+    </style>
+
+    <style name="AppTheme.NoActionBar.NoTranslucent" parent="AppTheme.NoActionBar">
+        <item name="android:windowTranslucentStatus">false</item>
     </style>
 </resources>
