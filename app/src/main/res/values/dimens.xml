@@ -3,4 +3,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="medium_padding">16dp</dimen>
+
+    <!--item post-->
+    <dimen name="padding_post_item">8dp</dimen>
+    <dimen name="size_avatar_post_item">36dp</dimen>
 </resources>
