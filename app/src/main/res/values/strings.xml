@@ -31,4 +31,12 @@
     <string name="err_pass_not_match">Password is not matched</string>
     <string name="forget_password">Forget password?</string>
     <string name="new_post">New Post</string>
+
+    <!--Label tab Main-->
+    <string name="tab_home">Home</string>
+    <string name="tab_notification">Notification</string>
+    <string name="tab_bookmark">Bookmark</string>
+    <string name="tab_ic_nav">Navigation</string>
+
+    <!--Item post-->
 </resources>
