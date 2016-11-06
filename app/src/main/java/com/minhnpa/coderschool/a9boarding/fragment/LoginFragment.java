@@ -98,8 +98,9 @@ public class LoginFragment extends Fragment {
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				pbLoading.setVisibility(View.VISIBLE);
+
 				if(validateInput()){
+					pbLoading.setVisibility(View.VISIBLE);
 					mFirebaseAuth.signInWithEmailAndPassword(etEmail.getText().toString().trim(),
 							etPassword.getText().toString())
 					.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
