@@ -32,6 +32,8 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".activity.TimeLineActivity"/>
+        <activity android:name=".activity.CreatePostActivity"
+                  android:theme="@style/AppTheme.NoActionBar.NoTranslucent"/>
 
     </application>
 

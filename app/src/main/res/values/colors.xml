@@ -8,6 +8,8 @@
     <color name="login_background_orange">#ff8a65</color>
     <color name="login_button_orange">#F4511E</color>
 
+    <color name="toolbar_background">#ACCBD0</color>
+
     <!---->
 </resources>
 

@@ -74,8 +74,8 @@ public class SignUpActivity extends AppCompatActivity {
 		btnSignUp.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				pbLoading.setVisibility(View.VISIBLE);
 				if (validateInput()){
+					pbLoading.setVisibility(View.VISIBLE);
 					mFirebaseAuth.createUserWithEmailAndPassword(etEmail.getText().toString().trim(),
 							etPassword.getText().toString())
 							.addOnCompleteListener(new OnCompleteListener<AuthResult>() {

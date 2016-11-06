@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.AppCompatButton;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.minhnpa.coderschool.a9boarding.R;
+import com.minhnpa.coderschool.a9boarding.activity.CreatePostActivity;
 import com.minhnpa.coderschool.a9boarding.activity.SignUpActivity;
 import com.minhnpa.coderschool.a9boarding.activity.TimeLineActivity;
 
@@ -86,6 +88,9 @@ public class LoginFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				startActivity(SignUpActivity.newIntent(getActivity()));
+//				FragmentManager fm = getActivity().getSupportFragmentManager();
+//
+//				SignUpDialogFragment.newInstance().show(fm, "SignUp");
 			}
 		});
 
@@ -93,8 +98,9 @@ public class LoginFragment extends Fragment {
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				pbLoading.setVisibility(View.VISIBLE);
+
 				if(validateInput()){
+					pbLoading.setVisibility(View.VISIBLE);
 					mFirebaseAuth.signInWithEmailAndPassword(etEmail.getText().toString().trim(),
 							etPassword.getText().toString())
 					.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -110,6 +116,14 @@ public class LoginFragment extends Fragment {
 						}
 					});
 				}
+			}
+		});
+
+		// Button Login with google
+		btnLoginWithGoogle.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(CreatePostActivity.newIntent(getActivity()));
 			}
 		});
 
