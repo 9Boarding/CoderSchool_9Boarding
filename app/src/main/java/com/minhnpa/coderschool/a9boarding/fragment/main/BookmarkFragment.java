@@ -1,15 +1,22 @@
 package com.minhnpa.coderschool.a9boarding.fragment.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.minhnpa.coderschool.a9boarding.R;
+import com.minhnpa.coderschool.a9boarding.activity.CreatePostActivity;
+import com.minhnpa.coderschool.a9boarding.activity.LoginActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,6 +73,25 @@ public class BookmarkFragment extends Fragment {
         // Inflate the layout for this fragment
         Log.e("fragment bookmark", "onCreateView: ok");
         return inflater.inflate(R.layout.fragment_bookmark, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Button button = (Button) view.findViewById(R.id.post_new);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user == null){
+                    intent = LoginActivity.newIntent(getActivity());
+                }else {
+                    intent = CreatePostActivity.newIntent(getActivity());
+                }
+                startActivity(intent);
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event

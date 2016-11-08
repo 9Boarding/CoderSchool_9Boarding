@@ -32,11 +32,9 @@ import butterknife.ButterKnife;
 
 public class SignUpActivity extends AppCompatActivity {
 
-	@BindView(R.id.til_user_name) TextInputLayout tilUserName;
 	@BindView(R.id.til_email) TextInputLayout tilEmail;
 	@BindView(R.id.til_password) TextInputLayout tilPassword;
 	@BindView(R.id.til_re_password) TextInputLayout tilReTypePassword;
-	@BindView(R.id.et_user_name) EditText etUserName;
 	@BindView(R.id.et_email) EditText etEmail;
 	@BindView(R.id.et_password) EditText etPassword;
 	@BindView(R.id.et_re_password) EditText etReTypePassword;
@@ -90,12 +88,14 @@ public class SignUpActivity extends AppCompatActivity {
 									onBackPressed();
 								}
 							});
+
+
+
 				}
 			}
 		});
 
 		// For each EditText
-		etUserName.addTextChangedListener(new MyTextWatcher(etUserName));
 		etEmail.addTextChangedListener(new MyTextWatcher(etEmail));
 		etPassword.addTextChangedListener(new MyTextWatcher(etPassword));
 		etReTypePassword.addTextChangedListener(new MyTextWatcher(etReTypePassword));
@@ -105,7 +105,6 @@ public class SignUpActivity extends AppCompatActivity {
 	 * This method to validate the input
 	 */
 	private boolean validateInput(){
-		if(!validateUserName()) return false;
 		if (!validateEmail()) return false;
 		if(!validatePassword()) return false;
 		if(!validateRePassword()){return false;}
@@ -119,17 +118,6 @@ public class SignUpActivity extends AppCompatActivity {
 
 	private static boolean isValidEmail(String email) {
 		return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-	}
-
-	private boolean validateUserName(){
-		if (isEmpty(etUserName)){
-			tilUserName.setError(getString(R.string.err_name_empty));
-			requestFocus(etUserName);
-			return false;
-		}
-
-		tilUserName.setErrorEnabled(false);
-		return true;
 	}
 
 	private boolean validateEmail(){
@@ -185,9 +173,6 @@ public class SignUpActivity extends AppCompatActivity {
 		@Override
 		public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 			switch (mView.getId()){
-				case R.id.et_user_name:
-					tilUserName.setErrorEnabled(false);
-					break;
 				case R.id.et_email:
 					tilEmail.setErrorEnabled(false);
 					break;
