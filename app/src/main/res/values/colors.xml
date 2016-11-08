@@ -10,6 +10,9 @@
 
     <color name="toolbar_background">#ACCBD0</color>
 
-    <!---->
+    <!--Main activity-->
+    <!--TabMain-->
+    <color name="tab_active">#FF5252</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>
 
