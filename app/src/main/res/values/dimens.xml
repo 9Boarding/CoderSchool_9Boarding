@@ -8,10 +8,19 @@
     <dimen name="padding_post_item">8dp</dimen>
     <dimen name="size_avatar_post_item">36dp</dimen>
     <dimen name="text_size_medium">16sp</dimen>
+
+    <!--item post-->
+    <dimen name="padding_post_item">8dp</dimen>
+    <dimen name="size_avatar_post_item">36dp</dimen>
+    <dimen name="text_size_medimum">16sp</dimen>
     <dimen name="padding_small">8dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="circle_btn_height">44dp</dimen>
     <dimen name="margin_tini">4dp</dimen>
+    <dimen name="text_size_medimum_2">24sp</dimen>
+    <dimen name="margin_between_item">4dp</dimen>
+    <dimen name="size_buttons_control">30dp</dimen>
+    <dimen name="margin_between_buttons_control">16dp</dimen>
     <dimen name="text_size_medium_2">24sp</dimen>
     <dimen name="margin_between_item">4dp</dimen>
     <dimen name="size_buttons_control">30dp</dimen>
