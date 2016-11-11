@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.bottomBar)
     BottomBar bottomBar;
 
+//    @BindView(R.id.tabMain)
+//    TabLayout tabs;
+
     private DatabaseReference mDatabaseReference;
 
     @Override
@@ -38,7 +41,25 @@ public class MainActivity extends AppCompatActivity {
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
+
+//        setupTabs();
     }
+
+//    private void setupTabs() {
+//        TabLayout.Tab home = tabs.newTab();
+//        TabLayout.Tab bm = tabs.newTab();
+//        TabLayout.Tab noti = tabs.newTab();
+//        TabLayout.Tab nav = tabs.newTab();
+//
+//        home.setText("Home");
+//        nav.setText("Nav");
+//        bm.setText("Bookmark");
+//        noti.setText("Notification");
+//
+//
+//
+//    }
+
 
     private void setOnClick() {
         bottomBar.setOnTabClickListener(new OnTabClickListener() {
@@ -93,10 +114,16 @@ public class MainActivity extends AppCompatActivity {
     private void setupBottomtabs() {
         bottomBar.setItems(R.menu.tab_bottombar);
 
+        bottomBar = BottomBar.attach(this,null);
+        bottomBar.setItems(R.menu.tab_bottombar);
+        bottomBar.setBackgroundColor(getResources().getColor(R.color.white));
+        bottomBar.setActiveTabColor(R.color.white);
+        bottomBar.useDarkTheme();
+
         bottomBar.mapColorForTab(0, R.color.white);
-        bottomBar.mapColorForTab(1, R.color.white);
-        bottomBar.mapColorForTab(2, R.color.white);
-        bottomBar.mapColorForTab(3, R.color.white);
+        bottomBar.mapColorForTab(1, R.color.black);
+        bottomBar.mapColorForTab(2, R.color.black);
+        bottomBar.mapColorForTab(3, R.color.black);
     }
 
     @Override
