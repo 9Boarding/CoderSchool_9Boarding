@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:navigationBarColor">#9Ea0aa</item>
+        <item name="colorAccent">@android:color/white</item>
+
+        <!--ff8a65-->
+    </style>
+
+    <style name="AppTheme.NoActionBar.NoTranslucent" parent="AppTheme.NoActionBar">
+        <item name="android:windowTranslucentStatus">false</item>
+    </style>
+</resources>

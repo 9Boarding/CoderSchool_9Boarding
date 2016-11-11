@@ -8,7 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppThem.NoActionBar" parent="AppTheme">
+    <style name="mainTheme" parent="AppTheme">
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
+
+    <style name="AppTheme.NoActionBar.NoTranslucent" parent="AppTheme.NoActionBar">
+    </style>
+
+
 </resources>
