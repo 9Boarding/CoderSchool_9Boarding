@@ -1,4 +1,42 @@
 <resources>
     <string name="app_name">9Boarding</string>
-    <string name="details">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="promt_emails">Emails</string>
+    <string name="promt_password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_with_google">Login with Google</string>
+    <string name="don_t_have_account_signup_now">Don\'t have account? Signup Now</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="promt_name">Name</string>
+    <string name="re_type_password">Re-type Password</string>
+    <string name="err_name_empty">Name could not be empty</string>
+    <string name="err_pass_leght">Password should at least 6 letters</string>
+    <string name="err_email_invalid">Email is empty or invalid</string>
+    <string name="err_pass_not_match">Password is not matched</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="new_post">New Post</string>
+
+    <!--Label tab Main-->
+    <string name="tab_home">Home</string>
+    <string name="tab_notification">Notification</string>
+    <string name="tab_bookmark">Bookmark</string>
+    <string name="tab_ic_nav">Navigation</string>
+
+    <!--Item post-->
 </resources>
