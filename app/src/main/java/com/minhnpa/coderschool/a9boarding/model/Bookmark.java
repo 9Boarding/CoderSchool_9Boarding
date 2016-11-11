@@ -34,5 +34,11 @@ public class Bookmark implements Parcelable {
 
     public long getPostId() {
         return postId;
+public class Bookmark {
+    private String comment;
+    private User mUser;
+
+    public Bookmark(){
+
     }
 }

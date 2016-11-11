@@ -68,6 +68,11 @@ import java.util.List;
 
 public class Post {
     private long post_id;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Post {
+    private String post_id;
     private User user;
     private String created_at;
     private String address;
@@ -81,6 +86,23 @@ public class Post {
     public long getPostId() {
         return post_id;
 >>>>>>> develop
+    private List<String> images;
+    private long favourites_count;
+    private String description;
+    private String phoneNumber;
+
+
+    public Post(){
+        images = new ArrayList<>();
+    }
+
+
+    public String getPost_id() {
+        return post_id;
+    }
+
+    public void setPost_id(String post_id) {
+        this.post_id = post_id;
     }
 
     public User getUser() {
@@ -93,10 +115,24 @@ public class Post {
 =======
         return created_at;
 >>>>>>> develop
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 
     public String getAddress() {
         return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPrice() {
@@ -113,6 +149,29 @@ public class Post {
 =======
         return favourites_count;
 >>>>>>> develop
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images.clear();
+        this.images.addAll(images);
+    }
+
+    public void addImages(String image){
+        this.images.add(image);
+    }
+
+    public long getFavourites_count() {
+        return favourites_count;
+    }
+
+    public void setFavourites_count(long favourites_count) {
+        this.favourites_count = favourites_count;
     }
 
     public String getDescription() {
@@ -125,5 +184,15 @@ public class Post {
 =======
         return infomation_contact;
 >>>>>>> develop
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
