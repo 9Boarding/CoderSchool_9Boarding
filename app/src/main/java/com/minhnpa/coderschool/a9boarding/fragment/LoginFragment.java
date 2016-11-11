@@ -63,6 +63,11 @@ public class LoginFragment extends Fragment {
 		return fragment;
 	}
 
+	@Override
+	public void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+	}
+
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -111,7 +116,7 @@ public class LoginFragment extends Fragment {
 								showText("Email or Password incorrect");
 								return;
 							}
-							startActivity(TimeLineActivity.newIntent(getActivity()));
+							getActivity().onBackPressed();
 
 						}
 					});

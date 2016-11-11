@@ -6,6 +6,9 @@ import android.os.Parcelable;
 public class Information implements Parcelable {
     private String phone;
 
+    public Information(){
+
+    }
     private Information(Parcel in) {
         phone = in.readString();
     }

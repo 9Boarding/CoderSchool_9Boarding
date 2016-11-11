@@ -26,18 +26,6 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/til_user_name">
-                <EditText
-                    android:id="@+id/et_user_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/promt_name"
-                    android:maxLines="1"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/til_email">
 
                 <EditText

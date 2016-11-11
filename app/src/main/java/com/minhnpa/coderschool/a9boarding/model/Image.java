@@ -10,6 +10,10 @@ public class Image implements Parcelable {
         imageUrl = in.readString();
     }
 
+    public Image(){
+
+    }
+
     public static final Creator<Image> CREATOR = new Creator<Image>() {
         @Override
         public Image createFromParcel(Parcel in) {
