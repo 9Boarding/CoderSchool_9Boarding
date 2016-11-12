@@ -149,10 +149,9 @@ public class CreatePostFragment extends Fragment{
 
 	private Post getInputToModel(){
 		Calendar calendar = Calendar.getInstance();
-		mPost.setPhoneNumber(etPhone.getText().toString().trim());
 		mPost.setAddress(etAddress.getText().toString().trim());
-		mPost.setPrice(etPrice.getText().toString().trim());
-		mPost.setCreated_at(calendar.getTime().toString());
+		mPost.getPostInformation().setPrice(etPrice.getText().toString().trim());
+		mPost.setPostAt(calendar.getTime().toString());
 		mPost.setDescription(etDescription.getText().toString().trim());
 		mPost.setUser(User.fromFirebaseUser(FirebaseAuth.getInstance().getCurrentUser()));
 		return mPost;

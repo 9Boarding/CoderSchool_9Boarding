@@ -69,6 +69,10 @@ public class Post {
         this.images = images;
     }
 
+    public void addImages(String image){
+        this.images.add(image);
+    }
+
     public PostInformation getPostInformation() {
         return postInformation;
     }

@@ -1,5 +1,7 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.List;
 
 public class User {
@@ -20,6 +22,17 @@ public class User {
         this.userType = userType;
         this.userInformation = userInformation;
         this.verified = verified;
+    }
+
+    public static User fromFirebaseUser(FirebaseUser firebaseUser){
+        User user = new User();
+        user.setUserId(firebaseUser.getUid());
+        user.getUserInformation().setName(firebaseUser.getDisplayName());
+        if (firebaseUser.getPhotoUrl() != null){
+            user.setProfilePicUrl(firebaseUser.getPhotoUrl().toString());
+        }
+
+        return user;
     }
 
     public List<String> getBookmarks() {
