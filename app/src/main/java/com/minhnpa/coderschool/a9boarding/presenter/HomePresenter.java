@@ -33,14 +33,10 @@ public class HomePresenter {
 
     private void setUpFirebaseAdapter(){
 
-        Log.e(TAG, "setUpFirebaseAdapter");
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class, R.layout.item_post, PostViewHolder.class, mDatabaseReference.child("posts")) {
             @Override
             protected void populateViewHolder(PostViewHolder viewHolder, Post model, int position) {
-                Log.e(TAG, "populateViewHolder: ");
-
                 viewHolder.bindPost(model);
-                viewHolder.tvPrice.setText(model.getPrice() + "");
             }
         };
 
@@ -49,7 +45,6 @@ public class HomePresenter {
             public void onItemRangeInserted(int positionStart, int itemCount) {
                 super.onItemRangeInserted(positionStart, itemCount);
                 int sum = mFirebaseAdapter.getItemCount();
-                Log.e(TAG, "onItemRangeInserted: " + sum );
             }
         });
     }

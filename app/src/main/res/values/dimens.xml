@@ -16,4 +16,5 @@
     <dimen name="margin_between_item">4dp</dimen>
     <dimen name="size_buttons_control">30dp</dimen>
     <dimen name="margin_between_buttons_control">16dp</dimen>
+    <dimen name="text_size_medium_2">24sp</dimen>
 </resources>

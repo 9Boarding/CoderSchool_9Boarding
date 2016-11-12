@@ -1,7 +1,9 @@
-package com.minhnpa.coderschool.a9boarding;
+package com.minhnpa.coderschool.a9boarding.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.minhnpa.coderschool.a9boarding.R;
 
 public class DetailActivity extends AppCompatActivity {
 
