@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.minhnpa.coderschool.a9boarding.R;
@@ -33,8 +34,8 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tvTimeStamp)
     public TextView tvTimeStamp;
 
-    @BindView(R.id.rvPhoto)
-    public RecyclerView rvPhoto;
+    @BindView(R.id.ivPhoto)
+    public ImageView ivPhoto;
 
     @BindView(R.id.tvPrice)
     public TextView tvPrice;
@@ -48,9 +49,12 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.btnBookmark)
     public Button btnBookmark;
 
+    public View itemView;
+
 
     public PostViewHolder(View itemView) {
         super(itemView);
+        this.itemView = itemView;
         ButterKnife.bind(this, itemView);
     }
 

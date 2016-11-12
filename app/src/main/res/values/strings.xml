@@ -37,6 +37,7 @@
     <string name="tab_notification">Notification</string>
     <string name="tab_bookmark">Bookmark</string>
     <string name="tab_ic_nav">Navigation</string>
+    <string name="IGMUR_CLIENT_ID">68ca56255d3dcc6</string>
 
     <!--Item post-->
 </resources>

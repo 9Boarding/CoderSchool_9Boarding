@@ -1,17 +1,23 @@
 package com.minhnpa.coderschool.a9boarding.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.fragment.main.BookmarkFragment;
 import com.minhnpa.coderschool.a9boarding.fragment.main.HomeFragment;
 import com.minhnpa.coderschool.a9boarding.fragment.main.NotificationFragment;
+import com.minhnpa.coderschool.a9boarding.utils.IntentUtils;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabClickListener;
 
@@ -22,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.bottomBar)
     BottomBar bottomBar;
+    @BindView(R.id.fab_post) FloatingActionButton fabPost;
 
     private DatabaseReference mDatabaseReference;
 
@@ -41,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setOnClick() {
+        // for bottomBar
         bottomBar.setOnTabClickListener(new OnTabClickListener() {
             @Override
             public void onTabSelected(int position) {
@@ -82,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabReSelected(int position) {
 
+            }
+        });
+
+        // For floating action button
+        fabPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentUtils.startCreatePostActivity(MainActivity.this);
             }
         });
     }

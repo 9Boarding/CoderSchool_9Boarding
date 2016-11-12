@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -41,6 +42,13 @@ public class HomePresenter {
 
                 viewHolder.bindPost(model);
                 viewHolder.tvPrice.setText(model.getPrice() + "");
+
+                if(!model.getImages().isEmpty()){
+                    Log.d("BaoBao model", model.getImages().toString());
+                    Glide.with(viewHolder.itemView.getContext())
+                            .load(model.getImages().get(0))
+                            .into(viewHolder.ivPhoto);
+                }
             }
         };
 

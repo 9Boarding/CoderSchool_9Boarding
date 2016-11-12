@@ -78,20 +78,6 @@ public class BookmarkFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button button = (Button) view.findViewById(R.id.post_new);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent;
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if (user == null){
-                    intent = LoginActivity.newIntent(getActivity());
-                }else {
-                    intent = CreatePostActivity.newIntent(getActivity());
-                }
-                startActivity(intent);
-            }
-        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event
