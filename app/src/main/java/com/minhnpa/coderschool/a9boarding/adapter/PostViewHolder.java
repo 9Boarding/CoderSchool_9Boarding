@@ -60,12 +60,12 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
     public void bindPost(Post post) {
         //TODO: load image avatar, photos
-        tvUserName.setText(post.getUser().getUser_name());
+        tvUserName.setText(post.getUser().getUserInformation().getName());
 
         //TODO: add attribute Username for Post
 
-        tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getCreated_at()));
-        tvLocation.setText(post.getAddress());
+        tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getPostAt()));
+        tvLocation.setText(post.getPostInformation().getAddress());
 
         //TODO: load photos into RecyclerView
 //        if(!model.getImages().isEmpty()){
@@ -74,6 +74,6 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 //                    .into(viewHolder.ivPhoto);
 //        }
 
-        tvPrice.setText("$" + post.getPrice() + " per month");
+        tvPrice.setText("$" + post.getPostInformation().getPrice() + " per month");
     }
 }

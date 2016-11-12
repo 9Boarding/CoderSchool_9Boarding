@@ -23,7 +23,6 @@ import butterknife.ButterKnife;
 import static com.facebook.login.widget.ProfilePictureView.TAG;
 
 public class HomeFragment extends Fragment {
-
     @BindView(R.id.rvMain)
     RecyclerView rvMain;
 
