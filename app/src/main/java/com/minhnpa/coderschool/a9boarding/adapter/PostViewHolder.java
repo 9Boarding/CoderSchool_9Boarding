@@ -1,7 +1,6 @@
 package com.minhnpa.coderschool.a9boarding.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -9,6 +8,7 @@ import android.widget.TextView;
 
 import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.model.Post;
+import com.minhnpa.coderschool.a9boarding.utils.AppUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,15 +59,20 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindPost(Post post) {
-        Log.e(TAG, "bindPost: ");
         //TODO: load image avatar, photos
+        tvUserName.setText(post.getUser().getUser_name());
 
         //TODO: add attribute Username for Post
 
-        tvTimeStamp.setText(post.getCreated_at());
+        tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getCreated_at()));
         tvLocation.setText(post.getAddress());
 
         //TODO: load photos into RecyclerView
+//        if(!model.getImages().isEmpty()){
+//            Glide.with(viewHolder.itemView.getContext())
+//                    .load(model.getImages().get(0))
+//                    .into(viewHolder.ivPhoto);
+//        }
 
         tvPrice.setText("$" + post.getPrice() + " per month");
     }

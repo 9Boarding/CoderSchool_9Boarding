@@ -89,12 +89,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // For floating action button
-        fabPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IntentUtils.startCreatePostActivity(MainActivity.this);
-            }
-        });
+//        fabPost.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                IntentUtils.startCreatePostActivity(MainActivity.this);
+//            }
+//        });
     }
 
     private void setupBottomtabs() {
@@ -102,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
         AHBottomNavigationItem noti = new AHBottomNavigationItem(R.string.tab_notification, R.drawable.ic_tab_notification, R.color.white);
         AHBottomNavigationItem bookmark = new AHBottomNavigationItem(R.string.tab_bookmark, R.drawable.ic_bookmark, R.color.white);
         AHBottomNavigationItem menu = new AHBottomNavigationItem(R.string.tab_ic_nav, R.drawable.ic_tab_nav, R.color.white);
-
 
         bottomNavigationItems.add(home);
         bottomNavigationItems.add(noti);

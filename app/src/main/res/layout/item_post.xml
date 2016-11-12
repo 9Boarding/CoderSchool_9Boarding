@@ -10,7 +10,9 @@
         android:id="@+id/lnHeaderItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingRight="@dimen/padding_post_item"
+        android:paddingLeft="@dimen/padding_post_item">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgAvatar"
@@ -102,5 +104,11 @@
             android:background="@drawable/ic_bookmark" />
 
     </LinearLayout>
+
+    <View
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
 
 </LinearLayout>
