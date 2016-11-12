@@ -8,11 +8,11 @@ Time spent: **X** hours spent in total
 
 Describes:
 
-You can view detail boarding house via Photo, Video, detail information (price, map embedded,...) that they share and user can comment about that post
+You can view detail boarding house via Photo, Video, detail postInformation (price, map embedded,...) that they share and user can comment about that post
 
 The following **required** functionality is completed:
 
-* [ ] User can post and find the information about the boarding house
+* [ ] User can post and find the postInformation about the boarding house
 * [ ] Allow people (who want to rent the house) view the house's info or chat with the house owner
 * [ ] People can comment or rate the post, boarding house
 

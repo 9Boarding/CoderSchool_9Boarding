@@ -1,17 +1,49 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
-import com.google.firebase.auth.FirebaseUser;
-
 import java.util.List;
 
 public class User {
+    private List<String> bookmarks;
+    private String profilePicUrl;
+    private int userType;
     private String userId;
-    private String user_name;
-    private String profileImageUrl;
-    private String coverImageUrl;
+    private UserInformation userInformation;
+    private boolean verified;
 
-    public User(){
+    public User() {
+    }
 
+    public User(List<String> bookmarks, String profilePicUrl, int userType,
+                UserInformation userInformation, boolean verified) {
+        this.bookmarks = bookmarks;
+        this.profilePicUrl = profilePicUrl;
+        this.userType = userType;
+        this.userInformation = userInformation;
+        this.verified = verified;
+    }
+
+    public List<String> getBookmarks() {
+        return bookmarks;
+    }
+
+    public void setBookmarks(List<String> bookmarks) {
+        this.bookmarks = bookmarks;
+    }
+
+    public String getProfilePicUrl() {
+        return profilePicUrl;
+    }
+
+    public void setProfilePicUrl(String profilePicUrl) {
+        this.profilePicUrl = profilePicUrl;
+    }
+
+    public int getUserType() {
+        return userType;
+    }
+
+    public void setUserType(int userType) {
+        this.userType = userType;
     }
 
     public String getUserId() {
@@ -22,38 +54,19 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public UserInformation getUserInformation() {
+        return userInformation;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserInformation(UserInformation userInformation) {
+        this.userInformation = userInformation;
     }
 
-    public String getProfileImageUrl() {
-        return profileImageUrl;
+    public boolean isVerified() {
+        return verified;
     }
 
-    public void setProfileImageUrl(String profileImageUrl) {
-        this.profileImageUrl = profileImageUrl;
-    }
-
-    public String getCoverImageUrl() {
-        return coverImageUrl;
-    }
-
-    public void setCoverImageUrl(String coverImageUrl) {
-        this.coverImageUrl = coverImageUrl;
-    }
-
-    public static User fromFirebaseUser(FirebaseUser firebaseUser){
-        User user = new User();
-        user.setUserId(firebaseUser.getUid());
-        user.setUser_name(firebaseUser.getDisplayName());
-        if (firebaseUser.getPhotoUrl() != null){
-            user.setProfileImageUrl(firebaseUser.getPhotoUrl().toString());
-        }
-
-        return user;
+    public void setVerified(boolean verified) {
+        this.verified = verified;
     }
 }
