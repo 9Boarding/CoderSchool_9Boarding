@@ -49,14 +49,13 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvPhoto"
+    <ImageView
+        android:id="@+id/ivPhoto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginBottom="@dimen/margin_between_item"
-        android:layout_marginTop="@dimen/margin_between_item">
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_marginTop="@dimen/margin_between_item"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/tvPrice"

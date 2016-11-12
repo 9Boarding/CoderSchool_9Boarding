@@ -5,14 +5,6 @@
               android:orientation="vertical"
     tools:context="com.minhnpa.coderschool.a9boarding.fragment.main.BookmarkFragment">
 
-    <Button
-        android:layout_marginTop="100dp"
-        android:id="@+id/post_new"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Post New"
-        android:textAllCaps="false"/>
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:gravity="center"

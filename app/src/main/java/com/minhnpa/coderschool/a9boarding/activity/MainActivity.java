@@ -87,6 +87,14 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        // For floating action button
+        fabPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentUtils.startCreatePostActivity(MainActivity.this);
+            }
+        });
     }
 
     private void setupBottomtabs() {
