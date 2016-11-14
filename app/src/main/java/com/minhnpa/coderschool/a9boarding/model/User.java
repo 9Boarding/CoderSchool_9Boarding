@@ -25,9 +25,12 @@ public class User {
     }
 
     public static User fromFirebaseUser(FirebaseUser firebaseUser){
+        UserInformation userInformation = new UserInformation();
         User user = new User();
+
+        userInformation.setName(firebaseUser.getDisplayName());
+        user.setUserInformation(userInformation);
         user.setUserId(firebaseUser.getUid());
-        user.getUserInformation().setName(firebaseUser.getDisplayName());
         if (firebaseUser.getPhotoUrl() != null){
             user.setProfilePicUrl(firebaseUser.getPhotoUrl().toString());
         }

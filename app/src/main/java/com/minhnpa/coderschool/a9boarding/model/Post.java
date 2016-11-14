@@ -8,6 +8,7 @@ public class Post {
     private int commentsCount;
     private String description;
     private List<String> images;
+    private String phone;
     private PostInformation postInformation;
     private String postAt;
     private String postId;
@@ -17,14 +18,15 @@ public class Post {
 
     }
 
-    public Post(User user, String address, int bookmarksCount, int commentsCount,
-                String description, List<String> images, PostInformation postInformation, String postAt) {
+    public Post(User user, String address, int bookmarksCount, int commentsCount, String description,
+                List<String> images, String phone, PostInformation postInformation, String postAt) {
         this.user = user;
         this.address = address;
         this.bookmarksCount = bookmarksCount;
         this.commentsCount = commentsCount;
         this.description = description;
         this.images = images;
+        this.phone = phone;
         this.postInformation = postInformation;
         this.postAt = postAt;
     }
@@ -69,8 +71,16 @@ public class Post {
         this.images = images;
     }
 
-    public void addImages(String image){
-        this.images.add(image);
+    public void addImages(String imageUrl){
+        this.images.add(imageUrl);
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public PostInformation getPostInformation() {

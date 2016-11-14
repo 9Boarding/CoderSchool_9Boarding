@@ -49,4 +49,8 @@ public class UserInformation {
     public void setPhone(List<String> phone) {
         this.phone = phone;
     }
+
+    public void addPhone(String strPhone) {
+        this.phone.add(strPhone);
+    }
 }
