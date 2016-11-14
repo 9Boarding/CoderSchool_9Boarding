@@ -161,11 +161,11 @@ public class CreatePostFragment extends Fragment {
         User user = User.fromFirebaseUser(FirebaseAuth.getInstance().getCurrentUser());
         PostInformation postInformation = new PostInformation();
 
-        mPost.setAddress(etAddress.getText().toString());
-        mPost.setDescription(etDescription.getText().toString());
-        mPost.setPhone(etPhone.getText().toString()); // Change to spinner - select phone number list from user
-        postInformation.setPrice(etPrice.getText().toString());
+        postInformation.setAddress(etAddress.getText().toString());
         //postInformation.setArea(etArea.getText().toString());
+        postInformation.setDescription(etDescription.getText().toString());
+        postInformation.setPhone(etPhone.getText().toString()); // Change to spinner - select phone number list from user
+        postInformation.setPrice(etPrice.getText().toString());
         mPost.setPostInformation(postInformation);
         mPost.setPostAt(calendar.getTime().toString());
         mPost.setUser(user);

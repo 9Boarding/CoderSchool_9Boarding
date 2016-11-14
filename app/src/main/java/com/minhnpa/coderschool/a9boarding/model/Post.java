@@ -3,12 +3,9 @@ package com.minhnpa.coderschool.a9boarding.model;
 import java.util.List;
 
 public class Post {
-    private String address;
     private int bookmarksCount;
     private int commentsCount;
-    private String description;
     private List<String> images;
-    private String phone;
     private PostInformation postInformation;
     private String postAt;
     private String postId;
@@ -18,25 +15,14 @@ public class Post {
 
     }
 
-    public Post(User user, String address, int bookmarksCount, int commentsCount, String description,
-                List<String> images, String phone, PostInformation postInformation, String postAt) {
-        this.user = user;
-        this.address = address;
+    public Post(int bookmarksCount, int commentsCount, List<String> images,
+                PostInformation postInformation, String postAt, User user) {
         this.bookmarksCount = bookmarksCount;
         this.commentsCount = commentsCount;
-        this.description = description;
         this.images = images;
-        this.phone = phone;
         this.postInformation = postInformation;
         this.postAt = postAt;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+        this.user = user;
     }
 
     public int getBookmarksCount() {
@@ -55,14 +41,6 @@ public class Post {
         this.commentsCount = commentsCount;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public List<String> getImages() {
         return images;
     }
@@ -71,16 +49,8 @@ public class Post {
         this.images = images;
     }
 
-    public void addImages(String imageUrl){
+    public void addImages(String imageUrl) {
         this.images.add(imageUrl);
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public PostInformation getPostInformation() {
