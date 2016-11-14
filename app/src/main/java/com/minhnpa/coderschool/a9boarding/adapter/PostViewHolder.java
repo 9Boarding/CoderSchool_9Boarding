@@ -74,6 +74,6 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 //                    .into(viewHolder.ivPhoto);
 //        }
 
-        tvPrice.setText("$" + post.getPrice() + " per month");
+        tvPrice.setText("$" + post.getPostInformation().getPrice() + " per month");
     }
 }

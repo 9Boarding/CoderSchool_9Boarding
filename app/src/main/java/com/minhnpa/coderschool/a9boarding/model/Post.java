@@ -1,47 +1,32 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Post {
-    private String post_id;
-    private User user;
-    private String created_at;
     private String address;
-    private String price;
-    private List<String> images;
-    private long favourites_count;
+    private int bookmarksCount;
+    private int commentsCount;
     private String description;
-    private String phoneNumber;
+    private List<String> images;
+    private PostInformation postInformation;
+    private String postAt;
+    private String postId;
+    private User user;
 
+    public Post() {
 
-    public Post(){
-        images = new ArrayList<>();
     }
 
-
-    public String getPost_id() {
-        return post_id;
-    }
-
-    public void setPost_id(String post_id) {
-        this.post_id = post_id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
+    public Post(User user, String address, int bookmarksCount, int commentsCount,
+                String description, List<String> images, PostInformation postInformation, String postAt) {
         this.user = user;
-    }
-
-    public String getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+        this.address = address;
+        this.bookmarksCount = bookmarksCount;
+        this.commentsCount = commentsCount;
+        this.description = description;
+        this.images = images;
+        this.postInformation = postInformation;
+        this.postAt = postAt;
     }
 
     public String getAddress() {
@@ -52,33 +37,20 @@ public class Post {
         this.address = address;
     }
 
-    public String getPrice() {
-        return price;
+    public int getBookmarksCount() {
+        return bookmarksCount;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setBookmarksCount(int bookmarksCount) {
+        this.bookmarksCount = bookmarksCount;
     }
 
-    public List<String> getImages() {
-        return images;
+    public int getCommentsCount() {
+        return commentsCount;
     }
 
-    public void setImages(List<String> images) {
-        this.images.clear();
-        this.images.addAll(images);
-    }
-
-    public void addImages(String image){
-        this.images.add(image);
-    }
-
-    public long getFavourites_count() {
-        return favourites_count;
-    }
-
-    public void setFavourites_count(long favourites_count) {
-        this.favourites_count = favourites_count;
+    public void setCommentsCount(int commentsCount) {
+        this.commentsCount = commentsCount;
     }
 
     public String getDescription() {
@@ -89,11 +61,47 @@ public class Post {
         this.description = description;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public List<String> getImages() {
+        return images;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public void addImages(String image){
+        this.images.add(image);
+    }
+
+    public PostInformation getPostInformation() {
+        return postInformation;
+    }
+
+    public void setPostInformation(PostInformation postInformation) {
+        this.postInformation = postInformation;
+    }
+
+    public String getPostAt() {
+        return postAt;
+    }
+
+    public void setPostAt(String postAt) {
+        this.postAt = postAt;
+    }
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

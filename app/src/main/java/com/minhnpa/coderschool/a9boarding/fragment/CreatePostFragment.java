@@ -149,6 +149,9 @@ public class CreatePostFragment extends Fragment{
 
 	private Post getInputToModel(){
 		Calendar calendar = Calendar.getInstance();
+		mPost.setAddress(etAddress.getText().toString().trim());
+		mPost.getPostInformation().setPrice(etPrice.getText().toString().trim());
+		mPost.setPostAt(calendar.getTime().toString());
 		mPost.setPhoneNumber(etPhone.getText().toString().trim());
 		mPost.setAddress(etAddress.getText().toString().trim());
 		mPost.setPrice(etPrice.getText().toString().trim());

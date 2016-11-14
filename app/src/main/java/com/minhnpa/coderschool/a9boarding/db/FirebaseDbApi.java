@@ -1,9 +1,7 @@
 package com.minhnpa.coderschool.a9boarding.db;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.minhnpa.coderschool.a9boarding.model.Bookmark;
 import com.minhnpa.coderschool.a9boarding.model.Comment;
 import com.minhnpa.coderschool.a9boarding.model.Post;
 
@@ -16,7 +14,7 @@ public class FirebaseDbApi {
 	public static void newPost(DatabaseReference databaseReference, Post post){
 		String postKey = databaseReference.child(DbConstant.CHILD_POST)
 				.push().getKey();
-		post.setPost_id(postKey);
+		post.setPostId(postKey);
 		databaseReference.child(DbConstant.CHILD_POST)
 				.child(postKey)
 				.setValue(post);
