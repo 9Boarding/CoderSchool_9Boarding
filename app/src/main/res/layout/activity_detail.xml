@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_detail"
     android:layout_width="match_parent"
@@ -21,77 +22,88 @@
             android:scaleType="centerCrop"
             android:src="@drawable/cover_pic" />
 
-        <RelativeLayout
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="184dp"
             android:layout_alignParentBottom="true"
             android:background="@drawable/cover_style_pic"
             android:padding="16dp">
 
-            <ImageView
-                android:id="@+id/ivFab"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center"
-                android:src="@drawable/fab_pic" />
-
-            <ImageView
-                android:id="@+id/ivProfile"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="center"
-                android:src="@drawable/fab_pic" />
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/ivFab"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="40dp"
-                android:layout_toRightOf="@+id/ivProfile"
-                android:gravity="bottom"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-                <RatingBar
-                    android:id="@+id/ratingBar"
-                    style="?android:attr/ratingBarStyleSmall"
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/ivFab"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:numStars="5"
-                    android:rating="4.0" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:clickable="true"
+                    android:src="@drawable/ic_bookmark"
+                    app:elevation="6dp"
+                    app:fabSize="normal" />
 
-                <TextView
-                    android:id="@+id/tvFavorites"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:textAllCaps="true"
-                    android:textSize="12sp"
-                    tools:text="Favorites" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/cimvProfile"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/fab_pic" />
 
-                <TextView
-                    android:id="@+id/tvFavCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    tools:text="21.6K" />
-            </LinearLayout>
-        </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/ivFab"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_toRightOf="@+id/cimvProfile"
+                    android:layout_toEndOf="@+id/cimvProfile"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:numStars="5"
+                        android:rating="4.0" />
+
+                    <TextView
+                        android:id="@+id/tvFavorites"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:textAllCaps="true"
+                        android:textSize="12sp"
+                        tools:text="Favorites" />
+
+                    <TextView
+                        android:id="@+id/tvFavCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:text="21.6K" />
+                </LinearLayout>
+            </RelativeLayout>
+        </android.support.design.widget.CoordinatorLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="16dp">
+        android:layout_weight="1">
 
-        <TextView
+        <RecyclerView
+            android:id="@+id/rvComment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="@string/details" />
+            android:layout_height="match_parent">
+
+        </RecyclerView>
     </RelativeLayout>
 </LinearLayout>

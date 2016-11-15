@@ -31,7 +31,7 @@ public class HomePresenter {
         setUpFirebaseAdapter();
     }
 
-    private void setUpFirebaseAdapter(){
+    private void setUpFirebaseAdapter() {
 
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class, R.layout.item_post, PostViewHolder.class, mDatabaseReference.child("posts")) {
             @Override
@@ -49,7 +49,7 @@ public class HomePresenter {
         });
     }
 
-    public FirebaseRecyclerAdapter getAdapter(){
+    public FirebaseRecyclerAdapter getAdapter() {
         return this.mFirebaseAdapter;
     }
 }

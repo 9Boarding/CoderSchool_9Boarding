@@ -67,7 +67,8 @@ public class HomeFragment extends Fragment {
 //                }
 //            };
 
-            rvMain.setAdapter(presenter.getAdapter());
+            FirebaseRecyclerAdapter adapter = presenter.getAdapter();
+            rvMain.setAdapter(adapter);
         } else {
             Log.e(TAG, "rv null ");
         }
