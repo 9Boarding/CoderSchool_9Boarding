@@ -1,5 +1,6 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Post {
@@ -10,11 +11,6 @@ public class Post {
     private String postAt;
     private String postId;
     private User user;
-
-    public Post() {
-
-    }
-
 
     public Post() {
         user = new User();
@@ -54,58 +50,15 @@ public class Post {
     }
 
     public void setImages(List<String> images) {
-        this.images = images;
-    }
-
-    public void setBookmarksCount(int bookmarksCount) {
-        this.bookmarksCount = bookmarksCount;
-    }
-
-    public int getCommentsCount() {
-        return commentsCount;
-    }
-
-    public void setCommentsCount(int commentsCount) {
-        this.commentsCount = commentsCount;
-    }
-
-    public void addImages(String imageUrl) {
-        this.images.add(imageUrl);
-    }
-
-    public PostInformation getPostInformation() {
-        return postInformation;
-    }
-
-    public void setPostInformation(PostInformation postInformation) {
-        this.postInformation = postInformation;
-    }
-
-    public String getPostAt() {
-        return postAt;
-    }
-
-    public void setPostAt(String postAt) {
-        this.postAt = postAt;
-    }
-
-    public String getPostId() {
-        return postId;
-    }
-
-    public void setPostId(String postId) {
-        this.postId = postId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void addImages(List<String> images){
+        this.images.clear();
         this.images.addAll(images);
     }
 
-    public void addImages(String image){
+    public void addImages(List<String> images) {
+        this.images.addAll(images);
+    }
+
+    public void addImages(String image) {
         this.images.add(image);
     }
 

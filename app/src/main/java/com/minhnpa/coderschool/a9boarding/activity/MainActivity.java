@@ -2,7 +2,6 @@ package com.minhnpa.coderschool.a9boarding.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -39,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.navMenu)
     NavigationView navView;
 
+
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
     private ActionBarDrawerToggle drawerToggle;
     private Fragment fragment = null;
@@ -50,23 +50,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-//        startActivity(LoginActivity.newIntent(this));
-
-        drawerToggle = setupDrawertoggle();
-        drawerLayout.setDrawerListener(drawerToggle);
-
         setupNavigationView();
         setupBottomtabs();
         setOnClick();
     }
 
-    private ActionBarDrawerToggle setupDrawertoggle() {
-        return new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
-    }
-
-    private void setOnClick() {
-        buttomNav.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
-            @Override
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -108,13 +96,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateNavView() {
-        if (FireBaseUtils.isAuth()){
+        if (FireBaseUtils.isAuth()) {
 
         }
     }
 
     private void selectDrawerItem(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_signin:
                 IntentUtils.signin(this);
                 break;
@@ -165,14 +153,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        // For floating action button
-//        fabPost.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                IntentUtils.startCreatePostActivity(MainActivity.this);
-//            }
-//        });
     }
 
     private void setupBottomtabs() {
@@ -180,35 +160,6 @@ public class MainActivity extends AppCompatActivity {
         AHBottomNavigationItem noti = new AHBottomNavigationItem(R.string.tab_notification, R.drawable.ic_tab_notification, R.color.white);
         AHBottomNavigationItem bookmark = new AHBottomNavigationItem(R.string.tab_bookmark, R.drawable.ic_bookmark, R.color.white);
         AHBottomNavigationItem menu = new AHBottomNavigationItem(R.string.tab_ic_nav, R.drawable.ic_tab_nav, R.color.white);
-
-        bottomNavigationItems.add(home);
-        bottomNavigationItems.add(noti);
-        bottomNavigationItems.add(bookmark);
-        bottomNavigationItems.add(menu);
-
-        buttomNav.addItems(bottomNavigationItems);
-
-        buttomNav.setTranslucentNavigationEnabled(true);
-
-        buttomNav.setAccentColor(R.color.black);
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-//        bottomBar.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        drawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig);
 
         bottomNavigationItems.add(home);
         bottomNavigationItems.add(noti);

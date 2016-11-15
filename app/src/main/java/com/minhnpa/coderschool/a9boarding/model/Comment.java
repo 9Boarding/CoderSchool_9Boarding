@@ -1,8 +1,8 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
 public class Comment {
-    private String comment_at;
-    private String comment_id;
+    private String commentAt;
+    private String commentId;
     private String content;
     private User user;
 
@@ -11,25 +11,25 @@ public class Comment {
     }
 
     public Comment(String comment_at, String content, User user) {
-        this.comment_at = comment_at;
+        this.commentAt = comment_at;
         this.content = content;
         this.user = user;
     }
 
-    public String getComment_at() {
-        return comment_at;
+    public String getCommentAt() {
+        return commentAt;
     }
 
-    public void setComment_at(String comment_at) {
-        this.comment_at = comment_at;
+    public void setCommentAt(String commentAt) {
+        this.commentAt = commentAt;
     }
 
-    public String getComment_id() {
-        return comment_id;
+    public String getCommentId() {
+        return commentId;
     }
 
-    public void setComment_id(String comment_id) {
-        this.comment_id = comment_id;
+    public void setCommentId(String commentId) {
+        this.commentId = commentId;
     }
 
     public String getContent() {
