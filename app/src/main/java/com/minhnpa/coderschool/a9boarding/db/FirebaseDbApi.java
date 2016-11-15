@@ -1,7 +1,9 @@
 package com.minhnpa.coderschool.a9boarding.db;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.minhnpa.coderschool.a9boarding.model.Bookmark;
 import com.minhnpa.coderschool.a9boarding.model.Comment;
 import com.minhnpa.coderschool.a9boarding.model.Post;
 
