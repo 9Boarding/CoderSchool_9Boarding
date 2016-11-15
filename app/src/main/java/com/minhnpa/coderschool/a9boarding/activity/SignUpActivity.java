@@ -74,7 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
 			public void onClick(View v) {
 				if (validateInput()){
 					pbLoading.setVisibility(View.VISIBLE);
-					mFirebaseAuth.createUserWithEmailAndPassword(etEmail.getText().toString().trim(),
+					mFirebaseAuth.createUserWithEmailAndPassword(etEmail.getText().toString(),
 							etPassword.getText().toString())
 							.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 								@Override
