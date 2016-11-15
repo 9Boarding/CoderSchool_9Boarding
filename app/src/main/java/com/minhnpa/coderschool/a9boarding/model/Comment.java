@@ -10,8 +10,8 @@ public class Comment {
 
     }
 
-    public Comment(String comment_at, String content, User user) {
-        this.commentAt = comment_at;
+    public Comment(String commentAt, String content, User user) {
+        this.commentAt = commentAt;
         this.content = content;
         this.user = user;
     }
@@ -30,7 +30,6 @@ public class Comment {
 
     public void setCommentId(String commentId) {
         this.commentId = commentId;
-    }
 
     public String getContent() {
         return content;
