@@ -2,6 +2,8 @@ package com.minhnpa.coderschool.a9boarding.fragment.main;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +18,7 @@ import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.adapter.PostViewHolder;
 import com.minhnpa.coderschool.a9boarding.model.Post;
 import com.minhnpa.coderschool.a9boarding.presenter.HomePresenter;
+import com.minhnpa.coderschool.a9boarding.utils.IntentUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +28,8 @@ import static com.facebook.login.widget.ProfilePictureView.TAG;
 public class HomeFragment extends Fragment {
     @BindView(R.id.rvMain)
     RecyclerView rvMain;
+    @BindView(R.id.fabAdd)
+    FloatingActionButton fabPost;
 
     HomePresenter presenter;
 
@@ -76,6 +81,12 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setupListener();
+    }
+
     public void onButtonPressed(Uri uri) {
 //        if (mListener != null) {
 //            mListener.onFragmentInteraction(uri);
@@ -101,5 +112,15 @@ public class HomeFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void setupListener(){
+
+        fabPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentUtils.startCreatePostActivity(getContext());
+            }
+        });
     }
 }

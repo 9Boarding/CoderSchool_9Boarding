@@ -15,6 +15,14 @@ public class Post {
 
     }
 
+
+    public Post() {
+        user = new User();
+        postInformation = new PostInformation();
+        images = new ArrayList<>();
+
+    }
+
     public Post(int bookmarksCount, int commentsCount, List<String> images,
                 PostInformation postInformation, String postAt, User user) {
         this.bookmarksCount = bookmarksCount;
@@ -49,8 +57,56 @@ public class Post {
         this.images = images;
     }
 
+    public void setBookmarksCount(int bookmarksCount) {
+        this.bookmarksCount = bookmarksCount;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public void setCommentsCount(int commentsCount) {
+        this.commentsCount = commentsCount;
+    }
+
     public void addImages(String imageUrl) {
         this.images.add(imageUrl);
+    }
+
+    public PostInformation getPostInformation() {
+        return postInformation;
+    }
+
+    public void setPostInformation(PostInformation postInformation) {
+        this.postInformation = postInformation;
+    }
+
+    public String getPostAt() {
+        return postAt;
+    }
+
+    public void setPostAt(String postAt) {
+        this.postAt = postAt;
+    }
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void addImages(List<String> images){
+        this.images.addAll(images);
+    }
+
+    public void addImages(String image){
+        this.images.add(image);
     }
 
     public PostInformation getPostInformation() {

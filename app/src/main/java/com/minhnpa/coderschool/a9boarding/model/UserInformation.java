@@ -1,5 +1,7 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
+=======
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserInformation {
@@ -16,6 +18,18 @@ public class UserInformation {
         this.email = email;
         this.name = name;
         this.phone = phone;
+        addresses = new ArrayList<>();
+        phone = new ArrayList<>();
+        email = new ArrayList<>();
+    }
+
+    public UserInformation(List<String> addresses, List<String> email, String name, List<String> phone) {
+        this();
+
+        this.addresses.addAll(addresses);
+        this.email.addAll(email);
+        this.name = name;
+        this.phone.addAll(phone);
     }
 
     public List<String> getAddresses() {
@@ -24,6 +38,8 @@ public class UserInformation {
 
     public void setAddresses(List<String> addresses) {
         this.addresses = addresses;
+        this.addresses.clear();
+        this.addresses.addAll(addresses);
     }
 
     public List<String> getEmail() {
@@ -32,6 +48,8 @@ public class UserInformation {
 
     public void setEmail(List<String> email) {
         this.email = email;
+        this.email.clear();
+        this.email.addAll(email);
     }
 
     public String getName() {
@@ -48,6 +66,8 @@ public class UserInformation {
 
     public void setPhone(List<String> phone) {
         this.phone = phone;
+        this.phone.clear();
+        this.phone.addAll(phone);
     }
 
     public void addPhone(String strPhone) {

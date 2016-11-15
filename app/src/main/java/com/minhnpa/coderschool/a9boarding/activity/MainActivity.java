@@ -3,12 +3,16 @@ package com.minhnpa.coderschool.a9boarding.activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -16,6 +20,8 @@ import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.fragment.main.BookmarkFragment;
 import com.minhnpa.coderschool.a9boarding.fragment.main.HomeFragment;
 import com.minhnpa.coderschool.a9boarding.fragment.main.NotificationFragment;
+import com.minhnpa.coderschool.a9boarding.utils.FireBaseUtils;
+import com.minhnpa.coderschool.a9boarding.utils.IntentUtils;
 
 import java.util.ArrayList;
 
@@ -29,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.bottom_nav)
     AHBottomNavigation buttomNav;
+
+    @BindView(R.id.navMenu)
+    NavigationView navView;
 
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
     private ActionBarDrawerToggle drawerToggle;
@@ -46,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle = setupDrawertoggle();
         drawerLayout.setDrawerListener(drawerToggle);
 
+        setupNavigationView();
         setupBottomtabs();
         setOnClick();
     }
@@ -53,6 +63,74 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle setupDrawertoggle() {
         return new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
     }
+
+    private void setOnClick() {
+        buttomNav.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+//        bottomBar.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    private ActionBarDrawerToggle setupDrawertoggle() {
+        return new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
+    }
+
+    private void setupNavigationView() {
+        drawerToggle = setupDrawertoggle();
+        drawerLayout.setDrawerListener(drawerToggle);
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                selectDrawerItem(item);
+                return true;
+            }
+        });
+    }
+
+    private void updateNavView() {
+        if (FireBaseUtils.isAuth()){
+
+        }
+    }
+
+    private void selectDrawerItem(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_signin:
+                IntentUtils.signin(this);
+                break;
+            case R.id.nav_signout:
+                IntentUtils.signout();
+                break;
+            case R.id.nav_profile:
+                IntentUtils.startProfileActivity(this);
+                break;
+            case R.id.nav_setting:
+                break;
+            default:
+                break;
+        }
+    }
+
 
     private void setOnClick() {
         buttomNav.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
@@ -131,5 +209,16 @@ public class MainActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
+
+        bottomNavigationItems.add(home);
+        bottomNavigationItems.add(noti);
+        bottomNavigationItems.add(bookmark);
+        bottomNavigationItems.add(menu);
+
+        buttomNav.addItems(bottomNavigationItems);
+
+        buttomNav.setTranslucentNavigationEnabled(true);
+
+        buttomNav.setAccentColor(R.color.black);
     }
 }
