@@ -2,6 +2,7 @@ package com.minhnpa.coderschool.a9boarding.model;
 
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -13,6 +14,8 @@ public class User {
     private boolean verified;
 
     public User() {
+        userInformation = new UserInformation();
+        bookmarks = new ArrayList<>();
     }
 
     public User(List<String> bookmarks, String profilePicUrl, int userType,
@@ -43,7 +46,8 @@ public class User {
     }
 
     public void setBookmarks(List<String> bookmarks) {
-        this.bookmarks = bookmarks;
+        this.bookmarks.clear();
+        this.bookmarks.addAll(bookmarks);
     }
 
     public String getProfilePicUrl() {

@@ -1,5 +1,6 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Post {
@@ -12,6 +13,9 @@ public class Post {
     private User user;
 
     public Post() {
+        user = new User();
+        postInformation = new PostInformation();
+        images = new ArrayList<>();
 
     }
 
@@ -46,11 +50,16 @@ public class Post {
     }
 
     public void setImages(List<String> images) {
-        this.images = images;
+        this.images.clear();
+        this.images.addAll(images);
     }
 
-    public void addImages(String imageUrl) {
-        this.images.add(imageUrl);
+    public void addImages(List<String> images){
+        this.images.addAll(images);
+    }
+
+    public void addImages(String image){
+        this.images.add(image);
     }
 
     public PostInformation getPostInformation() {

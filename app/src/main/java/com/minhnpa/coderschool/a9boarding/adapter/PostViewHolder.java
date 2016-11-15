@@ -65,7 +65,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         //TODO: add attribute Username for Post
 
-        tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getPostAt()));
+//        tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getPostAt()));
         tvLocation.setText(post.getPostInformation().getAddress());
 
         //TODO: load photos into RecyclerView
