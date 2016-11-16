@@ -60,13 +60,6 @@ public class HomeFragment extends Fragment {
             rvMain.setHasFixedSize(true);
             rvMain.setLayoutManager(manager);
 
-//            adapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class, R.layout.item_post, PostViewHolder.class, FirebaseDatabase.getInstance().getReference().child("posts")) {
-//                @Override
-//                protected void populateViewHolder(PostViewHolder viewHolder, Post model, int position) {
-//                    Log.e(TAG, "populateViewHolder: " + model );
-//                }
-//            };
-
             rvMain.setAdapter(presenter.getAdapter());
         } else {
             Log.e(TAG, "rv null ");
