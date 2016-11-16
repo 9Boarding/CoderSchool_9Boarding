@@ -3,15 +3,19 @@
 
     <item
         android:id="@+id/nav_signin"
-        android:title="@string/sign_in"
-        />
+        android:title="@string/sign_in"/>
+
     <item
         android:id="@+id/nav_signout"
         android:title="@string/sign_out"
-        />
+        android:visible="false"/>
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Profile"
+        android:visible="false"/>
+
     <item
         android:id="@+id/nav_setting"
-        android:title="@string/setting"
-        />
+        android:title="@string/setting"/>
 
 </menu>

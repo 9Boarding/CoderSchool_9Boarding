@@ -12,6 +12,9 @@ public class Post {
     private User user;
 
     public Post() {
+        user = new User();
+        postInformation = new PostInformation();
+        images = new ArrayList<>();
 
     }
 
@@ -45,12 +48,16 @@ public class Post {
         return images;
     }
 
-    public void setImages(List<String> images) {
-        this.images = images;
+    public PostInformation getPostInformation() {
+        return postInformation;
     }
 
-    public void addImages(String imageUrl) {
-        this.images.add(imageUrl);
+    public void addImages(List<String> images){
+        this.images.addAll(images);
+    }
+
+    public void addImages(String image){
+        this.images.add(image);
     }
 
     public PostInformation getPostInformation() {
