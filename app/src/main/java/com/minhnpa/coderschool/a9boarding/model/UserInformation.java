@@ -62,8 +62,4 @@ public class UserInformation {
     public void addPhone(String strPhone) {
         this.phone.add(strPhone);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/develop

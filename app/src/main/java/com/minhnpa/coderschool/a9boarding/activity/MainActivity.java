@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupNavigationView() {
         drawerToggle = setupDrawertoggle();
-        drawerLayout.setDrawerListener(drawerToggle);
+        drawerLayout.addDrawerListener(drawerToggle);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -165,11 +165,8 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationItems.add(noti);
         bottomNavigationItems.add(bookmark);
         bottomNavigationItems.add(menu);
-
         buttomNav.addItems(bottomNavigationItems);
-
         buttomNav.setTranslucentNavigationEnabled(true);
-
         buttomNav.setAccentColor(R.color.black);
     }
 }

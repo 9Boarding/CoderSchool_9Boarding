@@ -15,29 +15,28 @@ import com.minhnpa.coderschool.a9boarding.R;
 
 public class SignUpDialogFragment extends DialogFragment {
 
-	public SignUpDialogFragment() {
+    public SignUpDialogFragment() {
 
-	}
+    }
 
-	public static SignUpDialogFragment newInstance() {
+    public static SignUpDialogFragment newInstance() {
+        Bundle args = new Bundle();
 
-		Bundle args = new Bundle();
-
-		SignUpDialogFragment fragment = new SignUpDialogFragment();
-		fragment.setArguments(args);
-		return fragment;
-	}
+        SignUpDialogFragment fragment = new SignUpDialogFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
 
-	@Nullable
-	@Override
-	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.dialog_fragment_signup, container, false);
-		return view;
-	}
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.dialog_fragment_signup, container, false);
+        return view;
+    }
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-	}
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
 }

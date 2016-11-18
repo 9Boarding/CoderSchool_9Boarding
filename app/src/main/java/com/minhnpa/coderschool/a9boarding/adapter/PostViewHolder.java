@@ -64,12 +64,11 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         tvUserName.setText(post.getUser().getUserInformation().getName());
 
         //TODO: add attribute Username for Post
-
-//        tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getPostAt()));
+        tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getPostAt()));
         tvLocation.setText(post.getPostInformation().getAddress());
 
         //TODO: load photos into RecyclerView
-        if(!post.getImages().isEmpty()){
+        if (!post.getImages().isEmpty()) {
             Glide.with(itemView.getContext())
                     .load(post.getImages().get(0))
                     .into(ivPhoto);

@@ -13,8 +13,6 @@ import com.minhnpa.coderschool.a9boarding.activity.ProfileActivity;
  */
 
 public class IntentUtils {
-
-<<<<<<< HEAD
     public static void signin(Context context) {
         Intent intent;
         intent = LoginActivity.newIntent(context);
@@ -37,29 +35,3 @@ public class IntentUtils {
         context.startActivity(ProfileActivity.newIntent(context));
     }
 }
-=======
-	public static void signin(Context context){
-		Intent intent;
-		intent = LoginActivity.newIntent(context);
-		context.startActivity(intent);
-	}
-
-	public static void signout(){
-		FirebaseAuth.getInstance().signOut();
-	}
-
-	public static void startCreatePostActivity(Context context){
-		if (FireBaseUtils.isAuth()){
-			context.startActivity(CreatePostActivity.newIntent(context));
-			return;
-		}
-		signin(context);
-	}
-
-	public static void startProfileActivity(Context context){
-		context.startActivity(ProfileActivity.newIntent(context));
-	}
-
-
-}
->>>>>>> origin/develop

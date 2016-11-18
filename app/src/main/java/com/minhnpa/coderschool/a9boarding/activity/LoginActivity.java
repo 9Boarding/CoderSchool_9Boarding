@@ -17,30 +17,30 @@ import butterknife.BindView;
 
 public class LoginActivity extends AppCompatActivity {
 
-	/**
-	 * Use this method to create the Intent of this activity
-	 *
-	 * @param context
-	 * @return The Intent instance
-	 */
-	public static Intent newIntent(Context context){
-		return new Intent(context, LoginActivity.class);
-	}
+    /**
+     * Use this method to create the Intent of this activity
+     *
+     * @param context
+     * @return The Intent instance
+     */
+    public static Intent newIntent(Context context) {
+        return new Intent(context, LoginActivity.class);
+    }
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
-		FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
 
-		// Add fragment to activity
-		Fragment fragment = fm.findFragmentById(R.id.container);
-		if (fragment == null){
-			fragment = LoginFragment.newInstance();
-			fm.beginTransaction()
-					.replace(R.id.container, fragment)
-					.commit();
-		}
-	}
+        // Add fragment to activity
+        Fragment fragment = fm.findFragmentById(R.id.container);
+        if (fragment == null) {
+            fragment = LoginFragment.newInstance();
+            fm.beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .commit();
+        }
+    }
 }

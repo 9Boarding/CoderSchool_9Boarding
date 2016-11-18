@@ -30,6 +30,7 @@ public class Comment {
 
     public void setCommentId(String commentId) {
         this.commentId = commentId;
+    }
 
     public String getContent() {
         return content;

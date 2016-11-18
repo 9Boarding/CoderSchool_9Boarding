@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import com.minhnpa.coderschool.a9boarding.R;
 
 public class DetailActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

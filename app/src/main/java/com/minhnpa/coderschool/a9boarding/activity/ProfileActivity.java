@@ -13,14 +13,14 @@ import com.minhnpa.coderschool.a9boarding.R;
  */
 
 public class ProfileActivity extends AppCompatActivity {
+    public static Intent newIntent(Context context) {
+        Intent intent = new Intent(context, ProfileActivity.class);
+        return intent;
+    }
 
-	public static Intent newIntent(Context context){
-		Intent intent = new Intent(context, ProfileActivity.class);
-		return intent;
-	}
-	@Override
-	protected void onCreate(@Nullable Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_profile);
-	}
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile);
+    }
 }
