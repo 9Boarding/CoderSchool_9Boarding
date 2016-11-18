@@ -56,11 +56,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/ivFab"
-                    android:layout_marginTop="40dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_toRightOf="@+id/cimvProfile"
+                    android:layout_marginTop="40dp"
                     android:layout_toEndOf="@+id/cimvProfile"
+                    android:layout_toRightOf="@+id/cimvProfile"
                     android:gravity="bottom"
                     android:orientation="vertical">
 

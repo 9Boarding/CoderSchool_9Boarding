@@ -10,8 +10,8 @@ public class Comment {
 
     }
 
-    public Comment(String commentAt, String content, User user) {
-        this.commentAt = commentAt;
+    public Comment(String comment_at, String content, User user) {
+        this.commentAt = comment_at;
         this.content = content;
         this.user = user;
     }

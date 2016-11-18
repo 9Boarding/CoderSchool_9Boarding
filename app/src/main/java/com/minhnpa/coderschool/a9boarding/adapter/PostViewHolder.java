@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.model.Post;
-import com.minhnpa.coderschool.a9boarding.utils.AppUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,7 +63,8 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         tvUserName.setText(post.getUser().getUserInformation().getName());
 
         //TODO: add attribute Username for Post
-        tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getPostAt()));
+
+//        tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getPostAt()));
         tvLocation.setText(post.getPostInformation().getAddress());
 
         //TODO: load photos into RecyclerView

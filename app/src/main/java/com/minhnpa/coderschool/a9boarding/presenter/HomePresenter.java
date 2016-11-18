@@ -32,10 +32,7 @@ public class HomePresenter {
     }
 
     private void setUpFirebaseAdapter() {
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class,
-                R.layout.item_post,
-                PostViewHolder.class,
-                mDatabaseReference.child("posts")) {
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class, R.layout.item_post, PostViewHolder.class, mDatabaseReference.child("posts")) {
             @Override
             protected void populateViewHolder(PostViewHolder viewHolder, Post model, int position) {
                 viewHolder.bindPost(model);

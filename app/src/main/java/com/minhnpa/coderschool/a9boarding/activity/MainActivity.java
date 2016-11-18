@@ -29,20 +29,16 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    protected Class fragmentClass = HomeFragment.class;
     @BindView(R.id.drawable_layout)
     DrawerLayout drawerLayout;
-
     @BindView(R.id.bottom_nav)
     AHBottomNavigation buttomNav;
-
     @BindView(R.id.navMenu)
     NavigationView navView;
-
-
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
     private ActionBarDrawerToggle drawerToggle;
     private Fragment fragment = null;
-    protected Class fragmentClass = HomeFragment.class;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupNavigationView() {
         drawerToggle = setupDrawertoggle();
-        drawerLayout.addDrawerListener(drawerToggle);
+        drawerLayout.setDrawerListener(drawerToggle);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -165,8 +161,11 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationItems.add(noti);
         bottomNavigationItems.add(bookmark);
         bottomNavigationItems.add(menu);
+
         buttomNav.addItems(bottomNavigationItems);
+
         buttomNav.setTranslucentNavigationEnabled(true);
+
         buttomNav.setAccentColor(R.color.black);
     }
 }

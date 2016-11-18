@@ -14,6 +14,7 @@ import retrofit2.http.Part;
  */
 
 public interface ImgurApi {
+
     @Multipart
     @POST("image")
     Call<ImageResponse> create(

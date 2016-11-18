@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.adapter.PostViewHolder;
 import com.minhnpa.coderschool.a9boarding.model.Post;
@@ -66,19 +65,14 @@ public class HomeFragment extends Fragment {
             rvMain.setHasFixedSize(true);
             rvMain.setLayoutManager(manager);
 
-            adapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class,
-                    R.layout.item_post, PostViewHolder.class,
-                    FirebaseDatabase.getInstance()
-                            .getReference()
-                            .child("posts")) {
-                @Override
-                protected void populateViewHolder(PostViewHolder viewHolder, Post model, int position) {
-                    Log.e(TAG, "populateViewHolder: " + model);
-                }
-            };
+//            adapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class, R.layout.item_post, PostViewHolder.class, FirebaseDatabase.getInstance().getReference().child("posts")) {
+//                @Override
+//                protected void populateViewHolder(PostViewHolder viewHolder, Post model, int position) {
+//                    Log.e(TAG, "populateViewHolder: " + model );
+//                }
+//            };
 
-            FirebaseRecyclerAdapter adapter = presenter.getAdapter();
-            rvMain.setAdapter(adapter);
+            rvMain.setAdapter(presenter.getAdapter());
         } else {
             Log.e(TAG, "rv null ");
         }
@@ -104,6 +98,16 @@ public class HomeFragment extends Fragment {
 //        mListener = null;
     }
 
+    private void setupListener() {
+
+        fabPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentUtils.startCreatePostActivity(getContext());
+            }
+        });
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -117,15 +121,5 @@ public class HomeFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
-
-    private void setupListener() {
-
-        fabPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IntentUtils.startCreatePostActivity(getContext());
-            }
-        });
     }
 }

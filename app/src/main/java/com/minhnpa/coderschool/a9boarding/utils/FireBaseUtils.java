@@ -8,7 +8,6 @@ import com.google.firebase.auth.FirebaseUser;
  */
 
 public class FireBaseUtils {
-
     public static boolean isAuth() {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 

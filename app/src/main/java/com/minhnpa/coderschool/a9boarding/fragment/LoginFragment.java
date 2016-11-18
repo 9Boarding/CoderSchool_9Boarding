@@ -65,6 +65,10 @@ public class LoginFragment extends Fragment {
         return fragment;
     }
 
+    private static boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,11 +146,6 @@ public class LoginFragment extends Fragment {
         }
 
         return true;
-    }
-
-
-    private static boolean isValidEmail(String email) {
-        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     private boolean validateEmail() {

@@ -31,6 +31,7 @@ import butterknife.ButterKnife;
  */
 
 public class SignUpActivity extends AppCompatActivity {
+
     @BindView(R.id.til_email)
     TextInputLayout tilEmail;
     @BindView(R.id.til_password)
@@ -51,13 +52,19 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
 
     public static Intent newIntent(Context context) {
+
         return new Intent(context, SignUpActivity.class);
+    }
+
+    private static boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
         ButterKnife.bind(this);
 
         setupListener();
@@ -120,10 +127,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private boolean isEmpty(EditText editText) {
         return editText.getText().toString().trim().isEmpty();
-    }
-
-    private static boolean isValidEmail(String email) {
-        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     private boolean validateEmail() {

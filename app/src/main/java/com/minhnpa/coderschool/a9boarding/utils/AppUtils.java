@@ -11,7 +11,6 @@ import java.util.Locale;
  */
 
 public class AppUtils {
-
     public static String getRelativeTimeAgo(String rawJsonDate) {
         String dateFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
         SimpleDateFormat sf = new SimpleDateFormat(dateFormat, Locale.ENGLISH);
@@ -28,5 +27,4 @@ public class AppUtils {
 
         return relativeDate;
     }
-
 }
