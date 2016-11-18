@@ -29,9 +29,9 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    protected Class fragmentClass = HomeFragment.class;
     @BindView(R.id.drawable_layout)
     DrawerLayout drawerLayout;
-
     @BindView(R.id.bottom_nav)
     AHBottomNavigation buttomNav;
 
@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
     private ActionBarDrawerToggle drawerToggle;
     private Fragment fragment = null;
-    protected Class fragmentClass = HomeFragment.class;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,13 +95,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateNavView() {
-        if (FireBaseUtils.isAuth()){
+        if (FireBaseUtils.isAuth()) {
 
         }
     }
 
     private void selectDrawerItem(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_signin:
                 IntentUtils.signin(this);
                 break;

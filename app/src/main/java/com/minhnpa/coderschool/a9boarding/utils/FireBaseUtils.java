@@ -8,13 +8,12 @@ import com.google.firebase.auth.FirebaseUser;
  */
 
 public class FireBaseUtils {
+    public static boolean isAuth() {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-	public static boolean isAuth(){
-		FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-		if (firebaseUser == null){
-			return  false;
-		}
-		return true;
-	}
+        if (firebaseUser == null) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -1,7 +1,6 @@
 package com.minhnpa.coderschool.a9boarding.fragment.main;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,13 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.minhnpa.coderschool.a9boarding.R;
-import com.minhnpa.coderschool.a9boarding.activity.CreatePostActivity;
-import com.minhnpa.coderschool.a9boarding.activity.LoginActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,9 +39,10 @@ public class BookmarkFragment extends Fragment {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
+     * <p>
+     * //     * @param param1 Parameter 1.
+     * //     * @param param2 Parameter 2.
      *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
      * @return A new instance of fragment BookmarkFragment.
      */
     // TODO: Rename and change types and number of parameters

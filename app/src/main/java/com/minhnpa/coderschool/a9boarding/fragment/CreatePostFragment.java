@@ -2,7 +2,6 @@ package com.minhnpa.coderschool.a9boarding.fragment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -21,7 +20,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -32,7 +30,6 @@ import com.minhnpa.coderschool.a9boarding.model.ImageResponse;
 import com.minhnpa.coderschool.a9boarding.model.Post;
 import com.minhnpa.coderschool.a9boarding.model.PostInformation;
 import com.minhnpa.coderschool.a9boarding.model.User;
-import com.minhnpa.coderschool.a9boarding.model.UserInformation;
 import com.minhnpa.coderschool.a9boarding.utils.BitmapScaler;
 import com.minhnpa.coderschool.a9boarding.utils.FileUtils;
 import com.minhnpa.coderschool.a9boarding.utils.PermissionUtils;

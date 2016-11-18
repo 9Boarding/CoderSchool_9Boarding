@@ -1,7 +1,5 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +23,10 @@ public class Post {
 
     }
 
-    public Post(int bookmarksCount, int comments_count, List<String> images,
-                PostInformation postInformation, String post_at, User user) {
-        this.bookmarks_count = bookmarksCount;
-        this.comments_count = comments_count;
+    public Post(int bookmarksCount, int commentsCount, List<String> images,
+                PostInformation postInformation, String postAt, User user) {
+        this.bookmarksCount = bookmarksCount;
+        this.commentsCount = commentsCount;
         this.images = images;
         this.postInformation = postInformation;
         this.post_at = post_at;
@@ -36,7 +34,7 @@ public class Post {
     }
 
     public int getBookmarksCount() {
-        return bookmarks_count;
+        return bookmarksCount;
     }
 
     public void setBookmarksCount(int bookmarksCount) {
@@ -48,22 +46,23 @@ public class Post {
     }
 
     public void setCommentsCount(int commentsCount) {
-        this.comments_count = commentsCount;
+        this.commentsCount = commentsCount;
     }
 
     public List<String> getImages() {
         return images;
     }
 
-    public PostInformation getPostInformation() {
-        return postInformation;
-    }
-
-    public void addImages(List<String> images){
+    public void setImages(List<String> images) {
+        this.images.clear();
         this.images.addAll(images);
     }
 
-    public void addImages(String image){
+    public void addImages(List<String> images) {
+        this.images.addAll(images);
+    }
+
+    public void addImages(String image) {
         this.images.add(image);
     }
 

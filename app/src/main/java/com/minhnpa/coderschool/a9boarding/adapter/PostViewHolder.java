@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.model.Post;
-import com.minhnpa.coderschool.a9boarding.utils.AppUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -71,7 +70,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         tvLocation.setText(post.getPostInformation().getAddress());
 
         //TODO: load photos into RecyclerView
-        if(!post.getImages().isEmpty()){
+        if (!post.getImages().isEmpty()) {
             Glide.with(itemView.getContext())
                     .load(post.getImages().get(0))
                     .into(ivPhoto);
