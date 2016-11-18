@@ -4,6 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="medium_padding">16dp</dimen>
 
+    <dimen name="small_padding">8dp</dimen>
+
     <!--item post-->
     <dimen name="padding_post_item">8dp</dimen>
     <dimen name="size_avatar_post_item">36dp</dimen>
@@ -17,4 +19,7 @@
     <dimen name="size_buttons_control">24dp</dimen>
     <dimen name="margin_between_buttons_control">16dp</dimen>
     <dimen name="text_size_medium_2">24sp</dimen>
+
+    <!--Item Notification-->
+    <dimen name="padding_notification_item">8dp</dimen>
 </resources>

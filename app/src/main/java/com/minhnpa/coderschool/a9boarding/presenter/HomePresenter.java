@@ -1,7 +1,6 @@
 package com.minhnpa.coderschool.a9boarding.presenter;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -28,12 +27,11 @@ public class HomePresenter {
     }
 
     private void setUpFirebaseAdapter(){
-
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class, R.layout.item_post, PostViewHolder.class, mDatabaseReference.child("posts")) {
             @Override
             protected void populateViewHolder(PostViewHolder viewHolder, Post model, int position) {
-                Log.e(TAG, "populateViewHolder: bind post " );
                 viewHolder.bindPost(model);
+                mFirebaseAdapter.notifyDataSetChanged();
             }
         };
     }

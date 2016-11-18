@@ -1,13 +1,20 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Post {
-    private int bookmarksCount;
-    private int commentsCount;
+    @SerializedName("bookmarks_count")
+    private int bookmarks_count;
+
+    @SerializedName("comments_count")
+    private int comments_count;
+
     private List<String> images;
     private PostInformation postInformation;
-    private String postAt;
+    private String post_at;
     private String postId;
     private User user;
 
@@ -18,30 +25,30 @@ public class Post {
 
     }
 
-    public Post(int bookmarksCount, int commentsCount, List<String> images,
-                PostInformation postInformation, String postAt, User user) {
-        this.bookmarksCount = bookmarksCount;
-        this.commentsCount = commentsCount;
+    public Post(int bookmarksCount, int comments_count, List<String> images,
+                PostInformation postInformation, String post_at, User user) {
+        this.bookmarks_count = bookmarksCount;
+        this.comments_count = comments_count;
         this.images = images;
         this.postInformation = postInformation;
-        this.postAt = postAt;
+        this.post_at = post_at;
         this.user = user;
     }
 
     public int getBookmarksCount() {
-        return bookmarksCount;
+        return bookmarks_count;
     }
 
     public void setBookmarksCount(int bookmarksCount) {
-        this.bookmarksCount = bookmarksCount;
+        this.bookmarks_count = bookmarksCount;
     }
 
     public int getCommentsCount() {
-        return commentsCount;
+        return comments_count;
     }
 
     public void setCommentsCount(int commentsCount) {
-        this.commentsCount = commentsCount;
+        this.comments_count = commentsCount;
     }
 
     public List<String> getImages() {
@@ -60,20 +67,16 @@ public class Post {
         this.images.add(image);
     }
 
-    public PostInformation getPostInformation() {
-        return postInformation;
-    }
-
     public void setPostInformation(PostInformation postInformation) {
         this.postInformation = postInformation;
     }
 
     public String getPostAt() {
-        return postAt;
+        return post_at;
     }
 
     public void setPostAt(String postAt) {
-        this.postAt = postAt;
+        this.post_at = postAt;
     }
 
     public String getPostId() {
