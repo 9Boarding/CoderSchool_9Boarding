@@ -1,5 +1,8 @@
 package com.minhnpa.coderschool.a9boarding.adapter;
 
+import android.content.Context;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +13,8 @@ import com.bumptech.glide.Glide;
 import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.model.Post;
 import com.minhnpa.coderschool.a9boarding.utils.AppUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,14 +40,8 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tvTimeStamp)
     public TextView tvTimeStamp;
 
-    @BindView(R.id.ivPhoto)
-    public ImageView ivPhoto;
-
     @BindView(R.id.tvPrice)
     public TextView tvPrice;
-
-    @BindView(R.id.btnComment)
-    public Button btnComment;
 
     @BindView(R.id.btnShare)
     public Button btnShare;
@@ -50,13 +49,20 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.btnBookmark)
     public Button btnBookmark;
 
+    @BindView(R.id.rvPhotos)
+    RecyclerView rvPhotos;
+
     public View itemView;
+
+    private Context context;
 
 
     public PostViewHolder(View itemView) {
         super(itemView);
         this.itemView = itemView;
         ButterKnife.bind(this, itemView);
+
+        this.context = itemView.getContext();
     }
 
     public void bindPost(Post post) {
@@ -70,13 +76,17 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         }
 //        tvLocation.setText(post.getPostInformation().getAddress());
 
-        //TODO: load photos into RecyclerView
-        if (!post.getImages().isEmpty()) {
-            Glide.with(itemView.getContext())
-                    .load(post.getImages().get(0))
-                    .into(ivPhoto);
-        }
-
 //        tvPrice.setText("$" + post.getPostInformation().getPrice() + " per month");
+
+        //List Photos
+        bindPhotos(post.getImages());
+
+    }
+
+    private void bindPhotos(List<String> photoList){
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false);
+        rvPhotos.setItemAnimator(new DefaultItemAnimator());
+        rvPhotos.setLayoutManager(manager);
+        rvPhotos.setAdapter(new PhotosPostAdapter(photoList));
     }
 }

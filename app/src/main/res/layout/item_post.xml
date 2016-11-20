@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="@dimen/padding_post_item"
         android:paddingLeft="@dimen/padding_post_item"
         android:paddingRight="@dimen/padding_post_item">
 
@@ -57,59 +58,80 @@
         android:layout_height="200dp"
         android:layout_marginBottom="@dimen/margin_between_item"
         android:layout_marginTop="@dimen/margin_between_item"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
 
-    <RelativeLayout
-
-        android:id="@+id/lnControlButtons"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sample_background" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvPhotos"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+        </android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:id="@+id/lnControlButtons"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|left"
-            android:layout_marginBottom="@dimen/margin_between_item"
-            android:layout_marginTop="@dimen/margin_between_item"
-            android:background="@drawable/background_price"
-            android:paddingBottom="8dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp"
-            android:textColor="@android:color/white"
-            tools:text="50$ per month" />
+            android:layout_gravity="bottom"
+            android:background="@color/background_control_bar"
+            android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_alignParentEnd="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
 
-            <Button
-                android:id="@+id/btnComment"
-                android:layout_width="@dimen/size_buttons_control"
-                android:layout_height="@dimen/size_buttons_control"
-                android:layout_margin="@dimen/margin_between_buttons_control"
-                android:background="@drawable/ic_comment" />
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:layout_marginBottom="@dimen/margin_between_item"
+                    android:layout_marginTop="@dimen/margin_between_item"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@android:color/white"
+                    tools:text="50$ per month" />
 
-            <Button
-                android:id="@+id/btnShare"
-                android:layout_width="@dimen/size_buttons_control"
-                android:layout_height="@dimen/size_buttons_control"
-                android:layout_margin="@dimen/margin_between_buttons_control"
-                android:background="@drawable/ic_share" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/btnBookmark"
-                android:layout_width="@dimen/size_buttons_control"
-                android:layout_height="@dimen/size_buttons_control"
-                android:layout_margin="@dimen/margin_between_buttons_control"
-                android:background="@drawable/ic_bookmark" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right">
 
-        </LinearLayout>
-    </RelativeLayout>
+                <Button
+                    android:id="@+id/btnShare"
+                    android:layout_width="@dimen/size_buttons_control"
+                    android:layout_height="@dimen/size_buttons_control"
+                    android:layout_margin="@dimen/margin_between_buttons_control"
+                    android:background="@drawable/ic_share" />
+
+                <Button
+                    android:id="@+id/btnBookmark"
+                    android:layout_width="@dimen/size_buttons_control"
+                    android:layout_height="@dimen/size_buttons_control"
+                    android:layout_margin="@dimen/margin_between_buttons_control"
+                    android:background="@drawable/ic_bookmark" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
 
     <View
         android:layout_width="match_parent"

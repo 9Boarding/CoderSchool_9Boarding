@@ -31,7 +31,7 @@ public class HomePresenter {
             @Override
             protected void populateViewHolder(PostViewHolder viewHolder, Post model, int position) {
                 viewHolder.bindPost(model);
-                mFirebaseAdapter.notifyDataSetChanged();
+//                mFirebaseAdapter.notifyDataSetChanged();
             }
         };
     }
