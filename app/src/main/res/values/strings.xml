@@ -49,5 +49,12 @@
     <string name="sign_in">Sign in</string>
     <string name="sign_out">Sign out</string>
     <string name="setting">Setting</string>
-    
+    <string name="tab_profile">Profile</string>
+    <string name="signout">Signout</string>
+    <string name="signin">Signin</string>
+    <string name="view_and_edit_profile">View and Edit Profile</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="others">Others</string>
+
 </resources>

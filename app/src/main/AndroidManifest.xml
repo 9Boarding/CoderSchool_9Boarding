@@ -34,12 +34,14 @@
             android:name=".activity.SignUpActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".activity.TimeLineActivity"/>
         <activity android:name=".activity.CreatePostActivity"
                   android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.NoActionBar.NoTranslucent"/>
         <activity android:name=".activity.SelectImageActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.ViewAndEditProfile"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 
