@@ -44,7 +44,7 @@
     <!--Drawer Nav-->
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    
+
     <!--Right menu-->
     <string name="sign_in">Sign in</string>
     <string name="sign_out">Sign out</string>

@@ -27,9 +27,9 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    protected Class fragmentClass = HomeFragment.class;
     @BindView(R.id.drawable_layout)
     DrawerLayout drawerLayout;
-
     @BindView(R.id.bottom_nav)
     AHBottomNavigation buttomNav;
 
@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
     private ActionBarDrawerToggle drawerToggle;
     private Fragment fragment = null;
-    protected Class fragmentClass = HomeFragment.class;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +79,43 @@ public class MainActivity extends AppCompatActivity {
 //    private ActionBarDrawerToggle setupDrawertoggle() {
 //        return new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
 //    }
+
+    private void setupNavigationView() {
+        drawerToggle = setupDrawertoggle();
+        drawerLayout.setDrawerListener(drawerToggle);
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                selectDrawerItem(item);
+                return true;
+            }
+        });
+    }
+
+    private void updateNavView() {
+        if (FireBaseUtils.isAuth()) {
+
+        }
+    }
+
+    private void selectDrawerItem(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_signin:
+                IntentUtils.signin(this);
+                break;
+            case R.id.nav_signout:
+                IntentUtils.signout();
+                break;
+            case R.id.nav_profile:
+                IntentUtils.startProfileActivity(this);
+                break;
+            case R.id.nav_setting:
+                break;
+            default:
+                break;
+        }
+    }
+
 
     private void setOnClick() {
         buttomNav.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {

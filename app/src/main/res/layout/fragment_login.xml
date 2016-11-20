@@ -1,52 +1,54 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="com.minhnpa.coderschool.a9boarding.fragment.LoginFragment"
-            android:fitsSystemWindows="true"
-            android:background="#ACCBD0">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ACCBD0"
+    android:fitsSystemWindows="true"
+    tools:context="com.minhnpa.coderschool.a9boarding.fragment.LoginFragment">
 
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="48dp"
             android:paddingLeft="24dp"
-            android:paddingRight="24dp">
+            android:paddingRight="24dp"
+            android:paddingTop="48dp">
 
             <ImageView
                 android:layout_width="96dp"
                 android:layout_height="96dp"
-                android:src="@drawable/login_cover_image"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/login_cover_image" />
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/til_email">
+                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/promt_emails"/>
+                    android:hint="@string/promt_emails" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/til_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <EditText
                     android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
+                    android:layout_marginBottom="16dp"
                     android:hint="@string/promt_password"
-                    android:layout_marginBottom="16dp"/>
+                    android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatButton
@@ -54,42 +56,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#20c4c8"
-                android:text="@string/login"/>
+                android:text="@string/login" />
+
             <TextView
                 android:id="@+id/tv_forget_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="8dp"
                 android:text="@string/forget_password"
                 android:textColor="#070707"
-                android:textSize="16sp"
-                android:paddingTop="8dp"/>
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Or"
-                android:textSize="20sp"
-                android:textColor="#90000000"
                 android:layout_gravity="center"
-                android:padding="@dimen/medium_padding"/>
+                android:padding="@dimen/medium_padding"
+                android:text="Or"
+                android:textColor="#90000000"
+                android:textSize="20sp" />
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_login_with_google"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login_with_google"
-                android:background="#20c4c8"/>
+                android:background="#20c4c8"
+                android:text="@string/login_with_google" />
 
             <TextView
                 android:id="@+id/tv_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="72dp"
                 android:layout_marginTop="24dp"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
-                android:text="@string/don_t_have_account_signup_now"
                 android:clickable="true"
-                android:layout_marginBottom="72dp"/>
+                android:text="@string/don_t_have_account_signup_now"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <ProgressBar
@@ -97,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </FrameLayout>
 
 </ScrollView>

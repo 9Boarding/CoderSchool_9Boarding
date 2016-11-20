@@ -17,8 +17,7 @@
         <item name="windowActionBar">false</item>
     </style>
 
-    <style name="AppTheme.NoActionBar.NoTranslucent" parent="AppTheme.NoActionBar">
-    </style>
+    <style name="AppTheme.NoActionBar.NoTranslucent" parent="AppTheme.NoActionBar"></style>
 
     <style name="TextViewProfileStyle">
         <item name="android:textSize">24sp</item>

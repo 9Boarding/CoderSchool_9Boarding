@@ -28,14 +28,14 @@ public class User {
         this.verified = verified;
     }
 
-    public static User fromFirebaseUser(FirebaseUser firebaseUser){
+    public static User fromFirebaseUser(FirebaseUser firebaseUser) {
         UserInformation userInformation = new UserInformation();
         User user = new User();
 
         userInformation.setName(firebaseUser.getDisplayName());
         user.setUserInformation(userInformation);
         user.setUserId(firebaseUser.getUid());
-        if (firebaseUser.getPhotoUrl() != null){
+        if (firebaseUser.getPhotoUrl() != null) {
             user.setProfilePicUrl(firebaseUser.getPhotoUrl().toString());
         }
 

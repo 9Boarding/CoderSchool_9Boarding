@@ -32,129 +32,139 @@ import butterknife.ButterKnife;
  */
 
 public class LoginFragment extends Fragment {
-	@BindView(R.id.til_email) TextInputLayout tilEmail;
-	@BindView(R.id.et_email) EditText etEmail;
-	@BindView(R.id.til_password) TextInputLayout tilPassword;
-	@BindView(R.id.et_password) EditText etPassword;
-	@BindView(R.id.btn_login) AppCompatButton btnLogin;
-	@BindView(R.id.btn_login_with_google) AppCompatButton btnLoginWithGoogle;
-	@BindView(R.id.tv_sign_up) TextView tvSignUp;
-	@BindView(R.id.pbLoading) ProgressBar pbLoading;
+    @BindView(R.id.til_email)
+    TextInputLayout tilEmail;
+    @BindView(R.id.et_email)
+    EditText etEmail;
+    @BindView(R.id.til_password)
+    TextInputLayout tilPassword;
+    @BindView(R.id.et_password)
+    EditText etPassword;
+    @BindView(R.id.btn_login)
+    AppCompatButton btnLogin;
+    @BindView(R.id.btn_login_with_google)
+    AppCompatButton btnLoginWithGoogle;
+    @BindView(R.id.tv_sign_up)
+    TextView tvSignUp;
+    @BindView(R.id.pbLoading)
+    ProgressBar pbLoading;
 
-	private FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth mFirebaseAuth;
 
-	/**
-	 * Use this method to create the instance of this LoginFragment
-	 * @return
-	 */
-	public static LoginFragment newInstance() {
+    /**
+     * Use this method to create the instance of this LoginFragment
+     *
+     * @return
+     */
+    public static LoginFragment newInstance() {
 
-		Bundle args = new Bundle();
+        Bundle args = new Bundle();
 
-		LoginFragment fragment = new LoginFragment();
-		fragment.setArguments(args);
-		return fragment;
-	}
+        LoginFragment fragment = new LoginFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
-	@Override
-	public void onCreate(@Nullable Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-	}
+    private static boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
 
-	@Nullable
-	@Override
-	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_login, container, false);
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-		return view;
-	}
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
+        return view;
+    }
 
-		ButterKnife.bind(this, view);
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-		setupListener();
+        ButterKnife.bind(this, view);
 
-		mFirebaseAuth = FirebaseAuth.getInstance();
-	}
+        setupListener();
 
-	private void setupListener() {
-		// TextView signnup
-		tvSignUp.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				startActivity(SignUpActivity.newIntent(getActivity()));
+        mFirebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    private void setupListener() {
+        // TextView signnup
+        tvSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(SignUpActivity.newIntent(getActivity()));
 //				FragmentManager fm = getActivity().getSupportFragmentManager();
 //
 //				SignUpDialogFragment.newInstance().show(fm, "SignUp");
-			}
-		});
+            }
+        });
 
-		// Button Loggin
-		btnLogin.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
+        // Button Loggin
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-				if(validateInput()){
-					pbLoading.setVisibility(View.VISIBLE);
-					mFirebaseAuth.signInWithEmailAndPassword(etEmail.getText().toString().trim(),
-							etPassword.getText().toString())
-					.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-						@Override
-						public void onComplete(@NonNull Task<AuthResult> task) {
-							pbLoading.setVisibility(View.GONE);
-							if (!task.isSuccessful()){
-								showText("Email or Password incorrect");
-								return;
-							}
-							getActivity().onBackPressed();
+                if (validateInput()) {
+                    pbLoading.setVisibility(View.VISIBLE);
+                    mFirebaseAuth.signInWithEmailAndPassword(etEmail.getText().toString().trim(),
+                            etPassword.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    pbLoading.setVisibility(View.GONE);
+                                    if (!task.isSuccessful()) {
+                                        showText("Email or Password incorrect");
+                                        return;
+                                    }
+                                    getActivity().onBackPressed();
 
-						}
-					});
-				}
-			}
-		});
+                                }
+                            });
+                }
+            }
+        });
 
-		// Button Login with google
-		btnLoginWithGoogle.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				startActivity(CreatePostActivity.newIntent(getActivity()));
-			}
-		});
+        // Button Login with google
+        btnLoginWithGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(CreatePostActivity.newIntent(getActivity()));
+            }
+        });
 
-	}
+    }
 
-	private boolean validateInput() {
-		if (!validateEmail()) { return false;}
+    private boolean validateInput() {
+        if (!validateEmail()) {
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
+    private boolean validateEmail() {
+        if (!isValidEmail(etEmail.getText().toString().trim())) {
+            tilEmail.setError(getString(R.string.err_email_invalid));
+            requestFocus(etEmail);
+            return false;
+        }
+        tilEmail.setErrorEnabled(false);
+        return true;
+    }
 
-	private static boolean isValidEmail(String email) {
-		return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-	}
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        }
+    }
 
-	private boolean validateEmail(){
-		if (!isValidEmail(etEmail.getText().toString().trim())){
-			tilEmail.setError(getString(R.string.err_email_invalid));
-			requestFocus(etEmail);
-			return false;
-		}
-		tilEmail.setErrorEnabled(false);
-		return true;
-	}
-
-	private void requestFocus(View view){
-		if (view.requestFocus()){
-			getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-		}
-	}
-
-	private void showText(String text){
-		Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
-	}
+    private void showText(String text) {
+        Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+    }
 }

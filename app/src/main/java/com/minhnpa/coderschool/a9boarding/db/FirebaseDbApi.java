@@ -11,28 +11,27 @@ import com.minhnpa.coderschool.a9boarding.model.Post;
 
 public class FirebaseDbApi {
 
-	public static void newPost(DatabaseReference databaseReference, Post post){
-		String postKey = databaseReference.child(DbConstant.CHILD_POST)
-				.push().getKey();
-		post.setPostId(postKey);
-		databaseReference.child(DbConstant.CHILD_POST)
-				.child(postKey)
-				.setValue(post);
-	}
+    public static void newPost(DatabaseReference databaseReference, Post post) {
+        String postKey = databaseReference.child(DbConstant.CHILD_POST)
+                .push().getKey();
+        post.setPostId(postKey);
+        databaseReference.child(DbConstant.CHILD_POST)
+                .child(postKey)
+                .setValue(post);
+    }
 
-	public static void saveBookmark(DatabaseReference databaseReference, Post post){
-		String firebaseUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public static void saveBookmark(DatabaseReference databaseReference, Post post) {
+        String firebaseUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-		databaseReference.child(DbConstant.CHILD_BOOKMARK).child(firebaseUserId)
-		.setValue(post);
-	}
+        databaseReference.child(DbConstant.CHILD_BOOKMARK).child(firebaseUserId)
+                .setValue(post);
+    }
 
-	public static void saveComment(DatabaseReference databaseReference, String postId, Comment comment){
-		databaseReference.child(DbConstant.CHILD_COMMENT)
-				.child(postId)
-				.push()
-				.setValue(comment);
+    public static void saveComment(DatabaseReference databaseReference, String postId, Comment comment) {
+        databaseReference.child(DbConstant.CHILD_COMMENT)
+                .child(postId)
+                .push()
+                .setValue(comment);
 
-	}
-
+    }
 }
