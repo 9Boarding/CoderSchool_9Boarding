@@ -20,4 +20,5 @@
     <dimen name="margin_between_buttons_control">16dp</dimen>
     <dimen name="text_size_medium_2">24sp</dimen>
     <dimen name="comment_profile_pic_size">64dp</dimen>
+    <dimen name="padding_notification_item">8dp</dimen>
 </resources>

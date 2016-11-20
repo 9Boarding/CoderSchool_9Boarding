@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.model.Post;
+import com.minhnpa.coderschool.a9boarding.utils.AppUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -67,7 +68,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         if(post.getPostAt() != null) {
             tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getPostAt()));
         }
-        tvLocation.setText(post.getPostInformation().getAddress());
+//        tvLocation.setText(post.getPostInformation().getAddress());
 
         //TODO: load photos into RecyclerView
         if (!post.getImages().isEmpty()) {
@@ -76,6 +77,6 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
                     .into(ivPhoto);
         }
 
-        tvPrice.setText("$" + post.getPostInformation().getPrice() + " per month");
+//        tvPrice.setText("$" + post.getPostInformation().getPrice() + " per month");
     }
 }

@@ -1,14 +1,16 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Post {
     @SerializedName("bookmarks_count")
-    private int bookmarks_count;
+    private int bookmarksCount;
 
     @SerializedName("comments_count")
-    private int comments_count;
+    private int commentsCount;
 
     private List<String> images;
     private PostInformation postInformation;
@@ -38,11 +40,11 @@ public class Post {
     }
 
     public void setBookmarksCount(int bookmarksCount) {
-        this.bookmarks_count = bookmarksCount;
+        this.bookmarksCount = bookmarksCount;
     }
 
     public int getCommentsCount() {
-        return comments_count;
+        return commentsCount;
     }
 
     public void setCommentsCount(int commentsCount) {
