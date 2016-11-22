@@ -56,5 +56,8 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="others">Others</string>
+    <string name="signout_question">Signout?</string>
+    <string name="about_us">About us</string>
+    <string name="fill_your_address">Fill your address</string>
 
 </resources>

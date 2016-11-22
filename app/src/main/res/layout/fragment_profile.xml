@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="16dp">
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/civ_profile_pic"
                     android:layout_width="100dp"
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="50dp">
+                android:layout_marginTop="25dp">
 
                 <View
                     android:layout_width="match_parent"
@@ -89,6 +89,17 @@
                     android:text="Feedback us"
                     style="@style/TextViewProfileStyle"
                     android:drawableRight="@drawable/ic_feedback"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#40000000"/>
+
+                <TextView
+                    android:id="@+id/tv_about_us"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_us"
+                    style="@style/TextViewProfileStyle"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"

@@ -2,10 +2,11 @@ package com.minhnpa.coderschool.a9boarding.model;
 
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User implements Serializable{
     private List<String> bookmarks;
     private String profilePicUrl;
     private int userType;

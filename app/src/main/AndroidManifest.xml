@@ -42,6 +42,9 @@
         <activity android:name=".activity.ViewAndEditProfile"
                   android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.AddressActivity"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar.NoTranslucent"/>
 
     </application>
 
