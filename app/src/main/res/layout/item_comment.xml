@@ -6,7 +6,7 @@
     android:padding="8dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/cimvProfile"
+        android:id="@+id/civProfile"
         android:layout_width="@dimen/comment_profile_pic_size"
         android:layout_height="@dimen/comment_profile_pic_size"
         tools:src="@drawable/profile_pic" />
@@ -19,8 +19,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_toEndOf="@+id/cimvProfile"
-        android:layout_toRightOf="@+id/cimvProfile"
+        android:layout_toEndOf="@+id/civProfile"
+        android:layout_toRightOf="@+id/civProfile"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:text="Name" />
@@ -32,8 +32,8 @@
         android:layout_below="@+id/tvUserName"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_toEndOf="@+id/cimvProfile"
-        android:layout_toRightOf="@+id/cimvProfile"
+        android:layout_toEndOf="@+id/civProfile"
+        android:layout_toRightOf="@+id/civProfile"
         android:textSize="16sp"
         tools:text="CommentCommentCommentCommentCommentCommentCommentCommentCommentCommentCommentCommentCommentCommentCommentCommentCommentComment" />
 </RelativeLayout>
