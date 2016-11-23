@@ -19,6 +19,8 @@ import com.minhnpa.coderschool.a9boarding.fragment.ProfileFragment;
 import com.minhnpa.coderschool.a9boarding.fragment.main.BookmarkFragment;
 import com.minhnpa.coderschool.a9boarding.fragment.main.HomeFragment;
 import com.minhnpa.coderschool.a9boarding.fragment.main.NotificationFragment;
+import com.minhnpa.coderschool.a9boarding.utils.FireBaseUtils;
+import com.minhnpa.coderschool.a9boarding.utils.IntentUtils;
 
 import java.util.ArrayList;
 
@@ -76,9 +78,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    private ActionBarDrawerToggle setupDrawertoggle() {
-//        return new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
-//    }
+    private ActionBarDrawerToggle setupDrawertoggle() {
+        return new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
+    }
 
     private void setupNavigationView() {
         drawerToggle = setupDrawertoggle();

@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.google.firebase.auth.FirebaseAuth;
 import com.minhnpa.coderschool.a9boarding.activity.CreatePostActivity;
 import com.minhnpa.coderschool.a9boarding.activity.LoginActivity;
+import com.minhnpa.coderschool.a9boarding.activity.ProfileActivity;
 import com.minhnpa.coderschool.a9boarding.activity.ViewAndEditProfile;
 
 /**
