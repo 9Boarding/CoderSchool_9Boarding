@@ -25,6 +25,7 @@ public class CommentActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
+        commentPresenter = new CommentPresenter(this);
         if (rvComment != null) {
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
             rvComment.setLayoutManager(layoutManager);

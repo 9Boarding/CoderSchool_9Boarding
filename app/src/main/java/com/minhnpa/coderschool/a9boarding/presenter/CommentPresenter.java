@@ -18,18 +18,15 @@ public class CommentPresenter {
 
     private DatabaseReference mDatabaseReference;
     private FirebaseRecyclerAdapter<Comment, CommentViewHolder> mFirebaseAdapter;
-    private Context mContext;
 
     public CommentPresenter(Context context) {
-        mContext = context;
-
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
         setUpFirebaseAdapter();
     }
 
     private void setUpFirebaseAdapter() {
-        List<Comment> commentList = new ArrayList<>();
+        final List<Comment> commentList = new ArrayList<>();
         Comment c1 = new Comment("Tue Nov 08 23:37:56 GMT+07:00 2016", "This is a comment", new User());
         Comment c2 = new Comment("Tue Nov 08 23:38:56 GMT+07:00 2016", "This is a comment 2", new User());
         Comment c3 = new Comment("Tue Nov 08 23:39:56 GMT+07:00 2016", "This is a comment 2", new User());
@@ -39,10 +36,11 @@ public class CommentPresenter {
         commentList.add(c3);
 
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Comment, CommentViewHolder>(Comment.class, R.layout.item_comment,
-                CommentViewHolder.class, (DatabaseReference) commentList) {
+                CommentViewHolder.class, mDatabaseReference.child("comments")) {
             @Override
             protected void populateViewHolder(CommentViewHolder viewHolder, Comment comment, int position) {
-                viewHolder.bindComment(comment);
+                Comment comment1 = commentList.get(position);
+                viewHolder.bindComment(comment1);
             }
         };
 
