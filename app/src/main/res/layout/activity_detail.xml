@@ -105,6 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Address: 1100 Ly Thuong Kiet, Phuong 10, TP.HCM"
+                android:textColor="@color/black"
                 android:textSize="@dimen/post_information_text_size"
                 android:textStyle="bold" />
 
@@ -112,30 +113,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Area: 30m2"
+                android:textColor="@color/black"
                 android:textSize="@dimen/post_information_text_size" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phone: 0123 456 789"
+                android:textColor="@color/black"
                 android:textSize="@dimen/post_information_text_size" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/tvDetail"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/information"
             android:padding="16dp"
             android:text="This is a description This is a description" />
     </RelativeLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="16dp"
+        android:textSize="@dimen/text_size_medimum"
         android:drawableLeft="@drawable/ic_comment"
-        android:layout_gravity="right"
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/ic_comment"
         android:gravity="center"
         android:onClick="onCommentClick"
-        android:layout_margin="16dp"
-        android:text="Comment"/>
+        android:text="@string/comment"
+        android:textColor="@color/textview_comment" />
 </LinearLayout>

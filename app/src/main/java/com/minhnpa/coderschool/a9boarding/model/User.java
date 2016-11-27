@@ -12,6 +12,7 @@ public class User {
     private String userId;
     private UserInformation userInformation;
     private boolean verified;
+    private String gender;
 
     public User() {
         userInformation = new UserInformation();
@@ -88,5 +89,13 @@ public class User {
 
     public void setVerified(boolean verified) {
         this.verified = verified;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

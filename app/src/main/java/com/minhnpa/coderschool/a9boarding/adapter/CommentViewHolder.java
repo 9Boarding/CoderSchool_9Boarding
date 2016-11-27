@@ -9,6 +9,7 @@ import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.model.Comment;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CommentViewHolder extends RecyclerView.ViewHolder {
@@ -27,6 +28,7 @@ public class CommentViewHolder extends RecyclerView.ViewHolder {
     public CommentViewHolder(View itemView) {
         super(itemView);
         this.itemView = itemView;
+        ButterKnife.bind(itemView);
     }
 
     public void bindComment(Comment comment) {

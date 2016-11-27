@@ -1,13 +1,10 @@
 package com.minhnpa.coderschool.a9boarding.activity;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +13,7 @@ import android.view.MenuItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.minhnpa.coderschool.a9boarding.R;
+import com.minhnpa.coderschool.a9boarding.fragment.ProfileFragment;
 import com.minhnpa.coderschool.a9boarding.fragment.main.BookmarkFragment;
 import com.minhnpa.coderschool.a9boarding.fragment.main.HomeFragment;
 import com.minhnpa.coderschool.a9boarding.fragment.main.NotificationFragment;
@@ -34,8 +32,11 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     @BindView(R.id.bottom_nav)
     AHBottomNavigation buttomNav;
+
     @BindView(R.id.navMenu)
     NavigationView navView;
+
+
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
     private ActionBarDrawerToggle drawerToggle;
     private Fragment fragment = null;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        setupNavigationView();
+//        setupNavigationView();
         setupBottomtabs();
         setOnClick();
     }
@@ -57,17 +58,17 @@ public class MainActivity extends AppCompatActivity {
 //        bottomBar.onSaveInstanceState(outState);
     }
 
-    @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        drawerToggle.syncState();
-    }
+//    @Override
+//    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+//        super.onPostCreate(savedInstanceState);
+//        drawerToggle.syncState();
+//    }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig);
-    }
+//    @Override
+//    public void onConfigurationChanged(Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//        drawerToggle.onConfigurationChanged(newConfig);
+//    }
 
     @Override
     protected void onResume() {
@@ -131,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
                         fragmentClass = BookmarkFragment.class;
                         break;
                     case 3:
-                        drawerLayout.openDrawer(GravityCompat.END);
+//                        drawerLayout.openDrawer(GravityCompat.END);
+                        fragmentClass = ProfileFragment.class;
                         break;
                     default:
 //                        fragmentClass = HomeFragment.class;
@@ -155,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         AHBottomNavigationItem home = new AHBottomNavigationItem(R.string.tab_home, R.drawable.ic_tab_home, R.color.white);
         AHBottomNavigationItem noti = new AHBottomNavigationItem(R.string.tab_notification, R.drawable.ic_tab_notification, R.color.white);
         AHBottomNavigationItem bookmark = new AHBottomNavigationItem(R.string.tab_bookmark, R.drawable.ic_bookmark, R.color.white);
-        AHBottomNavigationItem menu = new AHBottomNavigationItem(R.string.tab_ic_nav, R.drawable.ic_tab_nav, R.color.white);
+        AHBottomNavigationItem menu = new AHBottomNavigationItem(R.string.tab_profile, R.drawable.ic_profile, R.color.white);
 
         bottomNavigationItems.add(home);
         bottomNavigationItems.add(noti);

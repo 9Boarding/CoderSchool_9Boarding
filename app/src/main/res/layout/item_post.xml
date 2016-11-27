@@ -4,29 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:background="@color/background_post_color"
+    android:orientation="vertical"
+    android:paddingBottom="12dp">
 
-    <LinearLayout
-        android:id="@+id/lnHeaderItem"
+    <RelativeLayout
+        android:id="@+id/rlHeaderItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/padding_post_item"
-        android:paddingRight="@dimen/padding_post_item">
+        android:background="@color/white"
+        android:padding="@dimen/padding_post_header">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgAvatar"
+            android:id="@+id/civProfile"
             android:layout_width="@dimen/size_avatar_post_item"
             android:layout_height="@dimen/size_avatar_post_item"
-            android:layout_marginRight="@dimen/margin_between_item"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:src="@drawable/ic_avatar_tmp"
             app:civ_border_width="1dp" />
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_between_item"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/civProfile"
+            android:layout_toRightOf="@+id/civProfile"
             android:orientation="vertical">
 
             <TextView
@@ -34,22 +38,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
+                android:textStyle="bold"
                 tools:text="Dang Fiztssi" />
 
             <TextView
-                android:id="@+id/tvLocation"
+                android:id="@+id/tvTimeStamp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="TB Dis TP HCM" />
+                tools:text="1h ago" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvTimeStamp"
+        <ImageButton
+            android:id="@+id/imbtnBookmark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="1h ago" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@null"
+            android:src="@drawable/ic_bookmark" />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/imbtnShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/imbtnBookmark"
+            android:layout_toStartOf="@id/imbtnBookmark"
+            android:background="@null"
+            android:src="@drawable/ic_share" />
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/ivPhoto"
@@ -57,58 +77,50 @@
         android:layout_height="200dp"
         android:layout_marginBottom="@dimen/margin_between_item"
         android:layout_marginTop="@dimen/margin_between_item"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/tvPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/margin_between_item"
-        android:layout_marginTop="@dimen/margin_between_item"
-        android:background="@drawable/background_price"
-        android:paddingBottom="8dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="8dp"
-        android:textColor="@android:color/white"
-        tools:text="50$ per month" />
-
-    <LinearLayout
-
-        android:id="@+id/lnControlButtons"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btnComment"
-            android:layout_width="@dimen/size_buttons_control"
-            android:layout_height="@dimen/size_buttons_control"
-            android:layout_margin="@dimen/margin_between_buttons_control"
-            android:background="@drawable/ic_comment" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sample_background"
+            android:visibility="gone" />
 
-        <Button
-            android:id="@+id/btnShare"
-            android:layout_width="@dimen/size_buttons_control"
-            android:layout_height="@dimen/size_buttons_control"
-            android:layout_margin="@dimen/margin_between_buttons_control"
-            android:background="@drawable/ic_share" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvPhotos"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
 
-        <Button
-            android:id="@+id/btnBookmark"
-            android:layout_width="@dimen/size_buttons_control"
-            android:layout_height="@dimen/size_buttons_control"
-            android:layout_margin="@dimen/margin_between_buttons_control"
-            android:background="@drawable/ic_bookmark" />
+        <RelativeLayout
+            android:id="@+id/rlPostInfor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:background="@drawable/background_post_infor"
+            android:padding="16dp">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                tools:text="50$ per month" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="8dp"
-        android:background="@android:color/darker_gray" />
-
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvPrice"
+                android:textColor="@android:color/white"
+                tools:text="1100 Ly Thuong Kiet, Phuong 10, TP.HCM" />
+        </RelativeLayout>
+    </FrameLayout>
 </LinearLayout>

@@ -16,5 +16,10 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    
+    <!--Item Post-->
+    <color name="background_control_bar">#48000000</color>
+    <color name="textview_comment">#4e5665</color>
+    <color name="background_post_color">#dcdee3</color>
 </resources>
 

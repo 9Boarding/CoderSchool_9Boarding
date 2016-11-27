@@ -1,8 +1,6 @@
 package com.minhnpa.coderschool.a9boarding.presenter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -24,10 +22,7 @@ public class HomePresenter {
 
     public HomePresenter(Context context) {
         mContext = context;
-
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-        Log.e(TAG, "database " + mDatabaseReference.child("posts").getRef().getDatabase());
-
         setUpFirebaseAdapter();
     }
 
@@ -37,16 +32,9 @@ public class HomePresenter {
             @Override
             protected void populateViewHolder(PostViewHolder viewHolder, Post model, int position) {
                 viewHolder.bindPost(model);
+//                mFirebaseAdapter.notifyDataSetChanged();
             }
         };
-
-        mFirebaseAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-            @Override
-            public void onItemRangeInserted(int positionStart, int itemCount) {
-                super.onItemRangeInserted(positionStart, itemCount);
-                int sum = mFirebaseAdapter.getItemCount();
-            }
-        });
     }
 
     public FirebaseRecyclerAdapter getAdapter() {

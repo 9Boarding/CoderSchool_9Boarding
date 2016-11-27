@@ -42,6 +42,9 @@ public class UserInformation {
         this.email.addAll(email);
     }
 
+    public void addEmail(String email){
+        this.email.add(email);
+    }
     public String getName() {
         return name;
     }
