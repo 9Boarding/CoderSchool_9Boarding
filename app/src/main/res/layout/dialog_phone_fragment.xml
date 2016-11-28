@@ -6,7 +6,7 @@
               android:layout_margin="16dp">
 
     <EditText
-        android:id="@+id/et_phone"
+        android:id="@+id/edtPhone"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="0987123123"

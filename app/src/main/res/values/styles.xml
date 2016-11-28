@@ -8,10 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="mainTheme" parent="AppTheme">
-        <item name="android:windowTranslucentNavigation">false</item>
-    </style>
-
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
@@ -20,10 +16,26 @@
     <style name="AppTheme.NoActionBar.NoTranslucent" parent="AppTheme.NoActionBar"></style>
 
     <style name="TextViewProfileStyle">
-        <item name="android:textSize">20sp</item>
+        <item name="android:background">@color/white</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
-        <item name="android:padding">24dp</item>
+        <item name="android:drawablePadding">24dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">12dp</item>
     </style>
 
+    <style name="TextViewPost">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 
+    <style name="EditTextPost">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">3</item>
+        <item name="android:maxLines">1</item>
+    </style>
 </resources>

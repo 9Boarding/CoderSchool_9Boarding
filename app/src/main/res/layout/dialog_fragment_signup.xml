@@ -34,10 +34,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_email"
+                    android:id="@+id/edtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/promt_emails"
+                    android:hint="@string/email"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
 
@@ -47,10 +47,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_password"
+                    android:id="@+id/edtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/promt_password"
+                    android:hint="@string/password"
                     android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
 
@@ -60,16 +60,16 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_re_password"
+                    android:id="@+id/edtConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="@string/re_type_password"
+                    android:hint="@string/confirm_your_password"
                     android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_signup"
+                android:id="@+id/btnSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/login_button_orange"

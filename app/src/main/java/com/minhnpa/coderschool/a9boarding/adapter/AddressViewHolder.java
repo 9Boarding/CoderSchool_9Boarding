@@ -1,6 +1,5 @@
 package com.minhnpa.coderschool.a9boarding.adapter;
 
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -22,13 +21,11 @@ public class AddressViewHolder extends RecyclerView.ViewHolder {
 
 	@BindView(R.id.tv_delete)
 	TextView tvDelete;
-	@BindView(R.id.tv_address)
+	@BindView(R.id.tvAddress)
 	TextView tvAddress;
 
 	public AddressViewHolder(View itemView) {
 		super(itemView);
 		ButterKnife.bind(this, itemView);
 	}
-
-
 }

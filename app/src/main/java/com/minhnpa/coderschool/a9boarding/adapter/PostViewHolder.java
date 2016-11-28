@@ -5,11 +5,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.model.Post;
 import com.minhnpa.coderschool.a9boarding.utils.AppUtils;
@@ -28,14 +26,14 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
     public static final String TAG = PostViewHolder.class.getSimpleName();
 
-    @BindView(R.id.imgAvatar)
-    public CircleImageView imgAvatar;
+    @BindView(R.id.civProfile)
+    public CircleImageView civProfile;
 
     @BindView(R.id.tvUserName)
     public TextView tvUserName;
 
-    @BindView(R.id.tvLocation)
-    public TextView tvLocation;
+    @BindView(R.id.tvAddress)
+    public TextView tvAddress;
 
     @BindView(R.id.tvTimeStamp)
     public TextView tvTimeStamp;
@@ -43,11 +41,11 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tvPrice)
     public TextView tvPrice;
 
-    @BindView(R.id.btnShare)
-    public Button btnShare;
+    @BindView(R.id.imbtnShare)
+    public ImageButton imbtnShare;
 
-    @BindView(R.id.btnBookmark)
-    public Button btnBookmark;
+    @BindView(R.id.imbtnBookmark)
+    public ImageButton imbtnBookmark;
 
     @BindView(R.id.rvPhotos)
     RecyclerView rvPhotos;
@@ -71,7 +69,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         //TODO: add attribute Username for Post
 
-        if(post.getPostAt() != null) {
+        if (post.getPostAt() != null) {
             tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getPostAt()));
         }
 //        tvLocation.setText(post.getPostInformation().getAddress());
@@ -83,8 +81,8 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    private void bindPhotos(List<String> photoList){
-        RecyclerView.LayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false);
+    private void bindPhotos(List<String> photoList) {
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         rvPhotos.setItemAnimator(new DefaultItemAnimator());
         rvPhotos.setLayoutManager(manager);
         rvPhotos.setAdapter(new PhotosPostAdapter(photoList));

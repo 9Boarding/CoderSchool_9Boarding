@@ -7,7 +7,7 @@
     <dimen name="small_padding">8dp</dimen>
 
     <!--item post-->
-    <dimen name="padding_post_item">8dp</dimen>
+    <dimen name="padding_post_header">8dp</dimen>
     <dimen name="size_avatar_post_item">36dp</dimen>
     <dimen name="text_size_medimum">16sp</dimen>
     <dimen name="padding_small">8dp</dimen>
@@ -20,5 +20,6 @@
     <dimen name="margin_between_buttons_control">16dp</dimen>
     <dimen name="text_size_medium_2">24sp</dimen>
     <dimen name="comment_profile_pic_size">64dp</dimen>
+    <dimen name="post_information_text_size">16sp</dimen>
     <dimen name="padding_notification_item">8dp</dimen>
 </resources>

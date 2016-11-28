@@ -38,7 +38,7 @@ public class AddressActivity extends AppCompatActivity{
 	LinearLayout llAddAddress;
 	@BindView(R.id.tv_add)
 	TextView tvAdd;
-	@BindView(R.id.et_address)
+	@BindView(R.id.edtAddress)
 	EditText etAddress;
 
 	@BindView(R.id.toolbar)

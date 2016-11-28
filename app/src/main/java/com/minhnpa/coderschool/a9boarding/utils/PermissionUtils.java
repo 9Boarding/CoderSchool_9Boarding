@@ -6,10 +6,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 
-/**
- * Created by nongdenchet on 11/4/16.
- */
-
 public class PermissionUtils {
     public static final int REQUEST_LOCATION = 1000;
     public static final int REQUEST_CAMERA = 2000;

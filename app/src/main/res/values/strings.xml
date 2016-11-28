@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">9Boarding</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="about_us">About us</string>
+    <string name="powered_by_firebase">powered by Firebase</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -11,20 +13,17 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="promt_emails">Emails</string>
-    <string name="promt_password">Password</string>
-    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
     <string name="login_with_google">Login with Google</string>
-    <string name="don_t_have_account_signup_now">Don\'t have account? Signup Now</string>
+    <string name="sign_up_now">Don\'t have account? Sign up Now</string>
     <string name="sign_up">Sign Up</string>
     <string name="promt_name">Name</string>
-    <string name="re_type_password">Re-userType Password</string>
+    <string name="confirm_your_password">Confirm your password</string>
     <string name="err_name_empty">Name could not be empty</string>
     <string name="err_pass_leght">Password should at least 6 letters</string>
     <string name="err_email_invalid">Email is empty or invalid</string>
@@ -56,8 +55,17 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="others">Others</string>
-    <string name="signout_question">Signout?</string>
-    <string name="about_us">About us</string>
+    <string name="comment">Comment</string>
+    <string name="sign_out_question">Signout?</string>
     <string name="fill_your_address">Fill your address</string>
+    <string name="settings">Settings</string>
+    <string name="feedback_us">Feedback us</string>
+    <string name="hint_description">Description…</string>
+    <string name="hint_price">1.200.000</string>
+    <string name="tv_price">Price:</string>
+    <string name="tv_area">Area:</string>
+    <string name="tv_address">Address:</string>
+    <string name="hint_address">384 Hoang Dieu, Q.4, TP.HCM</string>
+    <string name="tv_phone">Phone:</string>
 
 </resources>
