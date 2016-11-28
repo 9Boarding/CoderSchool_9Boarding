@@ -37,29 +37,29 @@ import butterknife.ButterKnife;
  */
 
 public class ViewAndEditProfile extends AppCompatActivity implements GenderDialogFragment.GenderDialogResultBack,
-        DatePickerDialogFragment.OnDatePickerListener,
-        PhoneDialogFragment.OnPhoneSet {
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.collapsing_tool_bar)
-    CollapsingToolbarLayout collapsingToolbar;
-    @BindView(R.id.tv_user_name)
-    TextView tvUserName;
-    @BindView(R.id.tv_gender)
-    TextView tvGender;
-    @BindView(R.id.tv_birth_date)
-    TextView tvBirthDate;
-    @BindView(R.id.tv_phone)
-    TextView tvPhone;
-    @BindView(R.id.tvAddress)
-    TextView tvAddress;
-    @BindView(R.id.iv_cover)
-    ImageView ivCover;
+		DatePickerDialogFragment.OnDatePickerListener,
+		PhoneDialogFragment.OnPhoneSet{
+	@BindView(R.id.toolbar)
+	Toolbar toolbar;
+	@BindView(R.id.collapsing_tool_bar)
+	CollapsingToolbarLayout collapsingToolbar;
+	@BindView(R.id.tv_user_name)
+	TextView tvUserName;
+	@BindView(R.id.tv_gender)
+	TextView tvGender;
+	@BindView(R.id.tv_birth_date)
+	TextView tvBirthDate;
+	@BindView(R.id.tv_phone)
+	TextView tvPhone;
+	@BindView(R.id.tvAddress)
+	TextView tvAddress;
+	@BindView(R.id.iv_cover)
+	ImageView ivCover;
 
-    private DatabaseReference mDatabaseReference;
-    private User mUser;
-    private String mUserID;
-    private boolean isChanged = false;
+	private DatabaseReference mDatabaseReference;
+	private User mUser;
+	private String mUserID;
+	private boolean isChanged = false;
 
     public static Intent newIntent(Context context) {
         Intent intent = new Intent(context, ViewAndEditProfile.class);
@@ -75,43 +75,68 @@ public class ViewAndEditProfile extends AppCompatActivity implements GenderDialo
 //		setSupportActionBar(toolbar);
         collapsingToolbar.setTitle("Profile");
 
-        tvGender.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_chevron_right, 0);
-        tvBirthDate.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_chevron_right, 0);
-        tvPhone.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_chevron_right, 0);
-        tvAddress.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_chevron_right, 0);
+		tvGender.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_chevron_right,0);
+		tvBirthDate.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_chevron_right,0);
+		tvPhone.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_chevron_right,0);
+		tvAddress.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_chevron_right,0);
 
-        isChanged = false;
-        setOnClick();
-        setupDatabase();
-        setupUI();
-    }
+		isChanged = false;
+		setOnClick();
+		setupDatabase();
+		setupUI();
+	}
 
-    @Override
-    public void onBackPressed() {
-        if (isChanged) {
-            updateProfile();
-        }
-        super.onBackPressed();
-    }
+	@Override
+	public void onBackPressed() {
+		if (isChanged){
+			updateProfile();
+		}
+		super.onBackPressed();
+	}
 
-    @Override
-    public void onGenderData(String gender) {
-        tvGender.setText(gender);
-        tvGender.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-        isChanged = true;
-    }
+	@Override
+	public void onGenderData(String gender) {
+		tvGender.setText(gender);
+		tvGender.setCompoundDrawablesWithIntrinsicBounds(0,0,0,0);
+		isChanged = true;
+	}
 
-    /**
-     * Setup onClick function for all widgets
-     */
-    private void setOnClick() {
-        // for TextView Gender
-        tvGender.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DialogUtils.showGenderDialog(getSupportFragmentManager());
-            }
-        });
+	/**
+	 * Setup onClick function for all widgets
+	 */
+	private void setOnClick() {
+		// for TextView Gender
+		tvGender.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				DialogUtils.showGenderDialog(getSupportFragmentManager());
+			}
+		});
+
+		// For textView birth date
+		tvBirthDate.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				DialogUtils.showDatePickerDialog(getSupportFragmentManager());
+			}
+		});
+
+		// For textView phone
+		tvPhone.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				DialogUtils.showPhoneDialog(getSupportFragmentManager());
+			}
+		});
+
+		// For textview address
+		tvAddress.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(AddressActivity.newIntent(ViewAndEditProfile.this, mUser));
+			}
+		});
+
 
         // For textView birth date
         tvBirthDate.setOnClickListener(new View.OnClickListener() {
@@ -138,46 +163,27 @@ public class ViewAndEditProfile extends AppCompatActivity implements GenderDialo
         });
     }
 
-    private void setupDatabase() {
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-        mUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mDatabaseReference.child(DbConstant.CHILD_USER)
-                .child(mUserID)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        mUser = dataSnapshot.getValue(User.class);
-                        setupUI();
-                    }
+	private void setupUI(){
+		if (mUser != null){
+			setText(tvGender, mUser.getGender());
+			setText(tvBirthDate, mUser.getUserInformation().getBirthDate());
+			setText(tvPhone, mUser.getUserInformation().getPhone().get(0));
+			Glide.with(this)
+					.load(mUser.getProfilePicUrl())
+					.into(ivCover);
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+			if (!mUser.getUserInformation().getAddresses().isEmpty()){
+				setText(tvAddress, mUser.getUserInformation().getAddresses().get(0));
+			}else {
+				setText(tvAddress, "");
+			}
+		}
+	}
 
-                    }
-                });
-    }
-
-    private void setupUI() {
-        if (mUser != null) {
-            setText(tvGender, mUser.getGender());
-            setText(tvBirthDate, mUser.getUserInformation().getBirthDate());
-            setText(tvPhone, mUser.getUserInformation().getPhone().get(0));
-            Glide.with(this)
-                    .load(mUser.getProfilePicUrl())
-                    .into(ivCover);
-
-            if (!mUser.getUserInformation().getAddresses().isEmpty()) {
-                setText(tvAddress, mUser.getUserInformation().getAddresses().get(0));
-            } else {
-                setText(tvAddress, "");
-            }
-        }
-    }
-
-    /**
-     * Read the data and update if any changed
-     */
-    private void updateProfile() {
+	/**
+	 * Read the data and update if any changed
+	 */
+	private void updateProfile() {
         String gender = tvGender.getText().toString();
         String birthdate = tvBirthDate.getText().toString();
         String phone = tvPhone.getText().toString();
@@ -205,29 +211,49 @@ public class ViewAndEditProfile extends AppCompatActivity implements GenderDialo
                 .child(mUserID)
                 .setValue(mUser);
         FireBaseUtils.updateUserDisplay(name, mUser.getProfilePicUrl());
-
     }
 
+//        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
-    private void setText(TextView view, String text) {
-        if (!((text == null) || text.isEmpty())) {
-            view.setText(text);
-            view.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-        }
-    }
 
-    @Override
-    public void onDateSet(int year, int month, int dayOfMonth) {
-        String date = Integer.toString(year) + "/" + Integer.toString(month) + "/" +
-                Integer.toString(dayOfMonth);
-        tvBirthDate.setText(date);
-        isChanged = true;
-    }
+	private void setText(TextView view, String text){
+		if (!((text == null) || text.isEmpty())){
+			view.setText(text);
+			view.setCompoundDrawablesWithIntrinsicBounds(0,0,0,0);
+		}
+	}
 
-    @Override
-    public void onPhoneResult(String phone) {
-        tvPhone.setText(phone);
-        isChanged = true;
+	@Override
+	public void onDateSet(int year, int month, int dayOfMonth) {
+		String date = Integer.toString(year) + "/" + Integer.toString(month) + "/" +
+				      Integer.toString(dayOfMonth);
+		tvBirthDate.setText(date);
+		isChanged = true;
+	}
+
+	@Override
+	public void onPhoneResult(String phone) {
+		tvPhone.setText(phone);
+		isChanged = true;
+	}
+
+    private void setupDatabase() {
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+        mUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mDatabaseReference.child(DbConstant.CHILD_USER)
+                .child(mUserID)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        mUser = dataSnapshot.getValue(User.class);
+                        setupUI();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
     }
 }
 
