@@ -1,6 +1,7 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,6 +15,12 @@ public class User implements Serializable{
     private UserInformation userInformation;
     private boolean verified;
     private String gender;
+
+    public static User newInstance(DataSnapshot dataSnapshot){
+        User instance = new User();
+
+        return instance;
+    }
 
     public User() {
         userInformation = new UserInformation();
