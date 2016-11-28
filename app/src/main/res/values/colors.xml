@@ -20,6 +20,6 @@
     <!--Item Post-->
     <color name="background_control_bar">#48000000</color>
     <color name="textview_comment">#4e5665</color>
-    <color name="background_post_color">#dcdee3</color>
+    <color name="background_app_color">#dcdee3</color>
 </resources>
 

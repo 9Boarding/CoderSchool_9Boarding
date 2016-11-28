@@ -53,19 +53,17 @@ public class CreatePostFragment extends Fragment {
     private static final int TAKE_PICTURE = 1000;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.et_price)
-    EditText etPrice;
-    @BindView(R.id.et_address)
-    EditText etAddress;
-    @BindView(R.id.et_num_m2)
-    EditText etNumM2;
-    @BindView(R.id.et_phone)
-    EditText etPhone;
-    @BindView(R.id.et_description)
-    EditText etDescription;
-    @BindView(R.id.iv_place)
-    ImageView ivPlace;
-    @BindView(R.id.iv_camera)
+    @BindView(R.id.edtPrice)
+    EditText edtPrice;
+    @BindView(R.id.edtAddress)
+    EditText edtAddress;
+    @BindView(R.id.edtArea)
+    EditText edtArea;
+    @BindView(R.id.edtPhone)
+    EditText edtPhone;
+    @BindView(R.id.edtDescription)
+    EditText edtDescription;
+    @BindView(R.id.ivCamera)
     ImageView ivCamera;
 
     private DatabaseReference mDatabaseReference;
@@ -158,11 +156,11 @@ public class CreatePostFragment extends Fragment {
         User user = User.fromFirebaseUser(FirebaseAuth.getInstance().getCurrentUser());
         PostInformation postInformation = new PostInformation();
 
-        postInformation.setAddress(etAddress.getText().toString());
+        postInformation.setAddress(edtAddress.getText().toString());
         //postInformation.setArea(etArea.getText().toString());
-        postInformation.setDescription(etDescription.getText().toString());
-        postInformation.setPhone(etPhone.getText().toString()); // Change to spinner - select phone number list from user
-        postInformation.setPrice(etPrice.getText().toString());
+        postInformation.setDescription(edtDescription.getText().toString());
+        postInformation.setPhone(edtPhone.getText().toString()); // Change to spinner - select phone number list from user
+        postInformation.setPrice(edtPrice.getText().toString());
         mPost.setPostInformation(postInformation);
         mPost.setPostAt(calendar.getTime().toString());
         mPost.setUser(user);
@@ -171,16 +169,16 @@ public class CreatePostFragment extends Fragment {
     }
 
     private boolean validateInput() {
-        if (etPrice.getText().toString().trim().isEmpty()) {
+        if (edtPrice.getText().toString().trim().isEmpty()) {
             return false;
         }
-        if (etAddress.getText().toString().isEmpty()) {
+        if (edtAddress.getText().toString().isEmpty()) {
             return false;
         }
-        if (etPhone.getText().toString().trim().isEmpty()) {
+        if (edtPhone.getText().toString().trim().isEmpty()) {
             return false;
         }
-        if (etNumM2.getText().toString().trim().isEmpty()) {
+        if (edtArea.getText().toString().trim().isEmpty()) {
             return false;
         }
         return true;

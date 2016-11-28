@@ -1,13 +1,15 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserInformation {
+public class UserInformation implements Serializable {
     private List<String> addresses;
     private List<String> email;
     private String name;
     private List<String> phone;
+    private String birthDate;
 
     public UserInformation() {
         addresses = new ArrayList<>();
@@ -17,7 +19,6 @@ public class UserInformation {
 
     public UserInformation(List<String> addresses, List<String> email, String name, List<String> phone) {
         this();
-
         this.addresses.addAll(addresses);
         this.email.addAll(email);
         this.name = name;
@@ -33,6 +34,12 @@ public class UserInformation {
         this.addresses.addAll(addresses);
     }
 
+    public void addAddress(String address) {
+        if (!email.isEmpty()){
+            this.addresses.add(address);
+        }
+    }
+
     public List<String> getEmail() {
         return email;
     }
@@ -43,7 +50,9 @@ public class UserInformation {
     }
 
     public void addEmail(String email){
-        this.email.add(email);
+        if (!email.isEmpty()){
+            this.email.add(email);
+        }
     }
     public String getName() {
         return name;
@@ -63,6 +72,18 @@ public class UserInformation {
     }
 
     public void addPhone(String strPhone) {
-        this.phone.add(strPhone);
+        if (!email.isEmpty()){
+            this.phone.add(strPhone);
+        }
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        if (!email.isEmpty()){
+            this.birthDate = birthDate;
+        }
     }
 }

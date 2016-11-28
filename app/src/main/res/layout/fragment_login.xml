@@ -2,99 +2,123 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ACCBD0"
+    android:background="@drawable/background_login"
     android:fitsSystemWindows="true"
     tools:context="com.minhnpa.coderschool.a9boarding.fragment.LoginFragment">
 
-
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:paddingTop="48dp">
+            android:layout_marginTop="32dp">
 
             <ImageView
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_gravity="center_horizontal"
+                android:id="@+id/ivIconApp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
                 android:src="@drawable/login_cover_image" />
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/til_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/et_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/promt_emails" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/til_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/et_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:hint="@string/promt_password"
-                    android:inputType="textPassword" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#20c4c8"
-                android:text="@string/login" />
-
             <TextView
-                android:id="@+id/tv_forget_password"
+                android:id="@+id/tvSlogan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:text="@string/forget_password"
-                android:textColor="#070707"
-                android:textSize="16sp" />
+                android:layout_below="@+id/ivIconApp"
+                android:layout_centerHorizontal="true"
+                android:text="Best app for finding a house"
+                android:textColor="@color/white" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="@dimen/medium_padding"
-                android:text="Or"
-                android:textColor="#90000000"
-                android:textSize="20sp" />
-
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_login_with_google"
+            <EditText
+                android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#20c4c8"
-                android:text="@string/login_with_google" />
+                android:layout_below="@+id/tvSlogan"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="60dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edtEmail"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+
+            <Button
+                android:id="@+id/btnSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_below="@+id/edtPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:background="@color/colorAccent"
+                android:text="@string/sign_in"
+                android:textColor="@color/white" />
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btnSignInWithGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_below="@+id/btnSignIn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:visibility="visible" />
 
             <TextView
-                android:id="@+id/tv_sign_up"
+                android:id="@+id/tvSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="72dp"
-                android:layout_marginTop="24dp"
+                android:layout_below="@+id/btnSignInWithGoogle"
+                android:layout_centerHorizontal="true"
                 android:clickable="true"
-                android:text="@string/don_t_have_account_signup_now"
-                android:textColor="@android:color/black"
+                android:text="@string/sign_up_now"
+                android:textColor="@android:color/white"
                 android:textSize="16sp" />
-        </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvFirebase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnSignInWithGoogle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="56dp"
+                android:text="@string/powered_by_firebase"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtv_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvFirebase"
+                android:layout_centerHorizontal="true"
+                android:clickable="true"
+                android:text="@string/about_us"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+        </RelativeLayout>
 
         <ProgressBar
             android:id="@+id/pbLoading"
@@ -103,5 +127,4 @@
             android:layout_gravity="center_horizontal|center_vertical"
             android:visibility="gone" />
     </FrameLayout>
-
 </ScrollView>

@@ -126,12 +126,12 @@
 
         <TextView
             android:id="@+id/tvDetail"
-            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/information"
             android:padding="16dp"
-            android:text="This is a description This is a description" />
+            android:text="This is a description This is a description"
+            android:textColor="@color/black" />
     </RelativeLayout>
 
     <TextView
@@ -139,12 +139,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_margin="16dp"
-        android:textSize="@dimen/text_size_medimum"
         android:drawableLeft="@drawable/ic_comment"
         android:drawablePadding="8dp"
         android:drawableStart="@drawable/ic_comment"
         android:gravity="center"
         android:onClick="onCommentClick"
         android:text="@string/comment"
-        android:textColor="@color/textview_comment" />
+        android:textColor="@color/textview_comment"
+        android:textSize="@dimen/text_size_medimum" />
 </LinearLayout>
