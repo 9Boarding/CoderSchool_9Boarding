@@ -1,22 +1,58 @@
 package com.minhnpa.coderschool.a9boarding.model;
 
+import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+import retrofit2.http.POST;
 
 public class Post {
-    @SerializedName("bookmarks_count")
+    //Post instance key
+    public static final String bookMarkCountKey = "bookmarks_count";
+    public static final String commentCountKey = "comments_count";
+    public static final String imageKey = "images";
+    public static final String postAtKey = "post_at";
+    public static final String postIdKet = "post_id";
+    public static final String postInformationKey = "post_information";
+    public static final String userKey = "user";
+
     private int bookmarksCount;
-
-    @SerializedName("comments_count")
     private int commentsCount;
-
     private List<String> images;
     private PostInformation postInformation;
     private String post_at;
     private String postId;
     private User user;
+
+    public static Post newInstance(DataSnapshot dataSnapshot){
+        Post instance =  new Post();
+
+        Map<String, Objects> post = ((Map<String, Objects>) dataSnapshot.getValue());
+        instance.setBookmarksCount(Integer.parseInt(String.valueOf(post.get(bookMarkCountKey))));
+        instance.setCommentsCount(Integer.parseInt(String.valueOf(post.get(commentCountKey))));
+
+        for (DataSnapshot d : dataSnapshot.getChildren()) {
+            if (d.getKey().equalsIgnoreCase(imageKey)) {
+                Iterator<DataSnapshot> tmp = d.getChildren().iterator();
+                while (tmp.hasNext()) {
+                    String url = String.valueOf(tmp.next().getValue());
+                }
+            }
+        }
+
+
+//        List<String> i = new ArrayList<>(imagesObj);
+//        Log.d("images", "newInstance: " + i.size());
+        return instance;
+    }
 
     public Post() {
         user = new User();
