@@ -136,7 +136,7 @@ public class ViewAndEditProfile extends AppCompatActivity implements GenderDialo
 				startActivity(AddressActivity.newIntent(ViewAndEditProfile.this, mUser));
 			}
 		});
-	}
+
 
         // For textView birth date
         tvBirthDate.setOnClickListener(new View.OnClickListener() {
@@ -184,35 +184,36 @@ public class ViewAndEditProfile extends AppCompatActivity implements GenderDialo
 	 * Read the data and update if any changed
 	 */
 	private void updateProfile() {
-		String gender = tvGender.getText().toString();
-		String birthdate = tvBirthDate.getText().toString();
-		String phone = tvPhone.getText().toString();
-		String address = tvAddress.getText().toString();
-		String name = tvUserName.getText().toString();
-
-		String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-
-		UserInformation userInformation = new UserInformation();
-		userInformation.addEmail(email);
-		userInformation.addPhone(phone);
-		userInformation.addAddress(address);
-		userInformation.setName(name);
-		userInformation.setBirthDate(birthdate);
-
-		if (mUser == null){ // User is not existed
-			mUser = new User();
-			mUser.setUserId(mUserID);
-		}
-
-		mUser.setGender(gender);
-		mUser.setUserInformation(userInformation);
-
-		mDatabaseReference.child(DbConstant.CHILD_USER)
-				.child(mUserID)
-				.setValue(mUser);
-		FireBaseUtils.updateUserDisplay(name, mUser.getProfilePicUrl());
+        String gender = tvGender.getText().toString();
+        String birthdate = tvBirthDate.getText().toString();
+        String phone = tvPhone.getText().toString();
+        String address = tvAddress.getText().toString();
+        String name = tvUserName.getText().toString();
 
         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        UserInformation userInformation = new UserInformation();
+        userInformation.addEmail(email);
+        userInformation.addPhone(phone);
+        userInformation.addAddress(address);
+        userInformation.setName(name);
+        userInformation.setBirthDate(birthdate);
+
+        if (mUser == null) { // User is not existed
+            mUser = new User();
+            mUser.setUserId(mUserID);
+        }
+
+        mUser.setGender(gender);
+        mUser.setUserInformation(userInformation);
+
+        mDatabaseReference.child(DbConstant.CHILD_USER)
+                .child(mUserID)
+                .setValue(mUser);
+        FireBaseUtils.updateUserDisplay(name, mUser.getProfilePicUrl());
+    }
+
+//        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
 
 	private void setText(TextView view, String text){
@@ -235,5 +236,24 @@ public class ViewAndEditProfile extends AppCompatActivity implements GenderDialo
 		tvPhone.setText(phone);
 		isChanged = true;
 	}
+
+    private void setupDatabase() {
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+        mUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mDatabaseReference.child(DbConstant.CHILD_USER)
+                .child(mUserID)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        mUser = dataSnapshot.getValue(User.class);
+                        setupUI();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+    }
 }
 
