@@ -61,18 +61,19 @@ public class ViewAndEditProfile extends AppCompatActivity implements GenderDialo
 	private String mUserID;
 	private boolean isChanged = false;
 
-	public static Intent newIntent(Context context){
-		Intent intent = new Intent(context, ViewAndEditProfile.class);
-		return intent;
-	}
-	@Override
-	protected void onCreate(@Nullable Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_view_and_edit_profile);
-		ButterKnife.bind(this);
+    public static Intent newIntent(Context context) {
+        Intent intent = new Intent(context, ViewAndEditProfile.class);
+        return intent;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_and_edit_profile);
+        ButterKnife.bind(this);
 
 //		setSupportActionBar(toolbar);
-		collapsingToolbar.setTitle("Profile");
+        collapsingToolbar.setTitle("Profile");
 
 		tvGender.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_chevron_right,0);
 		tvBirthDate.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_chevron_right,0);
@@ -137,24 +138,30 @@ public class ViewAndEditProfile extends AppCompatActivity implements GenderDialo
 		});
 	}
 
-	private void setupDatabase(){
-		mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-		mUserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-		mDatabaseReference.child(DbConstant.CHILD_USER)
-				.child(mUserID)
-				.addValueEventListener(new ValueEventListener() {
-			@Override
-			public void onDataChange(DataSnapshot dataSnapshot) {
-				mUser = dataSnapshot.getValue(User.class);
-				setupUI();
-			}
+        // For textView birth date
+        tvBirthDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogUtils.showDatePickerDialog(getSupportFragmentManager());
+            }
+        });
 
-			@Override
-			public void onCancelled(DatabaseError databaseError) {
+        // For textView phone
+        tvPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogUtils.showPhoneDialog(getSupportFragmentManager());
+            }
+        });
 
-			}
-		});
-	}
+        // For textview address
+        tvAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(AddressActivity.newIntent(ViewAndEditProfile.this, mUser));
+            }
+        });
+    }
 
 	private void setupUI(){
 		if (mUser != null){
@@ -205,7 +212,7 @@ public class ViewAndEditProfile extends AppCompatActivity implements GenderDialo
 				.setValue(mUser);
 		FireBaseUtils.updateUserDisplay(name, mUser.getProfilePicUrl());
 
-	}
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
 
 	private void setText(TextView view, String text){
