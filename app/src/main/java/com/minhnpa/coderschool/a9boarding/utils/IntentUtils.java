@@ -14,17 +14,6 @@ import com.minhnpa.coderschool.a9boarding.activity.ViewAndEditProfile;
  */
 
 public class IntentUtils {
-
-	public static void signin(Context context){
-		Intent intent;
-		intent = LoginActivity.newIntent(context);
-		context.startActivity(intent);
-	}
-
-    public static void startProfileActivity(Context context) {
-        context.startActivity(ProfileActivity.newIntent(context));
-    }
-
     public static void startCreatePostActivity(Context context) {
         if (FireBaseUtils.isAuth()) {
             context.startActivity(CreatePostActivity.newIntent(context));
@@ -33,9 +22,19 @@ public class IntentUtils {
         signin(context);
     }
 
-	public static void signout(){
-		FirebaseAuth.getInstance().signOut();
-	}
+    public static void signin(Context context) {
+        Intent intent;
+        intent = LoginActivity.newIntent(context);
+        context.startActivity(intent);
+    }
+
+    public static void startProfileActivity(Context context) {
+        context.startActivity(ProfileActivity.newIntent(context));
+    }
+
+    public static void signout() {
+        FirebaseAuth.getInstance().signOut();
+    }
 
     public static void startViewAndEditActivity(Context context) {
         context.startActivity(ViewAndEditProfile.newIntent(context));
