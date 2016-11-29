@@ -16,12 +16,12 @@ import retrofit2.http.POST;
 
 public class Post {
     //Post instance key
-    public static final String BOOKMARK_COUNT_KEY = "bookmarks_count";
-    public static final String COMMENT_COUNT_KEY = "comments_count";
+    public static final String BOOKMARK_COUNT_KEY = "bookmarksCount";
+    public static final String COMMENT_COUNT_KEY = "commentsCount";
     public static final String IMAGE_KEY = "images";
-    public static final String POST_AT_KEY = "post_at";
-    public static final String POST_ID_KEY = "post_id";
-    public static final String POST_INFORMATION_KEY = "post_information";
+    public static final String POST_AT_KEY = "postAt";
+    public static final String POST_ID_KEY = "postId";
+    public static final String POST_INFORMATION_KEY = "postInformation";
     public static final String USER_KEY = "user";
 
     private int bookmarksCount;
@@ -36,8 +36,8 @@ public class Post {
         Post instance =  new Post();
 
         Map<String, Objects> post = ((Map<String, Objects>) dataSnapshot.getValue());
-        instance.setBookmarksCount(Integer.parseInt(String.valueOf(post.get(BOOKMARK_COUNT_KEY))));
-        instance.setCommentsCount(Integer.parseInt(String.valueOf(post.get(COMMENT_COUNT_KEY))));
+            instance.setBookmarksCount(Integer.parseInt(String.valueOf(post.get(BOOKMARK_COUNT_KEY) )));
+            instance.setCommentsCount(Integer.parseInt(String.valueOf(post.get(COMMENT_COUNT_KEY))));
         instance.setPostAt(String.valueOf(post.get(POST_AT_KEY)));
         instance.setPostId(String.valueOf(post.get(POST_ID_KEY)));
 
@@ -139,5 +139,9 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public PostInformation getPostInformation() {
+        return postInformation;
     }
 }

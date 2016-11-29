@@ -1,6 +1,7 @@
 package com.minhnpa.coderschool.a9boarding.activity;
 
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -41,13 +42,16 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
     private ActionBarDrawerToggle drawerToggle;
-    private Fragment fragment = null;
+    private Fragment fragment = HomeFragment.newInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.flContainer, fragment).commit();
 
 //        setupNavigationView();
         setupBottomtabs();
@@ -94,12 +98,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void updateNavView() {
-        if (FireBaseUtils.isAuth()) {
-
-        }
-    }
-
     private void selectDrawerItem(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_signin:
@@ -138,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                         fragmentClass = ProfileFragment.class;
                         break;
                     default:
-//                        fragmentClass = HomeFragment.class;
+                        fragmentClass = HomeFragment.class;
                 }
 
                 try {
@@ -153,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
     private void setupBottomtabs() {
@@ -168,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
 
         buttomNav.addItems(bottomNavigationItems);
 
-        buttomNav.setTranslucentNavigationEnabled(true);
 
-        buttomNav.setAccentColor(R.color.black);
+        buttomNav.setAccentColor(Color.parseColor("#F63D2B"));
+        buttomNav.setInactiveColor(Color.parseColor("#747474"));
     }
 }

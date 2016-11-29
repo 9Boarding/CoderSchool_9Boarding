@@ -1,5 +1,7 @@
 package com.minhnpa.coderschool.a9boarding.fragment.main;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +17,8 @@ import android.view.ViewGroup;
 import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.presenter.HomePresenter;
 import com.minhnpa.coderschool.a9boarding.utils.IntentUtils;
+import com.minhnpa.coderschool.a9boarding.utils.camera.CameraHelper;
+import com.minhnpa.coderschool.a9boarding.utils.gallery.GalleryHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,13 +58,10 @@ public class HomeFragment extends Fragment {
 
         presenter = new HomePresenter(getContext());
 
-        if (rvMain != null) {
-            RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
-            rvMain.setLayoutManager(manager);
-            rvMain.setAdapter(presenter.getAdapter());
-        } else {
-            Log.e(TAG, "rv null ");
-        }
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
+        rvMain.setLayoutManager(manager);
+        rvMain.setAdapter(presenter.getAdapter());
+//        rvMain.setNestedScrollingEnabled(false);
 
         return view;
     }
@@ -71,16 +72,7 @@ public class HomeFragment extends Fragment {
         setupListener();
     }
 
-    public void onButtonPressed(Uri uri) {
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
-    private void setupListener(){
-
+    private void setupListener() {
         fabPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,4 +80,6 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+
 }

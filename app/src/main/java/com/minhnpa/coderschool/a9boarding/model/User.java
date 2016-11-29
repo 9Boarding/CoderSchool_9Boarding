@@ -6,8 +6,14 @@ import com.google.firebase.database.DataSnapshot;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class User implements Serializable{
+    //Key User
+    public static final String USER_IMAGE_KEY = "profile_pic_url";
+    public static final String USER_NAME_KEY = "name";
+
     private List<String> bookmarks;
     private String profilePicUrl;
     private int userType;
@@ -18,7 +24,8 @@ public class User implements Serializable{
 
     public static User newInstance(DataSnapshot dataSnapshot){
         User instance = new User();
-
+        Map<String, Objects> user  = ((Map<String, Objects>) dataSnapshot.getValue());
+        instance.setProfilePicUrl(String.valueOf(user.get(USER_IMAGE_KEY)));
         return instance;
     }
 

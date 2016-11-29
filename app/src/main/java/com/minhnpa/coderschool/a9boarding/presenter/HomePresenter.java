@@ -8,7 +8,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.minhnpa.coderschool.a9boarding.adapter.PostItemAdapter;
+import com.minhnpa.coderschool.a9boarding.adapter.ItemPostAdapter;
 import com.minhnpa.coderschool.a9boarding.model.Post;
 
 import java.util.ArrayList;
@@ -22,15 +22,14 @@ public class HomePresenter {
     public static final String TAG = HomePresenter.class.getSimpleName();
 
     private DatabaseReference mDatabaseReference;
-//    private FirebaseRecyclerAdapter<Post, PostItemAdapter> mFirebaseAdapter;
     private Context mContext;
-    private PostItemAdapter adapter;
+    private ItemPostAdapter adapter;
     private List<Post> postList = new ArrayList<>();
 
     public HomePresenter(Context context) {
         mContext = context;
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-        adapter = new PostItemAdapter(postList);
+        adapter = new ItemPostAdapter(context, postList);
         setUpFirebaseAdapter();
     }
 
@@ -52,11 +51,7 @@ public class HomePresenter {
         });
     }
 
-//    public FirebaseRecyclerAdapter getAdapter() {
-//        return this.mFirebaseAdapter;
-//    }
-
-    public PostItemAdapter getAdapter(){
+    public ItemPostAdapter getAdapter(){
         return this.adapter;
     }
 }

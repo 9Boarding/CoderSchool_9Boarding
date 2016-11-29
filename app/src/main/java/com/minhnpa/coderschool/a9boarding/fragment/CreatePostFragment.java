@@ -1,5 +1,6 @@
 package com.minhnpa.coderschool.a9boarding.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -8,6 +9,8 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,10 +33,13 @@ import com.minhnpa.coderschool.a9boarding.model.ImageResponse;
 import com.minhnpa.coderschool.a9boarding.model.Post;
 import com.minhnpa.coderschool.a9boarding.model.PostInformation;
 import com.minhnpa.coderschool.a9boarding.model.User;
+import com.minhnpa.coderschool.a9boarding.presenter.CreatePostPresenter;
 import com.minhnpa.coderschool.a9boarding.utils.BitmapScaler;
 import com.minhnpa.coderschool.a9boarding.utils.FileUtils;
 import com.minhnpa.coderschool.a9boarding.utils.PermissionUtils;
 import com.minhnpa.coderschool.a9boarding.utils.RetrofitUtils;
+import com.minhnpa.coderschool.a9boarding.utils.camera.CameraHelper;
+import com.minhnpa.coderschool.a9boarding.utils.gallery.GalleryHelper;
 
 import java.io.File;
 import java.io.IOException;
@@ -65,16 +71,18 @@ public class CreatePostFragment extends Fragment {
     EditText edtDescription;
     @BindView(R.id.ivCamera)
     ImageView ivCamera;
+    @BindView(R.id.rvImageChose)
+    RecyclerView rvImageChose;
 
     private DatabaseReference mDatabaseReference;
     private String mStoredImageFile;
     private Post mPost;
 
+    CreatePostPresenter presenter;
+
 
     public static CreatePostFragment newInstance() {
-
         Bundle args = new Bundle();
-
         CreatePostFragment fragment = new CreatePostFragment();
         fragment.setArguments(args);
         return fragment;
@@ -97,6 +105,12 @@ public class CreatePostFragment extends Fragment {
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
         appCompatActivity.setSupportActionBar(toolbar);
         appCompatActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+//        presenter = new CreatePostPresenter(this.getActivity());
+
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        rvImageChose.setLayoutManager(manager);
+
 
         // set new toolbar title
 //		appCompatActivity.getSupportActionBar().setTitle(R.string.new_post);
@@ -138,18 +152,18 @@ public class CreatePostFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == getActivity().RESULT_OK) {
-            if (requestCode == TAKE_PICTURE) {
-                takeImage();
-                uploadImage();
-            }
-        }
-
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (resultCode == getActivity().RESULT_OK) {
+//            if (requestCode == TAKE_PICTURE) {
+//                takeImage();
+//                uploadImage();
+//            }
+//        }
+//
+//    }
 
     private Post getInputToModel() {
         Calendar calendar = Calendar.getInstance();
@@ -191,7 +205,8 @@ public class CreatePostFragment extends Fragment {
         ivCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchCamera();
+//                launchCamera();
+//                presenter.choosePhoto();
             }
         });
     }
@@ -245,5 +260,23 @@ public class CreatePostFragment extends Fragment {
                         Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CameraHelper.REQUEST_IMAGE_CAPTURE){
+            if(resultCode == Activity.RESULT_OK)
+                presenter.cameraHelper.onSuccess(data);
+            else
+                presenter.cameraHelper.onFailure(new Exception(new Throwable("Camera capture fail, check CameraHelper class please")));
+
+        }
+        else if(requestCode == GalleryHelper.PICK_IMAGE_REQUEST){
+            if(resultCode == Activity.RESULT_OK)
+                presenter.galleryHelper.onSuccess(data);
+            else
+                presenter.galleryHelper.onFailure(new Exception(new Throwable("Camera capture fail, check GalleryHelper class please")));
+        }
     }
 }

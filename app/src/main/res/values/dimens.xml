@@ -23,4 +23,8 @@
     <dimen name="post_information_text_size">16sp</dimen>
     <dimen name="padding_notification_item">8dp</dimen>
     <dimen name="size_width_image_review">300dp</dimen>
+
+    <!--Create new Post-->
+    <dimen name="size_image_chose">80dp</dimen>
+
 </resources>
