@@ -65,7 +65,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
     public void bindPost(Post post) {
         //TODO: load image avatar, photos
-        tvUserName.setText(post.getUser().getUserInformation().getName());
+        tvUserName.setText(post.getUser().getName());
 
         //TODO: add attribute Username for Post
 
