@@ -37,7 +37,7 @@ public class CommentViewHolder extends RecyclerView.ViewHolder {
                     .load(comment.getUser().getProfilePicUrl())
                     .into(civProfile);
         }
-        tvUserName.setText(comment.getUser().getUserInformation().getName());
+        tvUserName.setText(comment.getUser().getName());
         tvComment.setText(comment.getContent());
     }
 }

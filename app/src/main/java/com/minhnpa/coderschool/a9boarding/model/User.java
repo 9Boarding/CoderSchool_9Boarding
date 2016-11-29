@@ -9,16 +9,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class User implements Serializable{
+public class User implements Serializable {
     //Key User
-    public static final String USER_IMAGE_KEY = "profile_pic_url";
     public static final String USER_NAME_KEY = "name";
+    public static final String USER_IMAGE_KEY = "profile_pic_url";
 
+    private List<String> addresses;
+    private String birthDate;
     private List<String> bookmarks;
+    private List<String> email;
+    private String name;
+    private List<String> phone;
     private String profilePicUrl;
     private int userType;
     private String userId;
-    private UserInformation userInformation;
     private boolean verified;
     private String gender;
 
@@ -30,25 +34,28 @@ public class User implements Serializable{
     }
 
     public User() {
-        userInformation = new UserInformation();
+        addresses = new ArrayList<>();
         bookmarks = new ArrayList<>();
+        email = new ArrayList<>();
+        phone = new ArrayList<>();
     }
 
-    public User(List<String> bookmarks, String profilePicUrl, int userType,
-                UserInformation userInformation, boolean verified) {
+    public User(List<String> bookmarks, String profilePicUrl, int userType, List<String> addresses,
+                List<String> email, String name, List<String> phone, boolean verified) {
         this.bookmarks = bookmarks;
         this.profilePicUrl = profilePicUrl;
         this.userType = userType;
-        this.userInformation = userInformation;
+        this.addresses.addAll(addresses);
+        this.email.addAll(email);
+        this.name = name;
+        this.phone.addAll(phone);
         this.verified = verified;
     }
 
     public static User fromFirebaseUser(FirebaseUser firebaseUser) {
-        UserInformation userInformation = new UserInformation();
         User user = new User();
 
-        userInformation.setName(firebaseUser.getDisplayName());
-        user.setUserInformation(userInformation);
+        user.setName(firebaseUser.getDisplayName());
         user.setUserId(firebaseUser.getUid());
         if (firebaseUser.getPhotoUrl() != null) {
             user.setProfilePicUrl(firebaseUser.getPhotoUrl().toString());
@@ -90,12 +97,67 @@ public class User implements Serializable{
         this.userId = userId;
     }
 
-    public UserInformation getUserInformation() {
-        return userInformation;
+    public List<String> getAddresses() {
+        return addresses;
     }
 
-    public void setUserInformation(UserInformation userInformation) {
-        this.userInformation = userInformation;
+    public void setAddresses(List<String> addresses) {
+        this.addresses.clear();
+        this.addresses.addAll(addresses);
+    }
+
+    public void addAddress(String address) {
+        if (!email.isEmpty()) {
+            this.addresses.add(address);
+        }
+    }
+
+    public List<String> getEmail() {
+        return email;
+    }
+
+    public void setEmail(List<String> email) {
+        this.email.clear();
+        this.email.addAll(email);
+    }
+
+    public void addEmail(String email) {
+        if (!email.isEmpty()) {
+            this.email.add(email);
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<String> getPhone() {
+        return phone;
+    }
+
+    public void setPhone(List<String> phone) {
+        this.phone.clear();
+        this.phone.addAll(phone);
+    }
+
+    public void addPhone(String strPhone) {
+        if (!email.isEmpty()) {
+            this.phone.add(strPhone);
+        }
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        if (!email.isEmpty()) {
+            this.birthDate = birthDate;
+        }
     }
 
     public boolean isVerified() {
