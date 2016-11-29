@@ -30,6 +30,7 @@ public class User implements Serializable {
         User instance = new User();
         Map<String, Objects> user  = ((Map<String, Objects>) dataSnapshot.getValue());
         instance.setProfilePicUrl(String.valueOf(user.get(USER_IMAGE_KEY)));
+        instance.setName(String.valueOf(user.get(USER_NAME_KEY)));
         return instance;
     }
 

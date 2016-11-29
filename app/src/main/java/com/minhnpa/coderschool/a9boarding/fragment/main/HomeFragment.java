@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -29,16 +30,14 @@ public class HomeFragment extends Fragment {
 
     @BindView(R.id.rvMain)
     RecyclerView rvMain;
-
     @BindView(R.id.fabAdd)
     FloatingActionButton fabPost;
+    @BindView(R.id.swipeRefresh)
+    SwipeRefreshLayout swipe;
 
     HomePresenter presenter;
 
-//    private OnFragmentInteractionListener mListener;
-
-    public HomeFragment() {
-    }
+    public HomeFragment() {}
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -61,8 +60,8 @@ public class HomeFragment extends Fragment {
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
         rvMain.setLayoutManager(manager);
         rvMain.setAdapter(presenter.getAdapter());
-//        rvMain.setNestedScrollingEnabled(false);
 
+        presenter.setUpFirebaseAdapter();
         return view;
     }
 
@@ -73,10 +72,25 @@ public class HomeFragment extends Fragment {
     }
 
     private void setupListener() {
+        presenter.setListener(new HomePresenter.Listener() {
+            @Override
+            public void onLoadDone(boolean isDone) {
+                if (isDone)
+                    swipe.setRefreshing(false);
+            }
+        });
+
         fabPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 IntentUtils.startCreatePostActivity(getContext());
+            }
+        });
+
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.setUpFirebaseAdapter();
             }
         });
     }

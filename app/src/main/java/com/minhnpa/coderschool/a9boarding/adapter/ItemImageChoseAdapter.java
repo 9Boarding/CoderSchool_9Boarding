@@ -22,10 +22,20 @@ import butterknife.ButterKnife;
 
 public class ItemImageChoseAdapter extends RecyclerView.Adapter<ItemImageChoseAdapter.viewHolder> {
 
+    public interface Listener{
+        void onClickAdd();
+        void onClickViewPhoto(int position);
+    }
+
     List<Object> listPhotos;
+    Listener listener;
 
     public ItemImageChoseAdapter(List<Object> listPhotos) {
         this.listPhotos = listPhotos;
+    }
+
+    public void setListener(Listener listener){
+        this.listener = listener;
     }
 
     @Override
@@ -47,6 +57,7 @@ public class ItemImageChoseAdapter extends RecyclerView.Adapter<ItemImageChoseAd
         }
         else{
             holder.btnClear.setVisibility(View.GONE);
+            holder.img.setImageDrawable(holder.img.getContext().getResources().getDrawable(R.drawable.ic_add));
         }
 
         holder.btnClear.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +67,17 @@ public class ItemImageChoseAdapter extends RecyclerView.Adapter<ItemImageChoseAd
                 notifyDataSetChanged();
             }
         });
+
+        holder.img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(position < listPhotos.size())
+                    listener.onClickViewPhoto(position);
+                else
+                    listener.onClickAdd();
+            }
+        });
+
     }
 
     @Override

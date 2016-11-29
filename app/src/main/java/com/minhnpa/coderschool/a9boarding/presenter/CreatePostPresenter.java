@@ -29,28 +29,44 @@ import java.util.List;
 
 public class CreatePostPresenter {
 
-    FragmentActivity context;
+    Activity context;
     public CameraHelper cameraHelper;
     public GalleryHelper galleryHelper;
 
     ItemImageChoseAdapter adapter;
     List<Object> photos;
 
-    public CreatePostPresenter(FragmentActivity context) {
+    public CreatePostPresenter(Activity context) {
         this.context = context;
         cameraHelper = new CameraHelper();
         galleryHelper = new GalleryHelper();
         photos = new ArrayList<>();
         adapter = new ItemImageChoseAdapter(photos);
+        setListener();
     }
+
+    private void setListener() {
+        adapter.setListener(new ItemImageChoseAdapter.Listener() {
+            @Override
+            public void onClickAdd() {
+                choosePhoto();
+            }
+
+            @Override
+            public void onClickViewPhoto(int position) {
+                //View Photo
+            }
+        });
+    }
+
 
     public ItemImageChoseAdapter getAdapter(){
         return this.adapter;
     }
 
     public void choosePhoto(){
-        final Dialog dia = new Dialog(context.getApplicationContext());
-        LayoutInflater inf = ((LayoutInflater) context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE));
+        final Dialog dia = new Dialog(context);
+        LayoutInflater inf = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE));
         View view = inf.inflate(R.layout.dialog_upload_image_chooser, null);
         dia.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dia.setContentView(view);

@@ -25,23 +25,35 @@ public class HomePresenter {
     private Context mContext;
     private ItemPostAdapter adapter;
     private List<Post> postList = new ArrayList<>();
+    private Listener listener;
+
+    public interface Listener{
+        void onLoadDone(boolean isDone);
+    }
+
+    public void setListener(Listener listener){
+        this.listener = listener;
+    }
 
     public HomePresenter(Context context) {
         mContext = context;
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         adapter = new ItemPostAdapter(context, postList);
-        setUpFirebaseAdapter();
     }
 
-    private void setUpFirebaseAdapter() {
+    public void setUpFirebaseAdapter() {
         mDatabaseReference.child("posts").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                postList.clear();
+                adapter.notifyDataSetChanged();
                 for (DataSnapshot dataChild: dataSnapshot.getChildren()) {
                     Post post = Post.newInstance(dataChild);
-                    postList.add(post);
-                    adapter.notifyItemInserted(postList.size());
+                    postList.add(postList.size(), post);
+                    adapter.notifyItemInserted(0);
                 }
+
+                listener.onLoadDone(true);
             }
 
             @Override

@@ -15,6 +15,7 @@
         android:scaleType="centerCrop"/>
 
     <ImageButton
+        android:background="@android:color/transparent"
         android:id="@+id/btnClear"
         android:layout_width="16dp"
         android:layout_height="16dp"

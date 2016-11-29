@@ -87,7 +87,7 @@ public class ItemPostAdapter extends RecyclerView.Adapter<ItemPostAdapter.myView
     }
 
     public void bindPost(myViewHolder viewHolder, Post post) {
-        viewHolder.tvUserName.setText(post.getUser().getUserInformation().getName());
+        viewHolder.tvUserName.setText(post.getUser().getName());
 
         Glide.with(this.context)
                 .load(post.getUser().getProfilePicUrl() + "")

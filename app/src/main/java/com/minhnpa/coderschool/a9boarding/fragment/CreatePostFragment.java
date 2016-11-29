@@ -68,8 +68,8 @@ public class CreatePostFragment extends Fragment {
     @BindView(R.id.edtPhone)
     EditText edtPhone;
     @BindView(R.id.edtDescription)
-    EditText edtDescription;
-    @BindView(R.id.ivCamera)
+//    EditText edtDescription;
+//    @BindView(R.id.ivCamera)
     ImageView ivCamera;
     @BindView(R.id.rvImageChose)
     RecyclerView rvImageChose;
@@ -97,7 +97,7 @@ public class CreatePostFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_create_post, container, false);
+        View view = inflater.inflate(R.layout.activity_create_post, container, false);
 
         ButterKnife.bind(this, view);
 
@@ -172,7 +172,7 @@ public class CreatePostFragment extends Fragment {
 
         postInformation.setAddress(edtAddress.getText().toString());
         //postInformation.setArea(etArea.getText().toString());
-        postInformation.setDescription(edtDescription.getText().toString());
+//        postInformation.setDescription(edtDescription.getText().toString());
         postInformation.setPhone(edtPhone.getText().toString()); // Change to spinner - select phone number list from user
         postInformation.setPrice(edtPrice.getText().toString());
         mPost.setPostInformation(postInformation);

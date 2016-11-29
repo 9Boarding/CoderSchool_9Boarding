@@ -36,12 +36,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.bottom_nav)
     AHBottomNavigation buttomNav;
 
-    @BindView(R.id.navMenu)
-    NavigationView navView;
-
 
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
-    private ActionBarDrawerToggle drawerToggle;
     private Fragment fragment = HomeFragment.newInstance();
 
     @Override
@@ -64,18 +60,6 @@ public class MainActivity extends AppCompatActivity {
 //        bottomBar.onSaveInstanceState(outState);
     }
 
-//    @Override
-//    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-//        super.onPostCreate(savedInstanceState);
-//        drawerToggle.syncState();
-//    }
-
-//    @Override
-//    public void onConfigurationChanged(Configuration newConfig) {
-//        super.onConfigurationChanged(newConfig);
-//        drawerToggle.onConfigurationChanged(newConfig);
-//    }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -85,37 +69,6 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle setupDrawertoggle() {
         return new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
     }
-
-    private void setupNavigationView() {
-        drawerToggle = setupDrawertoggle();
-        drawerLayout.setDrawerListener(drawerToggle);
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                selectDrawerItem(item);
-                return true;
-            }
-        });
-    }
-
-    private void selectDrawerItem(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_signin:
-                IntentUtils.signin(this);
-                break;
-            case R.id.nav_signout:
-                IntentUtils.signout();
-                break;
-            case R.id.nav_profile:
-                IntentUtils.startProfileActivity(this);
-                break;
-            case R.id.nav_setting:
-                break;
-            default:
-                break;
-        }
-    }
-
 
     private void setOnClick() {
         buttomNav.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
