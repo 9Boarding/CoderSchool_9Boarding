@@ -25,12 +25,4 @@
             android:layout_gravity="bottom" />
     </android.support.design.widget.CoordinatorLayout>
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/navMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
-        app:menu="@menu/items_right_menu"
-        app:headerLayout="@layout/nav_header"/>
-
 </android.support.v4.widget.DrawerLayout>

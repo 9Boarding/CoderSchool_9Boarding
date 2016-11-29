@@ -1,6 +1,7 @@
 package com.minhnpa.coderschool.a9boarding.activity;
 
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -35,19 +36,18 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.bottom_nav)
     AHBottomNavigation buttomNav;
 
-    @BindView(R.id.navMenu)
-    NavigationView navView;
-
 
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
-    private ActionBarDrawerToggle drawerToggle;
-    private Fragment fragment = null;
+    private Fragment fragment = HomeFragment.newInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.flContainer, fragment).commit();
 
 //        setupNavigationView();
         setupBottomtabs();
@@ -60,18 +60,6 @@ public class MainActivity extends AppCompatActivity {
 //        bottomBar.onSaveInstanceState(outState);
     }
 
-//    @Override
-//    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-//        super.onPostCreate(savedInstanceState);
-//        drawerToggle.syncState();
-//    }
-
-//    @Override
-//    public void onConfigurationChanged(Configuration newConfig) {
-//        super.onConfigurationChanged(newConfig);
-//        drawerToggle.onConfigurationChanged(newConfig);
-//    }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -81,43 +69,6 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle setupDrawertoggle() {
         return new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close);
     }
-
-    private void setupNavigationView() {
-        drawerToggle = setupDrawertoggle();
-        drawerLayout.setDrawerListener(drawerToggle);
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                selectDrawerItem(item);
-                return true;
-            }
-        });
-    }
-
-    private void updateNavView() {
-        if (FireBaseUtils.isAuth()) {
-
-        }
-    }
-
-    private void selectDrawerItem(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_signin:
-                IntentUtils.signin(this);
-                break;
-            case R.id.nav_signout:
-                IntentUtils.signout();
-                break;
-            case R.id.nav_profile:
-                IntentUtils.startProfileActivity(this);
-                break;
-            case R.id.nav_setting:
-                break;
-            default:
-                break;
-        }
-    }
-
 
     private void setOnClick() {
         buttomNav.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
@@ -138,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                         fragmentClass = ProfileFragment.class;
                         break;
                     default:
-//                        fragmentClass = HomeFragment.class;
+                        fragmentClass = HomeFragment.class;
                 }
 
                 try {
@@ -153,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
     private void setupBottomtabs() {
@@ -168,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
         buttomNav.addItems(bottomNavigationItems);
 
-        buttomNav.setTranslucentNavigationEnabled(true);
 
-        buttomNav.setAccentColor(R.color.black);
+        buttomNav.setAccentColor(Color.parseColor("#F63D2B"));
+        buttomNav.setInactiveColor(Color.parseColor("#747474"));
     }
 }

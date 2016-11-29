@@ -95,4 +95,38 @@ public class FileUtils {
         matrix.setRotate(rotationAngle, (float) bm.getWidth() / 2, (float) bm.getHeight() / 2);
         return Bitmap.createBitmap(bm, 0, 0, bounds.outWidth, bounds.outHeight, matrix, true);
     }
+
+    public static File getCacheFile() throws Exception {
+        return getCacheFileWithName("cache");
+    }
+
+    public static File getCacheFileWithName(String s) throws Exception {
+        File storageDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        File storageDirWithAppName = new File(storageDir, "9House");
+        if (storageDirWithAppName.exists() == false) {
+            storageDirWithAppName.mkdir();
+        }
+        File image = File.createTempFile(
+                s,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDirWithAppName      /* directory */
+        );
+        if (image.exists()) {
+            image.delete();
+        }
+        return image;
+    }
+
+    public static void writeBitmapToFile(Bitmap b, File file,int quality) {
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            b.compress(Bitmap.CompressFormat.JPEG, quality, out);
+
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

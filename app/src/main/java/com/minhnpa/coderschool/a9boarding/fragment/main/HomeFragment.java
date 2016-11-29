@@ -1,10 +1,13 @@
 package com.minhnpa.coderschool.a9boarding.fragment.main;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,6 +18,8 @@ import android.view.ViewGroup;
 import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.presenter.HomePresenter;
 import com.minhnpa.coderschool.a9boarding.utils.IntentUtils;
+import com.minhnpa.coderschool.a9boarding.utils.camera.CameraHelper;
+import com.minhnpa.coderschool.a9boarding.utils.gallery.GalleryHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,16 +30,14 @@ public class HomeFragment extends Fragment {
 
     @BindView(R.id.rvMain)
     RecyclerView rvMain;
-
     @BindView(R.id.fabAdd)
     FloatingActionButton fabPost;
+    @BindView(R.id.swipeRefresh)
+    SwipeRefreshLayout swipe;
 
     HomePresenter presenter;
 
-//    private OnFragmentInteractionListener mListener;
-
-    public HomeFragment() {
-    }
+    public HomeFragment() {}
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -54,14 +57,11 @@ public class HomeFragment extends Fragment {
 
         presenter = new HomePresenter(getContext());
 
-        if (rvMain != null) {
-            RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
-            rvMain.setLayoutManager(manager);
-            rvMain.setAdapter(presenter.getAdapter());
-        } else {
-            Log.e(TAG, "rv null ");
-        }
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
+        rvMain.setLayoutManager(manager);
+        rvMain.setAdapter(presenter.getAdapter());
 
+        presenter.setUpFirebaseAdapter();
         return view;
     }
 
@@ -71,15 +71,14 @@ public class HomeFragment extends Fragment {
         setupListener();
     }
 
-    public void onButtonPressed(Uri uri) {
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
-    private void setupListener(){
+    private void setupListener() {
+        presenter.setListener(new HomePresenter.Listener() {
+            @Override
+            public void onLoadDone(boolean isDone) {
+                if (isDone)
+                    swipe.setRefreshing(false);
+            }
+        });
 
         fabPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,5 +86,14 @@ public class HomeFragment extends Fragment {
                 IntentUtils.startCreatePostActivity(getContext());
             }
         });
+
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.setUpFirebaseAdapter();
+            }
+        });
     }
+
+
 }

@@ -8,7 +8,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.minhnpa.coderschool.a9boarding.adapter.PostItemAdapter;
+import com.minhnpa.coderschool.a9boarding.adapter.ItemPostAdapter;
 import com.minhnpa.coderschool.a9boarding.model.Post;
 
 import java.util.ArrayList;
@@ -22,27 +22,38 @@ public class HomePresenter {
     public static final String TAG = HomePresenter.class.getSimpleName();
 
     private DatabaseReference mDatabaseReference;
-//    private FirebaseRecyclerAdapter<Post, PostItemAdapter> mFirebaseAdapter;
     private Context mContext;
-    private PostItemAdapter adapter;
+    private ItemPostAdapter adapter;
     private List<Post> postList = new ArrayList<>();
+    private Listener listener;
+
+    public interface Listener{
+        void onLoadDone(boolean isDone);
+    }
+
+    public void setListener(Listener listener){
+        this.listener = listener;
+    }
 
     public HomePresenter(Context context) {
         mContext = context;
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-        adapter = new PostItemAdapter(postList);
-        setUpFirebaseAdapter();
+        adapter = new ItemPostAdapter(context, postList);
     }
 
-    private void setUpFirebaseAdapter() {
+    public void setUpFirebaseAdapter() {
         mDatabaseReference.child("posts").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                postList.clear();
+                adapter.notifyDataSetChanged();
                 for (DataSnapshot dataChild: dataSnapshot.getChildren()) {
                     Post post = Post.newInstance(dataChild);
-                    postList.add(post);
-                    adapter.notifyItemInserted(postList.size());
+                    postList.add(postList.size(), post);
+                    adapter.notifyItemInserted(0);
                 }
+
+                listener.onLoadDone(true);
             }
 
             @Override
@@ -52,11 +63,7 @@ public class HomePresenter {
         });
     }
 
-//    public FirebaseRecyclerAdapter getAdapter() {
-//        return this.mFirebaseAdapter;
-//    }
-
-    public PostItemAdapter getAdapter(){
+    public ItemPostAdapter getAdapter(){
         return this.adapter;
     }
 }

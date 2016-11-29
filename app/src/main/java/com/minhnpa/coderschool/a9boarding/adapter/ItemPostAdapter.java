@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.minhnpa.coderschool.a9boarding.R;
 import com.minhnpa.coderschool.a9boarding.model.Post;
 import com.minhnpa.coderschool.a9boarding.utils.AppUtils;
@@ -20,18 +21,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static com.minhnpa.coderschool.a9boarding.R.id.rvPhotos;
-
 /**
  * Created by DangF on 11/08/16.
  */
 
-public class PostItemAdapter extends RecyclerView.Adapter<PostItemAdapter.myViewHolder> {
-    public static final String TAG = PostItemAdapter.class.getSimpleName();
+public class ItemPostAdapter extends RecyclerView.Adapter<ItemPostAdapter.myViewHolder> {
+    public static final String TAG = ItemPostAdapter.class.getSimpleName();
 
     List<Post> postList;
+    Context context;
 
-    public PostItemAdapter(List<Post> postList) {
+    public ItemPostAdapter(Context context, List<Post> postList) {
+        this.context = context;
         this.postList = postList;
     }
 
@@ -86,19 +87,20 @@ public class PostItemAdapter extends RecyclerView.Adapter<PostItemAdapter.myView
     }
 
     public void bindPost(myViewHolder viewHolder, Post post) {
-        //TODO: load image avatar, photos
-        viewHolder.tvUserName.setText(post.getUser().getUserInformation().getName());
+        viewHolder.tvUserName.setText(post.getUser().getName());
 
-        //TODO: add attribute Username for Post
+        Glide.with(this.context)
+                .load(post.getUser().getProfilePicUrl() + "")
+                .placeholder(R.drawable.avatar_user_default)
+                .crossFade()
+                .into(viewHolder.civProfile);
 
         if (post.getPostAt() != null) {
             viewHolder.tvTimeStamp.setText(AppUtils.getRelativeTimeAgo(post.getPostAt()));
         }
-//        tvLocation.setText(post.getPostInformation().getAddress());
 
-//        tvPrice.setText("$" + post.getPostInformation().getPrice() + " per month");
-
-
+        viewHolder.tvPrice.setText("$" + post.getPostInformation().getPrice());
+        viewHolder.tvAddress.setText(post.getPostInformation().getAddress() + "");
 
         //List Photos
         bindPhotos(viewHolder.rvPhotos, post.getImages());

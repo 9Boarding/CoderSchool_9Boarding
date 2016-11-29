@@ -23,4 +23,15 @@
     <dimen name="post_information_text_size">16sp</dimen>
     <dimen name="padding_notification_item">8dp</dimen>
     <dimen name="size_width_image_review">300dp</dimen>
+
+    <!--Create new Post-->
+    <dimen name="size_image_chose">80dp</dimen>
+    <dimen name="size_icon_chooser">28dp</dimen>
+    <dimen name="padding_dialog_chooser">12dp</dimen>
+    <dimen name="font_size_title_chooser">20dp</dimen>
+    <dimen name="font_size_chooser">18dp</dimen>
+    <dimen name="margin_icon_chooser">4dp</dimen>
+    <dimen name="between_icon_text">56dp</dimen>
+    <dimen name="size_medium">8dp</dimen>
+
 </resources>
