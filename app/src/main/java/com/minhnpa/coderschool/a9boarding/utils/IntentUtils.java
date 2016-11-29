@@ -14,7 +14,6 @@ import com.minhnpa.coderschool.a9boarding.activity.ViewAndEditProfile;
  */
 
 public class IntentUtils {
-
 	public static void signin(Context context){
 		Intent intent;
 		intent = LoginActivity.newIntent(context);
