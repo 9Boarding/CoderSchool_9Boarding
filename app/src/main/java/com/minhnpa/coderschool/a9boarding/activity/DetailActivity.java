@@ -8,10 +8,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telecom.Call;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -49,6 +53,10 @@ public class DetailActivity extends AppCompatActivity implements LocationListene
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.ivFab)
+    FloatingActionButton btnBookMark;
+    @BindView(R.id.btnCall)
+    ImageButton btnCall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +72,28 @@ public class DetailActivity extends AppCompatActivity implements LocationListene
 
         Bundle bundle = getIntent().getBundleExtra("DATA");
         Post post = ((Post) bundle.getSerializable("POST"));
+        if(post.isBookMark()){
+            btnBookMark.setImageDrawable(getResources().getDrawable(R.drawable.ic_bookmark_active2));
+        }
+
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onCall();
+            }
+        });
+    }
+
+    private void onCall() {
+
+//        int permissionCheck =
+
+        Intent callIntent =  new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:0938513856"));
+        if (callIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(callIntent);
+        }
+
     }
 
     private void setupActiobBar(){
@@ -71,10 +101,6 @@ public class DetailActivity extends AppCompatActivity implements LocationListene
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
-
-//        final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
-//        upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
-//        getSupportActionBar().setHomeAsUpIndicator(upArrow);
     }
 
     private void setupGoogleApiClient() {
@@ -197,12 +223,12 @@ public class DetailActivity extends AppCompatActivity implements LocationListene
     public void onLocationChanged(Location location) {
         mCurrentLoction = new LatLng(location.getLatitude(), location.getLongitude());
         updateLoction(location);
-        toastMessage(location.getLatitude() + " " + location.getLongitude());
+//        toastMessage(location.getLatitude() + " " + location.getLongitude());
     }
 
     public void onCommentClick(View view) {
         Intent intent = new Intent(this, CommentActivity.class);
-        startActivity(intent);
+//        startActivity(intent);
     }
 
     @Override

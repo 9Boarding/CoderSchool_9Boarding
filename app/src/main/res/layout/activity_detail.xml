@@ -141,7 +141,8 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/post_information_text_size" />
 
-                <ImageView
+                <ImageButton
+                    android:background="@android:color/transparent"
                     android:layout_gravity="right"
                     android:id="@+id/btnCall"
                     android:src="@drawable/ic_call"

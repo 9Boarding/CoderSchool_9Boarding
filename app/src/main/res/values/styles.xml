@@ -35,7 +35,7 @@
     </style>
 
     <style name="EditTextPost">
-        <item name="android:textColor">@android:color/holo_blue_light</item>
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:cursorVisible">true</item>
         <item name="android:layout_width">0dp</item>
