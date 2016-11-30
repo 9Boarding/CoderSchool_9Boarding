@@ -12,15 +12,10 @@ import com.minhnpa.coderschool.a9boarding.fragment.LoginFragment;
 
 public class LoginActivity extends AppCompatActivity {
 
-    /**
-     * Use this method to create the Intent of this activity
-     *
-     * @param context
-     * @return The Intent instance
-     */
     public static Intent newIntent(Context context) {
         return new Intent(context, LoginActivity.class);
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

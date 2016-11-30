@@ -11,6 +11,7 @@
         tools:context="com.minhnpa.coderschool.a9boarding.fragment.main.HomeFragment">
 
         <android.support.v7.widget.RecyclerView
+            android:layout_marginBottom="?attr/actionBarSize"
             android:id="@+id/rvMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -21,8 +22,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:layout_margin="?attr/actionBarSize"
+            android:layout_marginBottom="72dp"
+            android:layout_marginRight="?attr/actionBarSize"
             android:src="@drawable/ic_add" />
+
+        <com.victor.loading.newton.NewtonCradleLoading
+            android:backgroundTint="#12345678"
+            android:id="@+id/newtonLoading"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"/>
 
     </FrameLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

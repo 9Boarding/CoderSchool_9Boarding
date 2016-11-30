@@ -2,10 +2,12 @@ package com.minhnpa.coderschool.a9boarding.model;
 
 import com.google.firebase.database.DataSnapshot;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Objects;
 
-public class PostInformation {
+public class PostInformation implements Serializable {
+    static final long serialVersionUID = 42L;
     //PostInformation Keys
     public static final String ADDRESS_KEY = "address";
     public static final String AREA_KEY = "area";

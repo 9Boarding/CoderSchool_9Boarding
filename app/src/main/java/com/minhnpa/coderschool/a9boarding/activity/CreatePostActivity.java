@@ -86,6 +86,7 @@ public class CreatePostActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
 
         presenter = new CreatePostPresenter(this);
 
@@ -112,8 +113,8 @@ public class CreatePostActivity extends AppCompatActivity {
                 return true;
             case R.id.action_next:
                 if (validateInput()) {
-                    FirebaseDbApi.newPost(mDatabaseReference, getInputToModel());
-                    onBackPressed();
+//                    onBackPressed();
+                    presenter.uploadPhoto();
 
                 } else {
                     Toast.makeText(this, "Some of field is emply", Toast.LENGTH_SHORT).show();
@@ -123,6 +124,12 @@ public class CreatePostActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void createPost(Post post){
+        mPost.addImages(post.getImages());
+        FirebaseDbApi.newPost(mDatabaseReference, getInputToModel());
+        onBackPressed();
     }
 
     private Post getInputToModel() {
@@ -156,50 +163,6 @@ public class CreatePostActivity extends AppCompatActivity {
             return false;
         }
         return true;
-    }
-//
-//    /**
-//     * This method to setup the listener for view or widget
-//     */
-//    private void setupListener() {
-//        ivCamera.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                presenter.choosePhoto();
-//            }
-//        });
-//
-//    }
-//
-//    private void takeImage() {
-//        Bitmap rotatedBitmap = FileUtils.rotateBitmapOrientation(mStoredImageFile);
-//        Bitmap resizedBitmap = BitmapScaler.scaleToFitWidth(rotatedBitmap, 500);
-//        try {
-//            FileUtils.store(resizedBitmap, mStoredImageFile);
-//        } catch (IOException e) {
-//            Toast.makeText(CreatePostActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//        }
-//        ivCamera.setImageBitmap(resizedBitmap);
-//    }
-
-    private void uploadImage() {
-        File file = new File(mStoredImageFile);
-        RetrofitUtils.get(getString(R.string.IGMUR_CLIENT_ID))
-                .create(ImgurApi.class)
-                .create(FileUtils.partFromFile(file), FileUtils.requestBodyFromFile(file))
-                .enqueue(new Callback<ImageResponse>() {
-                    @Override
-                    public void onResponse(Call<ImageResponse> call, Response<ImageResponse> response) {
-                        ImageResponse imageResponse = response.body();
-
-                        mPost.addImages(imageResponse.getData().getLink());
-                    }
-
-                    @Override
-                    public void onFailure(Call<ImageResponse> call, Throwable t) {
-                        Toast.makeText(CreatePostActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
     }
 
     @Override
