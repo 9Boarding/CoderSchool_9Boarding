@@ -30,6 +30,7 @@ public class HomePresenter {
     public interface Listener{
         void onLoadDone(boolean isDone);
         void onClickPost(Post post);
+        void onClickShare();
     }
 
     public void setListener(final Listener listener){
@@ -38,6 +39,11 @@ public class HomePresenter {
             @Override
             public void onClickPost(Post post) {
                 listener.onClickPost(post);
+            }
+
+            @Override
+            public void onClickShare() {
+                listener.onClickShare();
             }
         });
     }

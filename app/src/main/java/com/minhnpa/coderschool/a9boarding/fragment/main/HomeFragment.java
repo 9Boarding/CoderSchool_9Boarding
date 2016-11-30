@@ -25,6 +25,8 @@ import com.minhnpa.coderschool.a9boarding.utils.camera.CameraHelper;
 import com.minhnpa.coderschool.a9boarding.utils.gallery.GalleryHelper;
 import com.victor.loading.newton.NewtonCradleLoading;
 
+import java.io.File;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -95,6 +97,13 @@ public class HomeFragment extends Fragment {
                 bundle.putSerializable("POST", post);
                 i.putExtra("DATA", bundle);
                 getContext().startActivity(i);
+            }
+
+            @Override
+            public void onClickShare() {
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("image/jpg");
+                    startActivity(Intent.createChooser(sharingIntent, "Share image using"));
             }
         });
 

@@ -1,17 +1,42 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.minhnpa.coderschool.a9boarding.fragment.main.BookmarkFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvNotification"
+        android:visibility="gone"
+        android:id="@+id/rvBookmark"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/noBookmark"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+
+            android:id="@+id/icBookmark"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_bookmark_fragment" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/icBookmark"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:text="No Bookmark"
+            android:textSize="24dp" />
+
+    </LinearLayout>
+</RelativeLayout>

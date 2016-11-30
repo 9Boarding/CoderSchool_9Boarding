@@ -39,6 +39,7 @@ public class ItemPostAdapter extends RecyclerView.Adapter<ItemPostAdapter.myView
 
     public interface Listener{
         void onClickPost(Post post);
+        void onClickShare();
     }
 
     public ItemPostAdapter(Context context, List<Post> postList) {
@@ -163,6 +164,13 @@ public class ItemPostAdapter extends RecyclerView.Adapter<ItemPostAdapter.myView
             @Override
             public void onClick(View v) {
                 listener.onClickPost(post);
+            }
+        });
+
+        viewHolder.imbtnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClickShare();
             }
         });
 

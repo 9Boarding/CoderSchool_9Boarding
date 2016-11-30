@@ -113,6 +113,7 @@ public class ProfileFragment extends Fragment {
                         IntentUtils.signout();
                     }
                 })
+
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -164,23 +165,26 @@ public class ProfileFragment extends Fragment {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             tvSignInSignOut.setText(R.string.signout);
             tvProfileName.setText(user.getDisplayName());
+            tvProfileName.setText("Bao Huynh");
             tvEditProfile.setText(R.string.view_and_edit_profile);
 
-            if (user.getPhotoUrl() != null) {
-                Glide.with(getContext())
-                        .load(user.getPhotoUrl())
-                        .into(civProfile);
-            } else {
-                civProfile.setImageDrawable(
-                        ActivityCompat.getDrawable(getContext(), R.drawable.no_photo));
-            }
+            civProfile.setImageDrawable(getResources().getDrawable(R.drawable.circle_image_sample));
+//            if (user.getPhotoUrl() != null) {
+//                Glide.with(getContext())
+//                        .load(user.getPhotoUrl())
+//                        .placeholder(R.drawable.circle_image_sample)
+//                        .into(civProfile);
+//            } else {
+//                civProfile.setImageDrawable(
+//                        ActivityCompat.getDrawable(getContext(), R.drawable.no_photo));
+//            }
         } else {
             // User is not login
+            tvProfileName.setText("Anonymous");
             tvSignInSignOut.setText(R.string.signin);
             civProfile.setImageDrawable(
                     ActivityCompat.getDrawable(getContext(), R.drawable.no_photo));
-            tvProfileName.setText("");
-            tvEditProfile.setText("");
+            tvEditProfile.setText("Anonymous");
         }
     }
 }
