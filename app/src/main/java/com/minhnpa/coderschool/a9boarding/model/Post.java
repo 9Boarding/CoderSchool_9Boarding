@@ -6,6 +6,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +15,8 @@ import java.util.Objects;
 
 import retrofit2.http.POST;
 
-public class Post {
+public class Post implements Serializable {
+    static final long serialVersionUID = 42L;
     //Post instance key
     public static final String BOOKMARK_COUNT_KEY = "bookmarksCount";
     public static final String COMMENT_COUNT_KEY = "commentsCount";
@@ -31,6 +33,7 @@ public class Post {
     private String post_at;
     private String postId;
     private User user;
+    private boolean isBookMark;
 
     public static Post newInstance(DataSnapshot dataSnapshot){
         Post instance =  new Post();
@@ -78,6 +81,14 @@ public class Post {
         this.postInformation = postInformation;
         this.post_at = post_at;
         this.user = user;
+    }
+
+    public boolean isBookMark() {
+        return isBookMark;
+    }
+
+    public void setBookMark(boolean bookMark) {
+        isBookMark = bookMark;
     }
 
     public int getBookmarksCount() {
@@ -143,5 +154,18 @@ public class Post {
 
     public PostInformation getPostInformation() {
         return postInformation;
+    }
+
+    //Fake data Bookmark
+    private static List<Post> bookMark = new ArrayList<>();
+
+    public static List<Post> listBookMark(){
+        return bookMark;
+    }
+    public static void addBookMark(Post post){
+        bookMark.add(post);
+    }
+    public static void removeBookMark(Post post){
+        bookMark.remove(post);
     }
 }

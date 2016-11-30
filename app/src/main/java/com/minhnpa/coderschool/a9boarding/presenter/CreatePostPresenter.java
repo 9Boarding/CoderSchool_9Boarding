@@ -10,9 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.minhnpa.coderschool.a9boarding.R;
+import com.minhnpa.coderschool.a9boarding.activity.CreatePostActivity;
 import com.minhnpa.coderschool.a9boarding.adapter.ItemImageChoseAdapter;
+import com.minhnpa.coderschool.a9boarding.api.ImgurApi;
+import com.minhnpa.coderschool.a9boarding.model.ImageResponse;
+import com.minhnpa.coderschool.a9boarding.model.Post;
+import com.minhnpa.coderschool.a9boarding.utils.FileUtils;
+import com.minhnpa.coderschool.a9boarding.utils.RetrofitUtils;
 import com.minhnpa.coderschool.a9boarding.utils.camera.CameraCaptureCallback;
 import com.minhnpa.coderschool.a9boarding.utils.camera.CameraHelper;
 import com.minhnpa.coderschool.a9boarding.utils.gallery.GalleryHelper;
@@ -22,6 +29,10 @@ import com.minhnpa.coderschool.a9boarding.utils.gallery.GalleryPickURICallback;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by dangfiztssi on 29/11/2016.
@@ -35,6 +46,9 @@ public class CreatePostPresenter {
 
     ItemImageChoseAdapter adapter;
     List<Object> photos;
+
+    Post newPost = new Post();
+    int countPhotos = 0;
 
     public CreatePostPresenter(Activity context) {
         this.context = context;
@@ -131,5 +145,50 @@ public class CreatePostPresenter {
 
             }
         });
+    }
+
+    public void uploadPhoto(){
+        countPhotos = 0;
+
+        String[] img = {"http://i.imgur.com/dcXe09b.jpg",
+                "http://i.imgur.com/YI2uTy4.jpg",
+                "http://i.imgur.com/UzYV5xc.jpg",
+                "http://i.imgur.com/FFYJlFa.jpg"
+        };
+
+
+        for (int i=0; i<photos.size();i++) {
+            newPost.addImages(img[i]);
+        }
+
+        ((CreatePostActivity) context).createPost(newPost);
+
+//            File file = new File(String.valueOf(mStoredImageFile));
+//            RetrofitUtils.get(context.getResources().getString(R.string.IGMUR_CLIENT_ID))
+//                    .create(ImgurApi.class)
+//                    .create(FileUtils.partFromFile(file), FileUtils.requestBodyFromFile(file))
+//                    .enqueue(new Callback<ImageResponse>() {
+//                        @Override
+//                        public void onResponse(Call<ImageResponse> call, Response<ImageResponse> response) {
+//                            ImageResponse imageResponse = response.body();
+//
+//                            newPost.addImages(imageResponse.getData().getLink());
+//
+//                            countPhotos += 1;
+//                            if(countPhotos == photos.size()){
+//                                ((CreatePostActivity) context).createPost(newPost);
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<ImageResponse> call, Throwable t) {
+////                            Toast.makeText(CreatePostActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//        }
+    }
+
+    public void createPost(Post post){
+
     }
 }

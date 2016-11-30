@@ -22,7 +22,7 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/login_cover_image" />
+                android:src="@drawable/logo_house" />
 
             <TextView
                 android:id="@+id/tvSlogan"
@@ -34,12 +34,14 @@
                 android:textColor="@color/white" />
 
             <EditText
+
+                android:background="@android:color/transparent"
                 android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvSlogan"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginRight="13dp"
                 android:layout_marginTop="60dp"
@@ -49,12 +51,13 @@
                 android:textColorHint="@color/white" />
 
             <EditText
+                android:background="@android:color/transparent"
                 android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/edtEmail"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginRight="13dp"
                 android:hint="@string/password"
@@ -65,25 +68,25 @@
             <Button
                 android:id="@+id/btnSignIn"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="44dp"
                 android:layout_below="@+id/edtPassword"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:background="@color/colorAccent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/background_price"
                 android:text="@string/sign_in"
                 android:textColor="@color/white" />
 
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/btnSignInWithGoogle"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/btnSignIn"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
                 android:visibility="visible" />
 
             <TextView

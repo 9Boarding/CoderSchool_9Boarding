@@ -2,6 +2,7 @@ package com.minhnpa.coderschool.a9boarding.fragment.main;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,10 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.minhnpa.coderschool.a9boarding.R;
+import com.minhnpa.coderschool.a9boarding.activity.DetailActivity;
+import com.minhnpa.coderschool.a9boarding.model.Post;
 import com.minhnpa.coderschool.a9boarding.presenter.HomePresenter;
 import com.minhnpa.coderschool.a9boarding.utils.IntentUtils;
 import com.minhnpa.coderschool.a9boarding.utils.camera.CameraHelper;
 import com.minhnpa.coderschool.a9boarding.utils.gallery.GalleryHelper;
+import com.victor.loading.newton.NewtonCradleLoading;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +38,8 @@ public class HomeFragment extends Fragment {
     FloatingActionButton fabPost;
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipe;
+    @BindView(R.id.newtonLoading)
+    NewtonCradleLoading loading;
 
     HomePresenter presenter;
 
@@ -54,6 +60,9 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
+
+        loading.setLoadingColor(0xFF1A8CFF);
+        loading.start();
 
         presenter = new HomePresenter(getContext());
 
@@ -76,7 +85,16 @@ public class HomeFragment extends Fragment {
             @Override
             public void onLoadDone(boolean isDone) {
                 if (isDone)
-                    swipe.setRefreshing(false);
+                    loading.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onClickPost(Post post) {
+                Intent i = new Intent(getContext(), DetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("POST", post);
+                i.putExtra("DATA", bundle);
+                getContext().startActivity(i);
             }
         });
 
@@ -90,9 +108,12 @@ public class HomeFragment extends Fragment {
         swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                swipe.setRefreshing(false);
+                loading.setVisibility(View.VISIBLE);
                 presenter.setUpFirebaseAdapter();
             }
         });
+
     }
 
 

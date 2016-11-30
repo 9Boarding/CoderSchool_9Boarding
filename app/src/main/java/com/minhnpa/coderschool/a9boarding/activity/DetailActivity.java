@@ -1,12 +1,16 @@
 package com.minhnpa.coderschool.a9boarding.activity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -25,10 +29,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.minhnpa.coderschool.a9boarding.R;
+import com.minhnpa.coderschool.a9boarding.model.Post;
 import com.minhnpa.coderschool.a9boarding.utils.PermissionUtils;
 import com.minhnpa.coderschool.a9boarding.utils.StringUtils;
 
 import java.util.Locale;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class DetailActivity extends AppCompatActivity implements LocationListener,
         GoogleApiClient.ConnectionCallbacks,
@@ -39,14 +47,34 @@ public class DetailActivity extends AppCompatActivity implements LocationListene
     private LatLng mCurrentLoction;
     private Marker mMarker;
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        ButterKnife.bind(this);
+
+        setupActiobBar();
 
         setupMap();
         setupGoogleApiClient();
         PermissionUtils.requestLocaiton(this);
+
+        Bundle bundle = getIntent().getBundleExtra("DATA");
+        Post post = ((Post) bundle.getSerializable("POST"));
+    }
+
+    private void setupActiobBar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
+
+//        final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
+//        upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+//        getSupportActionBar().setHomeAsUpIndicator(upArrow);
     }
 
     private void setupGoogleApiClient() {
@@ -175,5 +203,16 @@ public class DetailActivity extends AppCompatActivity implements LocationListene
     public void onCommentClick(View view) {
         Intent intent = new Intent(this, CommentActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return true;
     }
 }

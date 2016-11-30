@@ -23,6 +23,7 @@
     <dimen name="post_information_text_size">16sp</dimen>
     <dimen name="padding_notification_item">8dp</dimen>
     <dimen name="size_width_image_review">300dp</dimen>
+    <dimen name="size_top_icon">24dp</dimen>
 
     <!--Create new Post-->
     <dimen name="size_image_chose">80dp</dimen>
@@ -34,4 +35,5 @@
     <dimen name="between_icon_text">56dp</dimen>
     <dimen name="size_medium">8dp</dimen>
 
+    <dimen name="between_row_detail">4dp</dimen>
 </resources>

@@ -60,6 +60,7 @@ dependencies {
     compile 'com.aurelhubert:ahbottomnavigation:2.0.1'
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
     compile 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.0'
+    compile 'com.victor:lib:1.0.4'
 }
 
 apply plugin: 'com.google.gms.google-services'

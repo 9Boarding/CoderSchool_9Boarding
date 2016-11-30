@@ -29,10 +29,17 @@ public class HomePresenter {
 
     public interface Listener{
         void onLoadDone(boolean isDone);
+        void onClickPost(Post post);
     }
 
-    public void setListener(Listener listener){
+    public void setListener(final Listener listener){
         this.listener = listener;
+        adapter.setListener(new ItemPostAdapter.Listener() {
+            @Override
+            public void onClickPost(Post post) {
+                listener.onClickPost(post);
+            }
+        });
     }
 
     public HomePresenter(Context context) {
@@ -49,7 +56,7 @@ public class HomePresenter {
                 adapter.notifyDataSetChanged();
                 for (DataSnapshot dataChild: dataSnapshot.getChildren()) {
                     Post post = Post.newInstance(dataChild);
-                    postList.add(postList.size(), post);
+                    postList.add(0, post);
                     adapter.notifyItemInserted(0);
                 }
 
